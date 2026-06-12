@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9机业务分期复盘 & 合作规划</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:#f0f2f5; color:#1a1a2e; line-height:1.8; }
+.container { max-width:960px; margin:0 auto; padding:24px; }
+.doc { background:#fff; border-radius:12px; padding:48px 44px; box-shadow:0 2px 20px rgba(0,0,0,0.06); }
+h1 { font-size:28px; color:#0f0f23; margin-bottom:6px; text-align:center; }
+.meta { color:#888; font-size:14px; margin-bottom:32px; padding:16px 20px; background:#f8f9fc; border-left:4px solid #4a6cf7; border-radius:0 4px 4px 0; }
+.meta p { margin:2px 0; }
+h2 { font-size:22px; color:#1a1a2e; margin:40px 0 16px; padding-bottom:8px; border-bottom:2px solid #4a6cf7; }
+h3 { font-size:17px; color:#2d3748; margin:28px 0 12px; }
+h4 { font-size:15px; color:#4a5568; margin:20px 0 8px; }
+table { width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:14px; }
+th { background:#4a6cf7; color:#fff; padding:10px 14px; text-align:left; font-weight:600; font-size:13px; }
+td { padding:10px 14px; border-bottom:1px solid #e2e8f0; }
+tr:nth-child(even) td { background:#f8f9fc; }
+tr:hover td { background:#eef1ff; }
+td.hl { background:#fef2f2 !important; }
+blockquote { margin:16px 0; padding:12px 20px; background:#fffbeb; border-left:4px solid #f59e0b; color:#92400e; border-radius:0 4px 4px 0; }
+blockquote.info { background:#eff6ff; border-left-color:#4a6cf7; color:#1e40af; }
+blockquote.success { background:#f0fdf4; border-left-color:#22c55e; color:#166534; }
+ul,ol { margin:8px 0 12px 24px; }
+li { margin:4px 0; }
+strong { color:#4a6cf7; }
+pre { background:#1e293b; color:#e2e8f0; padding:16px 20px; border-radius:8px; font-size:13px; overflow-x:auto; margin:12px 0; }
+code { font-family:"SF Mono",Monaco,Consolas,monospace; }
+.cards { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:16px 0; }
+.card { background:#f8f9fc; padding:16px; border-radius:8px; text-align:center; }
+.card .num { font-size:32px; font-weight:700; color:#4a6cf7; }
+.card .label { font-size:13px; color:#666; margin-top:4px; }
+hr { border:none; border-top:1px solid #e2e8f0; margin:32px 0; }
+.screenshots { display:flex; gap:20px; flex-wrap:wrap; margin:16px 0; }
+.screenshot-wrap { flex:1; min-width:320px; max-width:450px; }
+.screenshot-label { font-size:13px; font-weight:600; color:#666; margin-bottom:8px; text-align:center; background:#f0f2f5; padding:6px; border-radius:4px; }
+.phone-frame { background:#fff; border-radius:16px; border:2px solid #e2e8f0; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+.phone-top { background:#fff; padding:10px 14px; border-bottom:1px solid #f0f0f0; display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+.phone-body { padding:14px; }
+.badge-row { margin-bottom:8px; }
+.badge { display:inline-block; background:#ff4757; color:#fff; font-size:10px; padding:2px 8px; border-radius:3px; font-weight:600; letter-spacing:0.5px; }
+.product-name { font-size:14px; font-weight:600; color:#111; margin-bottom:8px; line-height:1.4; }
+.price-main { font-size:28px; font-weight:700; color:#ff4757; margin-bottom:2px; }
+.price-main .yen { font-size:16px; }
+.price-sub { font-size:12px; color:#ff4757; margin-bottom:6px; }
+.sold-info { font-size:11px; color:#999; margin-bottom:10px; }
+.meta-row { display:flex; gap:10px; flex-wrap:wrap; font-size:11px; color:#666; margin-bottom:10px; }
+.meta-row span { background:#f5f5f5; padding:2px 8px; border-radius:3px; }
+.spec-row { margin-bottom:10px; }
+.spec-row > div:first-child { font-size:11px; color:#999; margin-bottom:4px; }
+.spec-tag { display:inline-block; border:1px solid #e2e8f0; padding:5px 12px; border-radius:4px; font-size:12px; margin:2px 4px 2px 0; }
+.spec-tag.active { border-color:#4a6cf7; color:#4a6cf7; background:#eff6ff; }
+.buy-btn { display:block; width:100%; background:linear-gradient(135deg,#ff6b35,#ff4757); color:#fff; text-align:center; padding:12px; border-radius:22px; font-size:15px; font-weight:700; margin-top:14px; }
+.subsidy-badge { background:#fff3e0; border:1px solid #ff9800; color:#e65100; font-size:11px; padding:3px 8px; border-radius:3px; margin-bottom:8px; display:inline-block; }
+.cashier-frame { background:#f8f9fc; border-radius:16px; border:2px solid #e2e8f0; overflow:hidden; }
+.cashier-header { background:#fff; padding:12px 16px; text-align:center; border-bottom:1px solid #eee; font-size:14px; font-weight:600; }
+.cashier-amount { text-align:center; padding:14px; background:#fff; }
+.cashier-amount .amt { font-size:24px; font-weight:700; color:#111; }
+.cashier-amount .orig { font-size:12px; color:#999; text-decoration:line-through; margin-top:2px; }
+.cashier-section { padding:8px 14px; }
+.cashier-section .sec-title { font-size:11px; color:#999; margin-bottom:5px; letter-spacing:1px; }
+.pay-option { display:flex; align-items:center; padding:9px 10px; background:#fff; border-radius:8px; margin-bottom:5px; gap:8px; }
+.pay-option .icon { width:26px; height:26px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#fff; flex-shrink:0; }
+.pay-option .name { flex:1; font-size:12px; font-weight:500; }
+.pay-option .tag-box { font-size:10px; color:#4a6cf7; background:#eff6ff; padding:1px 6px; border-radius:3px; white-space:nowrap; }
+.pay-option .tag-box.green { color:#22c55e; background:#f0fdf4; }
+.pay-option .tag-box.orange { color:#e65100; background:#fff3e0; }
+.pay-option .radio { width:16px; height:16px; border:2px solid #ccc; border-radius:50%; flex-shrink:0; }
+.pay-option .radio.checked { border-color:#4a6cf7; background:#4a6cf7; box-shadow:inset 0 0 0 3px #fff; }
+.cashier-bottom { padding:10px 14px; background:#fff; border-top:1px solid #eee; text-align:center; }
+.cashier-bottom .btn { display:block; width:100%; background:#4a6cf7; color:#fff; padding:12px; border-radius:22px; font-size:15px; font-weight:700; }
+.cashier-hint { font-size:10px; color:#4a6cf7; margin-top:4px; }
+.compare-note { text-align:center; font-size:12px; color:#666; margin-top:8px; padding:8px; background:#f8f9fc; border-radius:6px; }
+.compare-note strong.red { color:#ff4757; }
+.compare-note strong.dark { color:#333; }
+.compare-tbl td:first-child { font-weight:600; white-space:nowrap; min-width:120px; }
+.compare-tbl .zz-cell { color:#666; }
+.compare-tbl .ji-cell { color:#b45309; font-weight:500; }
+.flow-box { background:#f8f9fc; border-radius:8px; padding:16px 20px; margin:12px 0; border-left:4px solid #4a6cf7; font-size:13px; }
+.flow-box.warn { border-left-color:#ff4757; background:#fef2f2; }
+.flow-box .flow-title { font-weight:700; margin-bottom:8px; font-size:14px; }
+.flow-box .flow-title.blue { color:#4a6cf7; }
+.flow-box .flow-title.red { color:#ff4757; }
+.flow-box .flow-steps { font-family:"SF Mono",Monaco,Consolas,monospace; line-height:1.9; color:#555; }
+.flow-box .flow-steps .hl-red { color:#ff4757; font-weight:600; }
+.flow-box .flow-steps .hl-green { color:#22c55e; }
+.insight-box { background:linear-gradient(135deg,#fef3c7,#fffbeb); border:1px solid #fcd34d; border-radius:8px; padding:14px 18px; margin:16px 0; font-size:14px; }
+.insight-box .insight-tag { font-size:11px; font-weight:700; color:#92400e; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+.footer { text-align:center; color:#999; font-size:13px; margin-top:40px; padding-top:20px; border-top:1px solid #e2e8f0; }
+@media (max-width:640px) {
+  .container { padding:8px; }
+  .doc { padding:24px 16px; }
+  table { font-size:12px; }
+  .screenshots { flex-direction:column; }
+  .cards { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="doc">
+<h1>📊 9机业务分期复盘 & 合作规划</h1>
+<div class="meta">
+<p><strong>场景</strong>：昆明拜访 · 9机业务团队</p>
+<p><strong>日期</strong>：2026年6月11日</p>
+<p><strong>负责人</strong>：齐总（转转集团分期业务负责人）</p>
+<p><strong>数据来源</strong>：分期北极星指标看板（2025.09-2026.06）+ 9机业务调研（6月9日纪要）+ 9机门店实地考察</p>
+</div>
+<hr>
+<h2>一、转转分期业务复盘</h2>
+<h3>1.1 核心数据</h3>
+<div class="cards">
+<div class="card"><div class="num">131</div><div class="label">日均大盘净订单</div></div>
+<div class="card"><div class="num">25</div><div class="label">日均分期净订单</div></div>
+<div class="card"><div class="num">19.3%</div><div class="label">分期订单渗透率</div></div>
+<div class="card"><div class="num">¥32万</div><div class="label">日均大盘净GMV</div></div>
+<div class="card"><div class="num">¥9.4万</div><div class="label">日均分期净GMV</div></div>
+<div class="card"><div class="num">29.4%</div><div class="label">分期GMV渗透率</div></div>
+<div class="card"><div class="num">72%</div><div class="label">免息订单占比</div></div>
+<div class="card"><div class="num">263天</div><div class="label">数据周期</div></div>
+</div>
+<h3>1.2 趋势判断</h3>
+<ul>
+<li><strong>订单渗透率</strong>：从起步10%（2025.09）→ 稳定在20-23%（2026上半年），近30天均值22%左右，趋势稳中有升</li>
+<li><strong>GMV渗透率</strong>：高于订单渗透率约10个百分点（29.4% vs 19.3%），分期客户客单价显著高于非分期客户</li>
+<li><strong>免息驱动模式</strong>：72%分期订单为免息。高价格段（3899以上）免息占比接近90%</li>
+<li><strong>月度波动</strong>：2月（春节/年货季）为峰值月，分期净订单达1,194单</li>
+</ul>
+<h3>1.3 价格段分析</h3>
+<blockquote class="info">分期渗透率与价格呈<strong>正相关</strong>——价格越高，用户越倾向分期</blockquote>
+<table>
+<tr><th>价格段</th><th>GMV渗透率</th><th>特点</th></tr>
+<tr><td>198-398元</td><td>1.6%</td><td>极少分期</td></tr>
+<tr><td>398-798元</td><td>6.8%</td><td>低渗透</td></tr>
+<tr><td>798-1,798元</td><td>15.2%</td><td>中等渗透</td></tr>
+<tr><td><strong>1,798-2,798元</strong></td><td><strong>23.3%</strong></td><td>🎯 9机核心价区</td></tr>
+<tr><td><strong>2,798-3,898元</strong></td><td><strong>32.9%</strong></td><td>🎯 9机高端价区</td></tr>
+<tr><td>3,898-5,999元</td><td>43.8%</td><td>高渗透</td></tr>
+<tr><td>5,999元以上</td><td><strong>58.8%</strong></td><td>最高渗透（高端机）</td></tr>
+</table>
+<blockquote class="info">🔑 <strong>关键发现</strong>：9机客单价集中在2,000-4,000元区间，恰好落在分期渗透率23-33%的价格段，<strong>天然适配分期场景</strong>。</blockquote>
+<h3>1.4 9机商户画像</h3>
+<table>
+<tr><th>维度</th><th>详情</th></tr>
+<tr><td><strong>企业</strong></td><td>九机网 / 9ji</td></tr>
+<tr><td><strong>定位</strong></td><td>云贵区域头部二手手机连锁</td></tr>
+<tr><td><strong>门店</strong></td><td>400-600家</td></tr>
+<tr><td><strong>KA商户号</strong></td><td>九机-入仓</td></tr>
+<tr><td><strong>转转日销</strong></td><td>~100单/天</td></tr>
+<tr><td><strong>客单价</strong></td><td>2,000-4,000元（苹果发新期），近期约2,000元</td></tr>
+<tr><td><strong>核心模式</strong></td><td>以旧换新 → 回收 → 翻新/质检 → 二手销售</td></tr>
+<tr><td><strong>库存体量</strong></td><td>1-2万台（转转仅上架3,000台 / 20%）</td></tr>
+</table>
+<h3>1.5 分期潜力测算</h3>
+<p>基于大盘数据和9机画像的估算：</p>
+<table>
+<tr><th>场景</th><th>日销</th><th>分期渗透率</th><th>日分期单量</th><th>月分期GMV</th></tr>
+<tr><td><strong>当前</strong>（3,000台上架）</td><td>100单</td><td>20-30%</td><td>20-30单</td><td>¥12-24万</td></tr>
+<tr><td><strong>同售上线后</strong>（全量1.5万台）</td><td>300-400单</td><td>25-35%</td><td>75-140单</td><td>¥45-110万</td></tr>
+<tr style="background:#eff6ff;"><td><strong>+银行补贴活动</strong></td><td>400-500单</td><td>30-40%</td><td>120-200单</td><td>¥72-160万</td></tr>
+</table>
+<blockquote class="info">💡 <strong>核心判断</strong>：同售功能是9机分期放量的<strong>第一杠杆</strong>。当前转转仅上架3,000台（20%库存），同售上线后全量1.5万台上架，分期单量有望从20-30单/天跃升至75-140单/天（<strong>3-5倍增长</strong>）。</blockquote>
+<h3>1.6 分期免息价差分析</h3>
+<p><strong>核心逻辑</strong>：9机APP内分期免息商品定价高于非分期商品，本质是<strong>"提价做免息"</strong>——将分期手续费转嫁到售价中。</p>
+<div class="screenshots">
+<div class="screenshot-wrap">
+<div class="screenshot-label">📱 免息补贴价 ¥11,249</div>
+<div class="phone-frame">
+<div class="phone-top"><span>‹</span><span>商品详情</span><span>⋯</span></div>
+<div class="phone-body">
+<div class="badge-row"><span class="badge">免息补贴</span></div>
+<div class="product-name">Apple iPhone 17 Pro Max<br>1TB · 钛金属</div>
+<div class="price-main"><span class="yen">¥</span>11,249</div>
+<div class="price-sub">券前补贴后价 ¥10,949</div>
+<div class="sold-info">已售：商品 ¥10,368 券后价</div>
+<div class="meta-row"><span>编号：47P01S</span><span>查看4条 ›</span></div>
+<div class="subsidy-badge">🛒 套购补贴 1件198元 · 最高直降300元</div>
+<div class="spec-row"><div>版本</div><span class="spec-tag active">1TB</span></div>
+<div class="spec-row"><div>颜色</div><span class="spec-tag active">钛金属</span></div>
+<div class="buy-btn">立即购买</div>
+</div></div></div>
+<div class="screenshot-wrap">
+<div class="screenshot-label">📱 全款参考价 ¥10,368</div>
+<div class="phone-frame">
+<div class="phone-top"><span>‹</span><span>商品详情</span><span>⋯</span></div>
+<div class="phone-body">
+<div class="badge-row"><span class="badge" style="background:#999;">全款</span></div>
+<div class="product-name">Apple iPhone 17 Pro Max<br>1TB · 钛金属</div>
+<div class="price-main"><span class="yen">¥</span>10,368</div>
+<div class="sold-info">已售：商品 ¥10,368 券后价</div>
+<div class="meta-row"><span>编号：47P01S</span><span>查看4条 ›</span></div>
+<div class="spec-row"><div>版本</div><span class="spec-tag active">1TB</span></div>
+<div class="spec-row"><div>颜色</div><span class="spec-tag active">钛金属</span></div>
+<div class="buy-btn">立即购买</div>
+</div></div></div>
+</div>
+<div class="compare-note">⬆️ 同一商品对比：<strong class="red">免息价 ¥11,249</strong> vs <strong class="dark">全款价 ¥10,368</strong> — 客单价差异 <strong class="red">¥881（溢价8.5%）</strong></div>
+<table>
+<tr><td>商品</td><td>iPhone 17 Pro Max · 1TB</td></tr>
+<tr><td><strong>免息补贴价</strong></td><td class="hl"><strong style="color:#ff4757;">¥11,249</strong></td></tr>
+<tr><td>全款参考价（已售）</td><td>¥10,368</td></tr>
+<tr><td><strong>免息 vs 全款价差</strong></td><td class="hl"><strong style="color:#ff4757;">¥881（溢价 ~8.5%）</strong></td></tr>
+<tr><td>券后 vs 全款价差</td><td>¥581（~5.6%）</td></tr>
+</table>
+<blockquote>8.5%的溢价不仅覆盖了支付机构手续费（行业通识4-5.5%），还额外预留了利润空间。</blockquote>
+<h3>1.7 收银台合规参考</h3>
+<div class="screenshots">
+<div class="screenshot-wrap">
+<div class="screenshot-label">📱 低客单价（¥3,700）— 已做分区 ✅</div>
+<div class="cashier-frame">
+<div class="cashier-header">确认支付</div>
+<div class="cashier-amount"><div class="amt">¥3,700.24</div><div class="orig">¥3,709.34</div></div>
+<div class="cashier-section">
+<div class="sec-title">普通支付</div>
+<div class="pay-option"><div class="icon" style="background:#1677ff;">支</div><div class="name">支付宝</div><div class="tag-box">最近支付·无需跳转</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#e74c3c;">京</div><div class="name">京东支付</div><div class="tag-box green">已减¥4.2</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#07c160;">微</div><div class="name">微信支付</div><div class="tag-box">无需跳转</div><div class="radio"></div></div>
+</div>
+<div class="cashier-section">
+<div class="sec-title">分期付款</div>
+<div class="pay-option"><div class="icon" style="background:#1a1a2e;">信</div><div class="name">信用卡分期</div><div class="tag-box orange">1期免息·最高减200</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#e74c3c;">白</div><div class="name">京东白条</div><div class="tag-box orange">1期免息</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#1677ff;">花</div><div class="name">花呗分期</div><div class="tag-box orange">3期免息</div><div class="radio checked"></div></div>
+</div>
+<div class="cashier-bottom"><div class="btn">支付宝 ¥3,700.24</div><div class="cashier-hint">花呗分期 · 3期免息 | 消费者分期 · 6期免息+立减¥90</div></div>
+</div></div>
+<div class="screenshot-wrap">
+<div class="screenshot-label">📱 高客单价（¥12,799）— 混排未分区 ⚠️</div>
+<div class="cashier-frame">
+<div class="cashier-header">支付方式</div>
+<div class="cashier-amount"><div class="amt">¥12,799.00</div></div>
+<div class="cashier-section">
+<div class="pay-option"><div class="icon" style="background:#e74c3c;">云</div><div class="name">云闪付</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#07c160;">微</div><div class="name">微信支付</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#1677ff;">支</div><div class="name">支付宝</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#e74c3c;">白</div><div class="name">京东白条分期</div><div class="tag-box orange">免息</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#e74c3c;">工</div><div class="name">工行信用卡分期</div><div class="tag-box orange">免息</div><div class="radio"></div></div>
+<div class="pay-option"><div class="icon" style="background:#1677ff;">花</div><div class="name">花呗分期</div><div class="tag-box orange">3期免息</div><div class="radio checked"></div></div>
+<div class="pay-option"><div class="icon" style="background:#1677ff;">建</div><div class="name">建行信用卡分期</div><div class="tag-box orange">免息</div><div class="radio"></div></div>
+</div>
+<div class="cashier-bottom"><div class="btn">花呗分期 ¥12,799.00</div></div>
+</div></div>
+</div>
+<div class="compare-note">⬆️ 左：合规分区设计 ✅ &nbsp;|&nbsp; 右：全混排未分区 ⚠️ &nbsp;|&nbsp; 底部默认选中花呗分期</div>
+<hr>
+<h2>二、经验交流：向9机学什么？</h2>
+<h3>2.1 他们把"分期"嵌入了门店服务流</h3>
+<p>9机的分期不是"支付选项"，而是<strong>服务流程的一部分</strong>：</p>
+<pre>进店 → ☕热饮招待 → 🏃用户自由体验真机 → 🤝店员手持Pad走到你身边
+                                              ↓
+                                   📱把Pad递到用户手上
+                                   💬"支持免息分期，每个月只要XXX"
+                                   ✅用户手持Pad自己输密+确认</pre>
+<h4>流程精妙之处</h4>
+<table>
+<tr><th>环节</th><th style="color:#b45309;">9机</th><th style="color:#4a6cf7;">转转</th></tr>
+<tr><td>支付触发</td><td style="color:#b45309;font-weight:500;">店员走近，把Pad递到你手上</td><td>用户自己扫码，跳小程序</td></tr>
+<tr><td>用户角色</td><td style="color:#b45309;font-weight:500;">被服务者 <strong>+ 主动掌控</strong></td><td>全自助</td></tr>
+<tr><td>温度感</td><td style="color:#b45309;font-weight:500;">有服务（走近）+ 有隐私（屏幕在你手里）</td><td>冷冰冰</td></tr>
+<tr><td>分期入口</td><td style="color:#b45309;font-weight:500;">Pad支付页默认花呗分期</td><td>小程序内小字提示</td></tr>
+</table>
+<ul>
+<li>店员走到身边但不是代替你操作——<strong>递给你Pad意味着"我来服务你，但你自己掌控"</strong></li>
+<li>在你输密码的瞬间，店员口播"我们支持免息分期"——这是<strong>信任度最高的推荐时机</strong></li>
+<li>你手持Pad主动完成支付，分期选择"像是你自己做出的决定"而不是被推销</li>
+</ul>
+<h3>2.2 他们用"售后承诺"消解分期顾虑</h3>
+<p>9机店员在服务过程中<strong>持续强调</strong>售后保障：</p>
+<blockquote>💬 "我们这里是<strong>3-4天内如果有任何质量问题可以免费换新</strong>，<strong>一年之内是有质保服务的</strong>"</blockquote>
+<ul>
+<li>🔍 分期拉长了支付时间，放大"万一不满意怎么办"的焦虑</li>
+<li>🛡️ 售后承诺恰好<strong>对冲了这种焦虑</strong>：你先分期，不满意随时换</li>
+<li>🤝 「分期 + 售后」形成组合拳——<strong>先降决策门槛，再消后顾之忧</strong></li>
+</ul>
+<h3>2.3 他们把"权益"可视化，建立信任</h3>
+<p>9机在门店显眼位置放置<strong>会员权益海报</strong>：</p>
+<blockquote class="success">📋 「九机会员 购机享积分 权益有保障」<br>质量保障 + 物流配送 + 积分体系 → 一张海报全讲清楚</blockquote>
+<blockquote class="info">💡 <strong>对转转的启示</strong>：分期服务的权益（免息、补贴、分期灵活度）同样值得在门店/收银台做<strong>可视化展示</strong>，而不只是藏在支付页的小字里。</blockquote>
+<hr>
+<h2>三、9机 vs 转转：门店差异分析</h2>
+<h3>3.1 销售场景差异</h3>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>门店定位</td><td class="zz-cell">二手3C交易场</td><td class="ji-cell">数码生活方式集合店</td></tr>
+<tr><td>空间设计</td><td class="zz-cell">偏实用、交易导向</td><td class="ji-cell">暖木色调 + 白色灯带，品牌岛台</td></tr>
+<tr><td>体验区</td><td class="zz-cell">商品陈列为主</td><td class="ji-cell">多品牌独立体验岛台（华为/小米等）</td></tr>
+<tr><td>进店感受</td><td class="zz-cell">自助、效率优先</td><td class="ji-cell">温暖、有探索感</td></tr>
+<tr><td>用户停留</td><td class="zz-cell">目的明确、快速离店</td><td class="ji-cell">可逛、可体验、可停留</td></tr>
+</table>
+<blockquote class="info"><strong>核心差异</strong>：9机把人"留住"——转转把人"送走"。停留时间越长，分期转化机会越多。</blockquote>
+<h3>3.2 销售服务 + 收银差异</h3>
+<h4>收银逻辑对比</h4>
+<div style="display:flex;gap:20px;flex-wrap:wrap;margin:16px 0;">
+<div style="flex:1;min-width:300px;background:#eff6ff;border-radius:12px;padding:20px;text-align:center;border:2px dashed #93c5fd;">
+<div style="font-size:2rem;">🧍</div>
+<div style="font-weight:700;color:#1e40af;margin:8px 0;">转转收银逻辑</div>
+<div style="font-size:13px;color:#666;line-height:1.8;"><strong>用户</strong>走到商品面前<br>↓<br>扫码 → 跳小程序<br>↓<br>自助完成支付</div>
+<div style="margin-top:12px;display:inline-block;background:#dbeafe;color:#1e40af;padding:6px 12px;border-radius:16px;font-size:12px;font-weight:600;">❄️ "走到商品前扫码"</div>
+</div>
+<div style="flex:1;min-width:300px;background:linear-gradient(135deg,#fff8f0,#fff3e0);border-radius:12px;padding:20px;text-align:center;border:2px solid #f59e0b;">
+<div style="font-size:2rem;">🤝</div>
+<div style="font-weight:700;color:#92400e;margin:8px 0;">9机收银逻辑</div>
+<div style="font-size:13px;color:#666;line-height:1.8;"><strong>店员</strong>走到用户身边<br>↓<br>把Pad递到用户手上<br>↓<br>用户在手中完成支付</div>
+<div style="margin-top:12px;display:inline-block;background:#fef3c7;color:#92400e;padding:6px 12px;border-radius:16px;font-size:12px;font-weight:600;">🔥 "走到用户身边递设备"</div>
+</div></div>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>店员角色</td><td class="zz-cell">无主动引导 / 少介入</td><td class="ji-cell">主动接待、全程陪伴</td></tr>
+<tr><td>进店体验</td><td class="zz-cell">用户独立自选</td><td class="ji-cell">☕ 热饮招待，拉近距离</td></tr>
+<tr><td>物理收银台</td><td class="zz-cell">有固定收银区，用户走过去</td><td class="ji-cell"><strong>无固定收银台</strong>，Pad随人走</td></tr>
+<tr><td>收银方式</td><td class="zz-cell">扫码 → 跳小程序 → 自主操作</td><td class="ji-cell">Pad递到用户手上 → 用户自己操作</td></tr>
+<tr><td>收银本质</td><td class="zz-cell">🧍 用户走到商品面前扫码</td><td class="ji-cell">🤝 店员走到用户身边递设备</td></tr>
+<tr><td>支付感受</td><td class="zz-cell">冷冰冰的自助操作</td><td class="ji-cell">有温度 + 有隐私</td></tr>
+<tr><td>分期推荐</td><td class="zz-cell">小程序内文字提示</td><td class="ji-cell">Pad支付页默认花呗分期 + 店员口播</td></tr>
+<tr><td>售后传递</td><td class="zz-cell">用户自行了解</td><td class="ji-cell">店员强调：3-4天换新+1年质保</td></tr>
+<tr><td><strong>温度</strong></td><td class="zz-cell">❄️ 偏冷</td><td class="ji-cell">🔥 有温度 + 有掌控</td></tr>
+</table>
+<div class="insight-box"><div class="insight-tag">🔑 核心洞察</div><p>转转收银逻辑是<strong>"用户走到商品面前扫码"</strong>，9机收银逻辑是<strong>"店员走到用户身边递设备"</strong>。</p><p>一个主动、一个被动——<strong>收银方向的差异决定了温度的高低</strong>。</p></div>
+<blockquote class="info"><strong>对转转分期业务的启示</strong>：<br>🔑 线下的<strong>"人"</strong>是分期渗透率的第一杠杆<br>🎯 怎么让店员推分期？<strong>佣金/激励 + 话术标准化 + 权益可视化</strong><br>📱 Pad递到手上的那一刻 = 分期推荐的最佳timing</blockquote>
+<h3>3.3 销售品类差异</h3>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>核心品类</td><td class="zz-cell">二手3C数码</td><td class="ji-cell">3C + 个护美妆 + 运动健身 + 配件</td></tr>
+<tr><td>品类宽度</td><td class="zz-cell">窄</td><td class="ji-cell">宽（四大品类线）</td></tr>
+<tr><td>品牌合作</td><td class="zz-cell">—</td><td class="ji-cell">华为/小米等品牌专区</td></tr>
+<tr><td>二手机</td><td class="zz-cell">核心品类</td><td class="ji-cell">有专门二手机专区</td></tr>
+<tr><td>配件</td><td class="zz-cell">—</td><td class="ji-cell">独立配件区（壳/线/耳机/充电宝）</td></tr>
+<tr><td>个护/美妆</td><td class="zz-cell">—</td><td class="ji-cell">L'Oréal等品牌货架</td></tr>
+<tr><td>引流策略</td><td class="zz-cell">—</td><td class="ji-cell">配件2元起满减 + 30元保修 upsell</td></tr>
+<tr><td>客单跨度</td><td class="zz-cell">集中在2,000-4,000</td><td class="ji-cell">从2元配件到万元旗舰机</td></tr>
+</table>
+<blockquote>转转做"深"（二手3C专精），9机做"宽"（全品类覆盖、流量复用）。</blockquote>
+<div class="insight-box"><div class="insight-tag">💡 关键洞察</div><p style="font-size:15px;text-align:center;padding:8px 0;font-weight:600;">🔓 低价引流建立信任 → 💰 高价分期完成转化</p><p>配件区的"2元满减"让用户先掏一次钱包，建立支付习惯；到了买手机时分期推荐，用户接受度更高。这是<strong>"先交易、后分期"</strong>的漏斗模型，比直接推分期更丝滑。</p></div>
+<hr>
+<h3>3.4 线上场景对比</h3>
+<blockquote class="info">线下差异是"场"和"人"的差异，线上差异是<strong>"链路"和"策略"</strong>的差异。</blockquote>
+<h4>3.4.1 销售场景</h4>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>平台定位</td><td class="zz-cell">C2B2C 二手交易市场</td><td class="ji-cell">O2O 新零售平台</td></tr>
+<tr><td>商品页</td><td class="zz-cell">标准化二手展示</td><td class="ji-cell"><strong>双价展示</strong>（免息价 vs 全款价）</td></tr>
+<tr><td>分期展示</td><td class="zz-cell">支付环节才出现</td><td class="ji-cell"><strong>商品页即展示月供</strong></td></tr>
+<tr><td>定价可见性</td><td class="zz-cell">单一价格，分期成本不透明</td><td class="ji-cell">免息价/全款价并排，价差可见</td></tr>
+</table>
+<blockquote class="info">9机"分期预教育"——用户比价阶段就看到分期方案，决策前置。转转分期信息滞后到支付环节，用户可能已形成"全款"心理锚定。</blockquote>
+<h4>3.4.2 销售品类</h4>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>线上品类</td><td class="zz-cell">二手3C为主</td><td class="ji-cell">3C + 个护 + 运动 + 配件</td></tr>
+<tr><td>品类策略</td><td class="zz-cell">垂直深耕</td><td class="ji-cell">横向扩展，多品类流量复用</td></tr>
+<tr><td>线上线下</td><td class="zz-cell">线上为主，线下为辅</td><td class="ji-cell"><strong>O2O一体化</strong>：线上下单→门店提货</td></tr>
+</table>
+<h4>3.4.3 收银台服务</h4>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>收银环境</td><td class="zz-cell">跳转微信小程序</td><td class="ji-cell"><strong>APP内闭环</strong></td></tr>
+<tr><td>支付分区</td><td class="zz-cell">未做明确分区</td><td class="ji-cell">普通支付 / 分期<strong>上下分栏</strong></td></tr>
+<tr><td>分期默认</td><td class="zz-cell">无默认倾向</td><td class="ji-cell">底部按钮<strong>默认花呗分期</strong></td></tr>
+<tr><td>分期标签</td><td class="zz-cell">简单文字提示</td><td class="ji-cell">"3期免息"+"立减¥90"<strong>双钩子</strong></td></tr>
+<tr><td>用户体验</td><td class="zz-cell">需跳转，有断点</td><td class="ji-cell">全闭环，零跳转</td></tr>
+</table>
+<h4>3.4.4 支付流程链路</h4>
+<div style="display:flex;gap:16px;margin:16px 0;flex-wrap:wrap;">
+<div class="flow-box warn" style="flex:1;min-width:300px;">
+<div class="flow-title red">🧍 转转支付链路</div>
+<div class="flow-steps">选品 → 商品页 → 下单 <span class="hl-red">🚫跳出APP</span> → 微信小程序收银台 → 支付 → <span class="hl-red">🔙返回APP</span><br><span style="color:#ff4757;font-size:11px;">↑ 断点：跳出 + 重新加载 → 支付中断风险高</span></div>
+</div>
+<div class="flow-box" style="flex:1;min-width:300px;border-left-color:#22c55e;">
+<div class="flow-title" style="color:#22c55e;">🤝 9机支付链路</div>
+<div class="flow-steps">选品<span style="color:#999;">（双价+月供）</span> → 加购 → APP内收银台 → 选分期/全款 → 支付 → <span class="hl-green">✅ 完成</span><br><span style="color:#22c55e;font-size:11px;">↑ 零断点：全在APP内 → 支付中断风险低</span></div>
+</div></div>
+<table>
+<tr><th>链路维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>跳转次数</td><td class="zz-cell">1次（小程序）</td><td class="ji-cell" style="color:#22c55e;font-weight:500;">0次</td></tr>
+<tr><td>加载等待</td><td class="zz-cell">有（小程序初始化）</td><td class="ji-cell" style="color:#22c55e;font-weight:500;">无</td></tr>
+<tr><td>支付中断风险</td><td class="zz-cell" style="color:#ff4757;font-weight:600;">高（跳转过程可退出）</td><td class="ji-cell" style="color:#22c55e;font-weight:500;">低</td></tr>
+<tr><td>分期可见时机</td><td class="zz-cell">支付页小字</td><td class="ji-cell">商品页前置 + 收银台默认</td></tr>
+<tr><td>决策路径</td><td class="zz-cell">选品→决定买→下单→看到分期</td><td class="ji-cell">选品→看到月供→决定买→分期</td></tr>
+</table>
+<div class="insight-box"><div class="insight-tag">🔑 核心差异</div><p>转转分期是"支付时的一个选项"，9机分期是"选品时就植入的决策要素"。<strong>一个被动触发，一个主动前置。</strong></p></div>
+<h4>3.4.5 定价策略差异</h4>
+<table class="compare-tbl">
+<tr><th width="140">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>定价权</td><td class="zz-cell">平台撮合，商家定价</td><td class="ji-cell">商家自主提价</td></tr>
+<tr><td>免息成本</td><td class="zz-cell">平台补贴贴息</td><td class="ji-cell"><strong>"提价免息"</strong>：涨价覆盖成本</td></tr>
+<tr><td>价差透明度</td><td class="zz-cell">用户看不到分期成本</td><td class="ji-cell">双价并排，用户可比较</td></tr>
+<tr><td>实际溢价</td><td class="zz-cell">无（平台兜底）</td><td class="ji-cell"><strong>~8.5%</strong>（iPhone 17 Pro Max）</td></tr>
+<tr><td>利润空间</td><td class="zz-cell">平台承担成本</td><td class="ji-cell">商家覆盖成本+额外利润</td></tr>
+</table>
+<blockquote>9机"提价免息"更可持续——商家有动力推分期（因为有利润），转转"平台补贴"需要持续投入。</blockquote>
+<h4>3.4.6 综合：收银台 = "支付场景"而非"支付工具"</h4>
+<table class="compare-tbl">
+<tr><th width="200">维度</th><th style="color:#4a6cf7;">转转</th><th style="color:#b45309;">9机</th></tr>
+<tr><td>线下物理收银台</td><td class="zz-cell">有固定收银区，用户走过去</td><td class="ji-cell"><strong>无固定收银台</strong>，Pad随人走</td></tr>
+<tr><td>线上数字收银台</td><td class="zz-cell">跳转小程序，离开APP</td><td class="ji-cell"><strong>APP内闭环</strong>，无需跳出</td></tr>
+<tr><td>收银本质</td><td class="zz-cell">用户走到支付点</td><td class="ji-cell"><strong>支付点走到用户面前</strong></td></tr>
+<tr><td>一致性</td><td class="zz-cell">线上线下割裂</td><td class="ji-cell">线上线下统一："支付找用户"</td></tr>
+</table>
+<div class="insight-box"><div class="insight-tag">🔑 终极洞察</div><p>9机把收银从"固定空间"变为"移动服务"——线下无收银台、线上不跳转。转转收银是"用户去找支付"，9机收银是"支付来找用户"。<strong>这个理念一旦迁移到转转，分期渗透率的提升空间不是百分比级别，是倍数级别。</strong></p></div>
+<div class="footer"><p>📊 附件：分期业务全景分析.png / 价格段分期渗透率.png / 9机门店实拍×4</p><p>⚠️ 9机商户分期明细数据待BI权限开通后补充</p><p style="margin-top:8px;">Ludovicus · 2026年6月12日</p></div>
+</div></div>
+</body>
+</html>
