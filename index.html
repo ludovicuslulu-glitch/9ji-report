@@ -138,8 +138,8 @@ tr:nth-child(even){background:#f9fafb}
 .compare-header{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:14px;font-weight:600;padding:10px 0}
 .compare-header .left{background:#4caf50;color:#fff;border-right:1px solid rgba(255,255,255,.3)}
 .compare-header .right{background:#ff9800;color:#fff}
-.compare-body{display:grid;grid-template-columns:1fr 1fr}
-.compare-body img{width:50%;height:auto;display:block;border:none;box-shadow:none;border-radius:0;margin:0 auto}
+.compare-body{display:flex;align-items:stretch;justify-content:center;gap:0}
+.compare-body img{width:auto;max-width:50%;height:auto;display:block;border:none;box-shadow:none;border-radius:0;object-fit:contain}
 </style>
 <div class="compare-card">
 <div class="compare-header"><div class="left">⬅ 标准款（¥10,949）</div><div class="right">➡ 提价免息款（¥12,799）</div></div>
