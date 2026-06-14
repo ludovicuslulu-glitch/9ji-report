@@ -49,17 +49,40 @@ tr:nth-child(even){background:#f9fafb}
 <h2>一、九机业务分期数据一览</h2>
 
 <h3>1.1 核心数据</h3>
-<table>
-<tr><th colspan="6" style="text-align:center">大盘维度</th></tr>
-<tr><th>日均销售订单</th><th>日均销售GMV</th><th>分期订单渗透率</th><th>大盘客单价</th><th>免息订单占比</th><th>参与分期前动销天数</th></tr>
-<tr><td><b>131 单</b></td><td><b>¥32 万</b></td><td><b>19.3%</b></td><td>¥2,443</td><td><b>72%</b></td><td><b>~45 天</b>（25年10月）← 25年9月~35天</td></tr>
-<tr><th colspan="6" style="text-align:center">分期维度</th></tr>
-<tr><th>日均分期订单</th><th>日均分期GMV</th><th>分期GMV渗透率</th><th>分期客单价</th><th>免息客单价</th><th>参与分期后动销天数</th></tr>
-<tr><td><b>25 单</b></td><td><b>¥9.4 万</b></td><td><b>29.4%</b></td><td><b>¥3,760</b></td><td><b>¥3,850</b></td><td><b>~65 天</b>（26年1-3月均值）</td></tr>
-</table>
+
+<!-- KPI 卡片网格 -->
+<style>
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+.kpi-card{background:#fff;border-radius:12px;padding:24px 16px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid #eef0f5}
+.kpi-card .num{font-size:28px;font-weight:700;color:#2563eb;margin-bottom:4px}
+.kpi-card .lbl{font-size:12px;color:#888}
+.kpi-row-label{text-align:left;font-size:13px;color:#666;margin:8px 0 4px 16px;font-weight:600}
+.meta-note{font-size:11.5px;color:#999;text-align:left;margin:8px 0 16px;padding-left:4px;line-height:1.8}
+</style>
+
+<div class="kpi-row-label">📊 大盘维度</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="num">131</div><div class="lbl">日均销售订单</div></div>
+<div class="kpi-card"><div class="num">¥32万</div><div class="lbl">日均销售GMV</div></div>
+<div class="kpi-card"><div class="num">19.3%</div><div class="lbl">分期订单渗透率</div></div>
+<div class="kpi-card"><div class="num">¥2,443</div><div class="lbl">大盘客单价</div></div>
+<div class="kpi-card"><div class="num">72%</div><div class="lbl">免息订单占比</div></div>
+<div class="kpi-card"><div class="num">~45天</div><div class="lbl">分期前动销天数</div></div>
+</div>
+
+<div class="kpi-row-label">📈 分期维度</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="num">25</div><div class="lbl">日均分期订单</div></div>
+<div class="kpi-card"><div class="num">¥9.4万</div><div class="lbl">日均分期GMV</div></div>
+<div class="kpi-card"><div class="num">29.4%</div><div class="lbl">分期GMV渗透率</div></div>
+<div class="kpi-card"><div class="num">¥3,760</div><div class="lbl">分期客单价</div></div>
+<div class="kpi-card"><div class="num">¥3,850</div><div class="lbl">免息客单价</div></div>
+<div class="kpi-card"><div class="num">~65天</div><div class="lbl">分期后动销天数</div></div>
+</div>
+
 <div class="meta-note">📅 数据周期：2025年9月 — 2026年3月<br>
 📐 指标说明：分期订单渗透率 = 分期订单 ÷ 大盘订单 ｜ 免息订单占比 = 免息订单 ÷ 分期订单<br>
-📌 动销天数：分期前取25年10月均值，25年9月（分期刚上线）约35天；分期后取26年1-3月均值</div>
+📌 动销天数：分期前取25年10月均值（~45天），25年9月（分期刚上线）约35天；分期后取26年1-3月均值（~65天）</div>
 
 <h3>1.2 趋势判断</h3>
 <div class="card"><h4>渗透率走势</h4>
