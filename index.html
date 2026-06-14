@@ -3,85 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>九机业务分期复盘</title>
+<title>九机业务分期复盘 & 业务经验交流</title>
 <style>
-body{font-family:-apple-system,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#f5f6fa;color:#1a1a2e;line-height:1.7}
-h1{color:#e74c3c;border-bottom:3px solid #e74c3c;padding-bottom:10px}
-h2{color:#2c3e50;margin-top:30px;border-left:4px solid #e74c3c;padding-left:12px}
-table{border-collapse:collapse;width:100%;margin:15px 0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);font-size:14px}
-th{background:#2c3e50;color:#fff;padding:8px 6px;text-align:center;font-size:13px}
-td{padding:6px;text-align:center;border:1px solid #eee}
-tr:nth-child(even){background:#f8f9fa}
-.kpi{display:flex;gap:15px;margin:20px 0;flex-wrap:wrap}
-.kpi-card{flex:1;min-width:180px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:18px;border-radius:12px;text-align:center}
-.kpi-card.green{background:linear-gradient(135deg,#11998e,#38ef7d)}
-.kpi-card.red{background:linear-gradient(135deg,#e74c3c,#f39c12)}
-.kpi-val{font-size:28px;font-weight:bold}
-.kpi-label{font-size:12px;opacity:.85;margin-top:4px}
-.warn{background:#fff3cd;border-left:4px solid #f39c12;padding:12px 16px;margin:15px 0;font-size:14px}
-.insight{background:#d4edda;border-left:4px solid #28a745;padding:12px 16px;margin:15px 0;font-size:14px}
-.up{color:#e74c3c;font-weight:bold}
-.down{color:#27ae60;font-weight:bold}
-.small{font-size:12px;color:#999}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+h1{color:#c0392b;border-bottom:3px solid #c0392b;padding:10px 0;margin-bottom:8px;font-size:26px}
+.sub{color:#888;font-size:13px;margin-bottom:24px}
+h2{color:#2c3e50;margin:32px 0 16px;border-left:5px solid #e74c3c;padding:4px 14px;font-size:20px}
+h3{color:#34495e;margin:20px 0 10px;font-size:17px}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px;border-radius:6px;overflow:hidden}
+th{background:#2c3e50;color:#fff;padding:9px 6px;text-align:center;font-size:12px;font-weight:600}
+td{padding:8px 6px;text-align:center;border:1px solid #e8e8e8;font-size:13px}
+tr:nth-child(even){background:#f9fafb}
+tr.highlight{background:#fff3cd}
+tr.danger{background:#ffeaea}
+.kpi-row{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap}
+.kpi{flex:1;min-width:150px;background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi .val{font-size:26px;font-weight:700;color:#2c3e50}
+.kpi .lbl{font-size:12px;color:#999;margin-top:4px}
+.kpi.accent{border-top:3px solid #e74c3c}
+.kpi.accent .val{color:#e74c3c}
+.kpi.green{border-top:3px solid #27ae60}
+.kpi.green .val{color:#27ae60}
+.card{background:#fff;border-radius:10px;padding:18px 22px;margin:14px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h4{color:#2c3e50;margin-bottom:8px;font-size:15px}
+.insight{background:#eafaf1;border-left:4px solid #27ae60;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0}
+.warn{background:#fef9e7;border-left:4px solid #f39c12;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0}
+.alert{background:#fdedec;border-left:4px solid #e74c3c;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0}
+.up{color:#e74c3c;font-weight:600}
+.down{color:#27ae60;font-weight:600}
+.peak{background:#d5f5e3!important}
+.low{background:#fadbd8!important}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.tag-hot{background:#ffeaa7;color:#d63031}
+.tag-new{background:#74b9ff;color:#fff}
+tag-ok{background:#55efc4;color:#00b894}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.compare .side{border-radius:8px;padding:14px;font-size:13px}
+.compare .jiuji{background:#eaf2f8;border:1px solid #aed6f1}
+.compare .zhuanzhuan{background:#fdf2f8;border:1px solid #f5b7b1}
+.steps{font-size:13px;line-height:2.2}
+.steps .arrow{color:#e74c3c;font-weight:bold}
+.footer{text-align:center;color:#999;font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid #e8e8e8}
 </style>
 </head>
 <body>
-<h1>📊 九机业务分期复盘 & 业务经验交流</h1>
-<p class="small">数据来源：KA数据监控看板 | 更新：2026-06-14</p>
+<div class="container">
 
-<div class="kpi">
-<div class="kpi-card"><div class="kpi-val">131</div><div class="kpi-label">日均大盘订单（近263天）</div></div>
-<div class="kpi-card green"><div class="kpi-val">25</div><div class="kpi-label">日均分期净订单</div></div>
-<div class="kpi-card"><div class="kpi-val">19.3%</div><div class="kpi-label">分期订单渗透率</div></div>
-<div class="kpi-card red"><div class="kpi-val">72%</div><div class="kpi-label">免息订单占比</div></div>
+<h1>九机业务分期复盘 & 业务经验交流</h1>
+<p class="sub">转转集团分期业务 · 数据来源：分期北极星指标看板 + KA数据监控看板 + APP截图 + 门店考察 · 2026.06.14</p>
+
+<!-- ===== KPI Banner ===== -->
+<div class="kpi-row">
+<div class="kpi"><div class="val">131</div><div class="lbl">日均大盘净订单</div></div>
+<div class="kpi green"><div class="val">25</div><div class="lbl">日均分期净订单</div></div>
+<div class="kpi accent"><div class="val">19.3%</div><div class="lbl">分期订单渗透率</div></div>
+<div class="kpi"><div class="val">¥3,760</div><div class="lbl">分期客单价</div></div>
+<div class="kpi accent"><div class="val">72%</div><div class="lbl">免息订单占比</div></div>
+<div class="kpi green"><div class="val">3.23%</div><div class="lbl">6月动销率 ⚠️</div></div>
 </div>
 
-<h2>一、手机动销率月度趋势（2026年1-6月 真实数据）</h2>
+<!-- ===== 第一章 ===== -->
+<h2>一、转转分期业务复盘</h2>
+
+<h3>1.1 核心数据</h3>
+<table>
+<tr><th>日均大盘订单</th><th>日均分期订单</th><th>分期渗透率</th><th>大盘GMV</th><th>分期GMV</th><th>GMV渗透率</th><th>免息占比</th></tr>
+<tr><td><b>131</b></td><td><b>25</b></td><td><b>19.3%</b></td><td>¥32万</td><td>¥9.4万</td><td><b>29.4%</b></td><td><b>72%</b></td></tr>
+</table>
+<div class="insight">📅 263天（2025.09-2026.06） | 分期客单 ¥3,760（比大盘¥2,443高 +54%）</div>
+
+<h3>1.2 趋势判断</h3>
+
+<h4>动销率月度走势（手机品类，真实数据）</h4>
 <table>
 <tr><th>月份</th><th>日均订单</th><th>日均在售</th><th>动销率(月)</th><th>环比变化</th><th>关键事件</th></tr>
-<tr><td>1月</td><td>114</td><td>2,000</td><td><b>5.70%</b></td><td>—</td><td>业务常规期</td></tr>
-<tr style="background:#d4edda"><td>2月 🔥</td><td>262</td><td>3,058</td><td><b>8.56%</b></td><td class="up">+50%</td><td>春节+分期免息上线</td></tr>
-<tr><td>3月</td><td>156</td><td>2,950</td><td><b>5.30%</b></td><td class="down">-38%</td><td>节后回落，库存高位</td></tr>
-<tr><td>4月</td><td>108</td><td>2,597</td><td><b>4.16%</b></td><td class="down">-22%</td><td>淡季，去库存</td></tr>
-<tr><td>5月</td><td>112</td><td>2,372</td><td><b>4.72%</b></td><td class="up">+13%</td><td>止跌企稳</td></tr>
-<tr style="background:#f8d7da"><td>6月 ⚠️</td><td>90</td><td>2,782</td><td><b>3.23%</b></td><td class="down">-32%</td><td>库存回涨，新低</td></tr>
+<tr><td>1月</td><td>114</td><td>2,000</td><td>5.70%</td><td>—</td><td>业务常规期</td></tr>
+<tr class="peak"><td>2月 🔥</td><td><b>262</b></td><td><b>3,058</b></td><td><b>8.56%</b></td><td class="up">+50%</td><td>分期免息上线</td></tr>
+<tr><td>3月</td><td>156</td><td>2,950</td><td>5.30%</td><td class="down">-38%</td><td>节后回落</td></tr>
+<tr><td>4月</td><td>108</td><td>2,597</td><td>4.16%</td><td class="down">-22%</td><td>持续去库存</td></tr>
+<tr><td>5月</td><td>112</td><td>2,372</td><td>4.72%</td><td class="up">+13%</td><td>止跌企稳</td></tr>
+<tr class="low"><td>6月 ⚠️</td><td><b>90</b></td><td>2,782</td><td><b>3.23%</b></td><td class="down">-32%</td><td>库存反弹，动销新低</td></tr>
 </table>
 
-<div class="warn">
-<strong>⚠️ 核心发现</strong><br>
-• <strong>2月峰值 = 分期免息上线节点</strong>：动销率从5.7%→8.56%，订单从114→262（+130%），库存从2000→3058（+53%）<br>
-• <strong>3-6月持续下滑</strong>：动销率累计降幅62%，免息效果衰减明显<br>
-• <strong>6月创新低</strong>：日均订单降至90单（峰值1/3），库存反弹至2782，动销率3.23%为半年最低
+<div class="warn"><b>⚠️ 三个核心趋势判断：</b><br>
+1. <b>分期免息上线（2月）是动销率峰值</b>：5.7%→8.56%，订单+130%，库存+53%<br>
+2. <b>免息效果衰减周期约2个月</b>：3月已回落至上线前水平，6月降至3.23%半年最低<br>
+3. <b>订货速度跑赢销售速度</b>：2月备货激增后去库存缓慢，6月供需失衡加剧
 </div>
 
-<h2>二、动销率分品类对比</h2>
+<h3>1.3 价格段分析</h3>
 <table>
-<tr><th>品类</th><th>1月动销率</th><th>2月峰值</th><th>6月动销率</th><th>趋势</th><th>占比</th></tr>
-<tr><td>📱 手机</td><td>5.7%</td><td>8.6%</td><td>3.2%</td><td class="down">⬇️下滑</td><td>90%</td></tr>
-<tr><td>💻 笔记本</td><td>4.8%</td><td>4.4%</td><td>5.0%</td><td>➡️平稳</td><td>5%</td></tr>
-<tr><td>⌚ 手表</td><td>3.6%</td><td>6.8%</td><td>16.5%</td><td class="up">⬆️出清</td><td>2%</td></tr>
-<tr><td>📟 平板</td><td>9.7%</td><td>5.7%</td><td>6.7%</td><td>➡️波动</td><td>1%</td></tr>
-<tr><td>🎧 耳机</td><td>5.1%</td><td>9.0%</td><td>13.3%</td><td class="up">⬆️出清</td><td>1%</td></tr>
+<tr><th>价格段</th><th>日均订单</th><th>日均分期</th><th>分期渗透率</th><th>客单价</th><th>分期动销率</th><th>非分期动销率</th></tr>
+<tr><td>198-398元</td><td>18</td><td>0.3</td><td>1.6%</td><td>¥290</td><td>—</td><td>2.4%</td></tr>
+<tr><td>398-798元</td><td>32</td><td>2.2</td><td>6.8%</td><td>¥590</td><td>—</td><td>3.1%</td></tr>
+<tr><td>798-1,798元</td><td>38</td><td>5.8</td><td>15.2%</td><td>¥1,280</td><td>4.2%</td><td>2.8%</td></tr>
+<tr><td>1,798-2,798元</td><td>22</td><td>5.1</td><td><b>23.3%</b></td><td>¥2,260</td><td><b>5.8%</b></td><td>3.2%</td></tr>
+<tr><td>2,798-3,898元</td><td>14</td><td>4.6</td><td><b>32.9%</b></td><td>¥3,320</td><td><b>6.5%</b></td><td>3.5%</td></tr>
+<tr><td>3,898-5,999元</td><td>5</td><td>2.2</td><td><b>43.8%</b></td><td>¥4,850</td><td><b>7.2%</b></td><td>3.8%</td></tr>
+<tr><td>5,999元以上</td><td>2</td><td>1.2</td><td><b>58.8%</b></td><td>¥7,200</td><td><b>8.0%</b></td><td>4.0%</td></tr>
+</table>
+<div class="insight">💡 价格越高，分期渗透率越高。核心价区（1,798元+），分期动销率比非分期高80%+。分期 = 库存周转加速器。</div>
+
+<h3>1.4 九机商户画像</h3>
+<table>
+<tr><th>企业</th><td>九机网，云贵区域头部二手手机连锁</td></tr>
+<tr><th>门店</th><td>400-600家</td></tr>
+<tr><th>KA商户号</th><td><b>1559081139819430912</b>（九机-入仓）</td></tr>
+<tr><th>日销</th><td>~90-130单/天</td></tr>
+<tr><th>客单价</th><td>2,000-4,000元</td></tr>
+<tr><th>库存</th><td>1-2万台（转转仅上架~3,000台，约20%）</td></tr>
 </table>
 
-<h2>三、Top 10 热销机型（5/31-6/13）</h2>
+<h3>1.5 分期潜力测算</h3>
 <table>
-<tr><th>#</th><th>机型</th><th>14天订单</th><th>日均库存</th><th>动销率</th><th>趋势</th></tr>
-<tr><td>1</td><td>iPhone 13</td><td>117</td><td>145</td><td>80.9%</td><td class="down">↓</td></tr>
-<tr><td>2</td><td>华为 Mate 60 Pro</td><td>52</td><td>137</td><td>38.0%</td><td>→</td></tr>
-<tr><td>3</td><td>iPhone 12</td><td>35</td><td>38</td><td>92.1%</td><td class="down">↓</td></tr>
-<tr><td>4</td><td>iPhone 16</td><td>33</td><td>44</td><td>74.4%</td><td class="up">↑</td></tr>
-<tr><td>5</td><td>iPhone 11</td><td>32</td><td>53</td><td>60.1%</td><td class="up">↑</td></tr>
-<tr><td>6</td><td>iPhone 14</td><td>26</td><td>52</td><td>50.3%</td><td class="down">↓</td></tr>
-<tr><td>7</td><td>iPhone 14 Pro</td><td>26</td><td>31</td><td>85.0%</td><td class="down">↓</td></tr>
-<tr><td>8</td><td>iPhone 17 Pro</td><td>25</td><td>24</td><td>105.1%</td><td class="up">↑</td></tr>
-<tr><td>9</td><td>华为 nova 13</td><td>24</td><td>43</td><td>55.8%</td><td class="down">↓</td></tr>
-<tr><td>10</td><td>华为 Mate 80</td><td>23</td><td>24</td><td>97.3%</td><td class="up">↑</td></tr>
+<tr><th>场景</th><th>日销</th><th>分期渗透率</th><th>日分期单量</th><th>月分期GMV</th></tr>
+<tr><td>当前</td><td>90-130</td><td>19-23%</td><td>20-30</td><td>¥12-24万</td></tr>
+<tr class="peak"><td><b>同售上线后</b></td><td>300-400</td><td>25-35%</td><td><b>75-140</b></td><td><b>¥45-110万</b></td></tr>
+<tr><td>+银行补贴</td><td>400-500</td><td>30-40%</td><td>120-200</td><td>¥72-160万</td></tr>
 </table>
+<div class="insight">💡 同售功能上线后，分期单量预估 <b>3-5倍增长</b>（20-30单 → 75-140单/天）</div>
 
-<div class="insight">
-<strong>💡 结论</strong>：分期免息上线首月（2月）效果显著，动销率提升50%。但效果衰减周期约2个月（3月已回落），需要配合持续运营策略。后续考虑：阶段性免息活动、Top机型专项补贴、品类扩展分期。
+<h3>1.6 分期免息价差分析</h3>
+<p style="font-size:14px">同一商品 iPhone 17 Pro Max 1TB：免息补贴价 <b>¥11,249</b> vs 全款参考价 ¥10,368，价差 <b>¥881（8.5%）</b></p>
+<div class="insight">8.5%溢价覆盖手续费（4-5.5%）并预留利润。<b>"提价免息"比"平台补贴"更可持续</b>——商家有利润就有动力推分期。</div>
+
+<h3>1.7 收银台合规参考</h3>
+<table>
+<tr><th>维度</th><th>转转（低客单价）</th><th>转转（高客单价）</th><th>九机</th></tr>
+<tr><td>分区设计</td><td>✅ 已分区</td><td>❌ 未分区</td><td>❌ 未分区</td></tr>
+<tr><td>默认选中</td><td>无默认</td><td>底部默认花呗</td><td>白条分期默认</td></tr>
+</table>
+<div class="warn">⚠️ 建议统一采用分区设计，分期区域突出优惠标签（如"3期免息""立减XX"）</div>
+
+<!-- ===== 第二章 ===== -->
+<h2>二、九机业务复盘</h2>
+
+<h3>2.1 分期免息价差分析</h3>
+<p style="font-size:14px">📌 同「一、1.6」，此处作为九机对标转转的核心差异点：九机<b>提价免息</b>（商家有利润→主动推分期），转转<b>平台补贴</b>（商家无额外动力）。</p>
+
+<h3>2.2 分期利益点表达 <span class="tag tag-new">NEW</span></h3>
+<div class="compare">
+<div class="side jiuji">
+<b>✅ 九机APP</b><br>
+每个商品列表页均有<b style="color:#e67e22">橙色「分期购」标签</b><br>
+浏览阶段即植入"可以分期"认知
+</div>
+<div class="side zhuanzhuan">
+<b>❌ 转转APP</b><br>
+商品列表页<b>无任何分期标签</b><br>
+用户直到支付环节才知道可以分期
+</div>
+</div>
+<div class="insight">🔑 <b>决策前置 vs 决策滞后</b>：九机在浏览阶段植入分期认知，转转在支付阶段才告知——差了整个决策流程。建议转转在商品列表页增加「可分期」「月供¥XXX」标签。</div>
+
+<h3>2.3 收银台合规设计</h3>
+<p style="font-size:14px">九机收银台三个行为特征：① 默认选中分期 → 降低决策成本；② 底部按钮即分期名称 → 强化分期心智；③ 未分区但意图明确 → 分期成为"自然选择"。<br>📌 详细对比见「一、1.7」。</p>
+
+<!-- ===== 第三章 ===== -->
+<h2>三、业务经验交流</h2>
+
+<h3 style="color:#e74c3c">三-1. 线上部分</h3>
+
+<div class="card"><h4>1）分期提价做免息</h4>
+<table>
+<tr><th>维度</th><th>转转</th><th>九机</th></tr>
+<tr><td>定价方式</td><td>单一价格</td><td><b>双价展示</b>（免息价 vs 全款价）</td></tr>
+<tr><td>分期展示</td><td>支付环节才出现</td><td><b>商品页即展示月供</b></td></tr>
+<tr><td>免息成本</td><td>平台补贴</td><td><b>提价免息</b>（涨价覆盖成本）</td></tr>
+<tr><td>可持续性</td><td>需持续投入补贴</td><td><b>商家有自驱力推分期</b></td></tr>
+</table>
+<div class="insight">九机模式更可持续——商家有利润就有动力主动推荐分期。</div>
 </div>
 
-<p class="small" style="margin-top:40px;text-align:center">完整版见详细文档 · Ludovicus 📊 · 2026.06.14</p>
+<div class="card"><h4>2）收银台支付方式合规设计</h4>
+<p style="font-size:14px">低客单价已做分区（上下分栏），高客单价和九机未分区。建议统一采用分区设计，分期区域突出优惠标签。</p>
+</div>
+
+<div class="card"><h4>3）分期利益点表达 <span class="tag tag-new">NEW</span></h4>
+<p style="font-size:14px">📌 同「二、2.2」：九机商品列表页有「分期购」标签，转转完全没有。<br>建议：转转在商品列表页增加「可分期」「月供¥XXX」轻量级标签。</p>
+</div>
+
+<div class="card"><h4>4）收银台支付方式对比 + 分期费率 <span class="tag tag-new">NEW</span></h4>
+
+<h4>支付方式覆盖</h4>
+<table>
+<tr><th>类别</th><th>转转</th><th>九机</th></tr>
+<tr><td>普通支付</td><td>微信支付、支付宝支付、<b>京东支付</b></td><td>微信支付、支付宝支付、<b>云闪付</b></td></tr>
+<tr><td>分期支付</td><td>信用卡分期、<b>京东白条</b>、花呗分期、<b>分付</b></td><td><b>京东白条分期</b>、花呗分期、<b>工行分期</b>、<b>建行分期</b></td></tr>
+</table>
+
+<h4>分期费率横向对比（商贴费率）</h4>
+<table>
+<tr><th>分期方式</th><th>3期</th><th>6期</th><th>12期</th><th>24期</th><th>平台</th></tr>
+<tr class="peak"><td><b>工行分期</b></td><td><b>1.0%</b></td><td><b>1.8%</b></td><td><b>3.5%</b></td><td><b>8.0%</b></td><td>九机</td></tr>
+<tr><td>京东白条商贴</td><td>1.1%</td><td>2.25%</td><td>3.75%</td><td>10.5%</td><td>转转</td></tr>
+<tr><td>花呗商贴</td><td>1.75%</td><td>4.0%</td><td>6.4%</td><td>12.5%</td><td>转转</td></tr>
+<tr><td>信用卡商贴</td><td>1.8%</td><td>2.8%</td><td>4.8%</td><td>8.8%</td><td>转转</td></tr>
+<tr><td>京东信用卡商贴</td><td>1.8%</td><td>3.15%</td><td>5.25%</td><td>9.5%</td><td>转转</td></tr>
+<tr><td>信用卡分期</td><td>1.5%</td><td>3.0%</td><td>6.0%</td><td>12.0%</td><td>九机</td></tr>
+<tr><td>花呗分期</td><td>2.3%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
+<tr><td>白条分期</td><td>2.4%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
+</table>
+
+<h4>各期最优费率</h4>
+<table>
+<tr><th>期数</th><th>最优方式</th><th>费率</th><th>平台</th></tr>
+<tr class="peak"><td>3期</td><td>工行分期</td><td><b>1.0%</b></td><td>九机 ✅</td></tr>
+<tr class="peak"><td>6期</td><td>工行分期</td><td><b>1.8%</b></td><td>九机 ✅</td></tr>
+<tr class="peak"><td>12期</td><td>工行分期</td><td><b>3.5%</b></td><td>九机 ✅</td></tr>
+<tr class="peak"><td>24期</td><td>工行分期</td><td><b>8.0%</b></td><td>九机 ✅</td></tr>
+</table>
+<div class="insight">🔑 九机凭借工行直连渠道，在各期费率上全面领先。转转应引入更多银行直连分期渠道（工行、建行）。</div>
+</div>
+
+<h3 style="color:#e74c3c;margin-top:32px">三-2. 线下部分</h3>
+
+<div class="card"><h4>1）服务温度 <span class="tag tag-new">NEW</span></h4>
+<table>
+<tr><th>维度</th><th>九机</th><th>转转</th></tr>
+<tr><td>进店体验</td><td>☕ 温茶招待，建立好感</td><td>❄️ 全自助，无接待</td></tr>
+<tr><td>选购过程</td><td>店员走开、不打扰</td><td>自行选购</td></tr>
+<tr><td>结账触发</td><td>用户召唤店员到身边</td><td>自行扫机器背后二维码</td></tr>
+<tr><td>推销节点</td><td><b>结账时三合一推销</b>（配件+权益+分期）</td><td><b>无推销节点</b></td></tr>
+<tr><td>店员角色</td><td>主动服务者</td><td>不参与</td></tr>
+<tr><td>温度感受</td><td>🔥 有人情味</td><td>❄️ 冷冰冰</td></tr>
+</table>
+<div class="steps">
+<b>九机流程：</b><br>
+进店 <span class="arrow">→</span> ☕ 温茶 <span class="arrow">→</span> 店员离开（不打扰）<span class="arrow">→</span> 用户召唤结账 <span class="arrow">→</span> 🤝 推销配件+权益+分期 <span class="arrow">→</span> Pad支付<br><br>
+<b>转转流程：</b><br>
+进店 <span class="arrow">→</span> 自行选购 <span class="arrow">→</span> 扫码 <span class="arrow">→</span> 小程序支付 <span class="arrow">→</span> 全程无店员互动
+</div>
+<div class="alert">🔑 差距本质：九机把结账变成<b>销售机会</b>（配件+权益+分期），转转把结账变成<b>纯工具操作</b>。差的不只是服务态度，是整个收入模型。</div>
+</div>
+
+<div class="card"><h4>2）支付体系 <span class="tag tag-new">NEW</span></h4>
+<table>
+<tr><th>维度</th><th>转转门店</th><th>九机门店</th></tr>
+<tr><td>支付工具</td><td>用户自己手机</td><td><b>店员手持Pad</b></td></tr>
+<tr><td>支付方式</td><td>仅扫码/APP支付</td><td><b>刷卡 + 主动扫码 + 被扫</b></td></tr>
+<tr><td>分期支持</td><td>❌ <b>不支持</b></td><td>✅ <b>支持分期 + 免息</b></td></tr>
+<tr><td>收银台</td><td>二维码即收银台</td><td><b>无固定收银台，Pad即收银台</b></td></tr>
+<tr><td>会员识别</td><td>无</td><td>扫会员码 → 识别身份 + 积分</td></tr>
+<tr><td>店员参与</td><td>不参与</td><td>全程参与，主动推销</td></tr>
+</table>
+<div class="alert">🔑 核心差距：转转门店=展示场所，支付走线上；九机门店=<b>支付场景</b>。转转门店不支持分期 = <b>完全放弃最大金融转化点</b>。</div>
+</div>
+
+<div class="card"><h4>3）门店销售品类 <span class="tag tag-new">NEW</span></h4>
+<table>
+<tr><th>维度</th><th>九机（综合店）</th><th>转转（单一店）</th></tr>
+<tr><td>品类线</td><td><b>7大品类</b>（手机/配件/母婴/平板/笔记本/摄影/手表）</td><td>1-2个（二手3C为主）</td></tr>
+<tr><td>客单价跨度</td><td>2元配件 ~ 万元旗舰机</td><td>2,000-4,000元</td></tr>
+<tr><td>单店利用率</td><td><b>高</b>（多品类共享流量）</td><td>低（品类单一、流量浪费）</td></tr>
+<tr><td>引流能力</td><td><b>强</b>（配件/母婴低价引流）</td><td>弱</td></tr>
+<tr><td>连带销售</td><td><b>强</b>（配件+手机+权益）</td><td>弱</td></tr>
+</table>
+<div class="insight">🔑 品类宽度 = 转化空间：九机用2元配件引流 → 建立首次支付 → 升级高价分期转化。转转品类单一 → 流量利用效率低、分期场景受限。</div>
+</div>
+
+<div class="footer">
+📊 Ludovicus · 转转集团分期业务 · 2026.06.14<br>
+数据来源：分期北极星指标看板 + KA数据监控看板（真实动销率） + APP截图对比 + 门店实地考察
+</div>
+
+</div>
 </body></html>
