@@ -5,47 +5,71 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>九机业务分期复盘 &amp; 业务经验交流</title>
 <style>
+:root{--bg:#f6f7f9;--paper:#fff;--ink:#172033;--muted:#657086;--line:#e6eaf0;--brand:#c9362a;--brand-dark:#9f241b;--blue:#2563eb;--green:#1f9d63;--amber:#b7791f;--red:#c9362a;--shadow:0 16px 40px rgba(23,32,51,.08)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8}
-.container{max-width:1600px;margin:0 auto;padding:24px;text-align:center}
-h1{color:#c0392b;border-bottom:3px solid #c0392b;padding:10px 0;margin-bottom:24px;font-size:26px;display:inline-block}
-h2{color:#2c3e50;margin:32px 0 16px;border-left:5px solid #e74c3c;padding:4px 14px;font-size:20px;text-align:left}
-h3{color:#34495e;margin:20px 0 10px;font-size:17px;text-align:left}
-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px;border-radius:6px;overflow:hidden}
-th{background:#2c3e50;color:#fff;padding:9px 6px;text-align:center;font-size:12px;font-weight:600}
-td{padding:8px 6px;text-align:center;border:1px solid #e8e8e8;font-size:13px}
-tr:nth-child(even){background:#f9fafb}
-.card{background:#fff;border-radius:10px;padding:18px 22px;margin:14px 0;box-shadow:0 1px 4px rgba(0,0,0,.06);text-align:left}
-.card h4{color:#2c3e50;margin-bottom:8px;font-size:15px}
-.insight{background:#eafaf1;border-left:4px solid #27ae60;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0;text-align:left}
-.warn{background:#fef9e7;border-left:4px solid #f39c12;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0;text-align:left}
-.alert{background:#fdedec;border-left:4px solid #e74c3c;padding:12px 16px;margin:12px 0;font-size:13px;border-radius:0 6px 6px 0;text-align:left}
-.up{color:#e74c3c;font-weight:600}.down{color:#27ae60;font-weight:600}
-.peak{background:#d5f5e3!important}.low{background:#fadbd8!important}
-.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600}
-.tag-new{background:#74b9ff;color:#fff}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#fff 0,#f6f7f9 360px);color:var(--ink);line-height:1.75;overflow-x:hidden}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:32px 28px 56px;text-align:left}
+.hero{position:relative;margin:0 0 30px;padding:34px 36px 30px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,#fff 0,#fff7f5 58%,#f4f7ff 100%);box-shadow:var(--shadow);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--brand),#f59e0b,#2563eb)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;padding:4px 10px;border:1px solid #f0c8c2;border-radius:999px;background:#fff;color:var(--brand-dark);font-size:12px;font-weight:700}
+h1{max-width:820px;color:var(--ink);font-size:32px;line-height:1.22;font-weight:800;letter-spacing:0;margin-bottom:14px;overflow-wrap:anywhere}
+.hero-subtitle{max-width:760px;color:var(--muted);font-size:15px;line-height:1.8}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-meta span{display:inline-flex;align-items:center;min-height:30px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);color:#39445a;font-size:12px;font-weight:600}
+h2{display:flex;align-items:center;gap:12px;color:var(--ink);margin:36px 0 16px;font-size:22px;line-height:1.35;font-weight:800;overflow-wrap:anywhere}
+h2:before{content:"";width:7px;height:24px;border-radius:8px;background:var(--brand)}
+h3{color:#26324a;margin:26px 0 12px;font-size:17px;line-height:1.45;font-weight:750}
+p{margin:0 0 14px;color:#374151}
+table{display:block;width:100%;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:12px 0 22px;background:var(--paper);border:1px solid var(--line);box-shadow:0 6px 18px rgba(23,32,51,.05);font-size:13px;border-radius:8px}
+tbody{display:table;width:max-content;min-width:100%;border-collapse:collapse}
+th{background:#243044;color:#fff;padding:11px 10px;text-align:center;font-size:12px;font-weight:700;white-space:nowrap}
+td{padding:10px 10px;text-align:center;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:13px;vertical-align:middle}
+td:last-child,th:last-child{border-right:0}
+tr:nth-child(even){background:#fafbfc}
+b{font-weight:800;color:#111827}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px 24px;margin:16px 0 22px;box-shadow:0 8px 24px rgba(23,32,51,.05);text-align:left}
+.card h4{color:#1f2937;margin:0 0 12px;font-size:15px;line-height:1.45;font-weight:800}
+.insight,.warn,.alert{position:relative;padding:14px 16px 14px 18px;margin:14px 0 18px;font-size:13px;line-height:1.75;border-radius:8px;text-align:left;border:1px solid transparent}
+.insight{background:#eefaf3;border-color:#cfeedd;color:#164a32}
+.warn{background:#fff8e8;border-color:#f5dfae;color:#5f410c}
+.alert{background:#fff0ed;border-color:#f3c7bf;color:#641e16}
+.up{color:var(--red);font-weight:700}.down{color:var(--green);font-weight:700}
+.peak{background:#e7f7ee!important}.low{background:#fff0ed!important}
+.tag{display:inline-flex;align-items:center;min-height:22px;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;vertical-align:middle}
+.tag-new{background:#e8f1ff;color:#174ea6;border:1px solid #c6dcff}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .compare .side{border-radius:8px;padding:14px;font-size:13px}
-.compare .jiuji{background:#eaf2f8;border:1px solid #aed6f1}
-.compare .zhuanzhuan{background:#fdf2f8;border:1px solid #f5b7b1}
-.fig{text-align:center;margin:14px 0}
-.fig img{max-width:520px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);object-fit:contain}
-.fig figcaption{font-size:12px;color:#555;margin-top:6px;font-weight:500}
+.compare .jiuji{background:#edf6ff;border:1px solid #c8def3}
+.compare .zhuanzhuan{background:#fff2f2;border:1px solid #f2c3bc}
+.fig{text-align:center;margin:18px auto 20px}
+.fig img{width:100%;max-width:560px;border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 24px rgba(23,32,51,.08);object-fit:contain;background:#fff}
+.fig figcaption{font-size:12px;color:var(--muted);margin-top:8px;font-weight:600}
 .fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
 .fig-pair figure{margin:0}
-.fig-pair img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.07)}
-.fig-pair figure{margin:0}
-.steps{font-size:13px;line-height:2.2;text-align:left}
-.steps .arrow{color:#e74c3c;font-weight:bold}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid #e8e8e8}
-.meta-note{font-size:11.5px;color:#999;text-align:left;margin:8px 0 16px;padding-left:4px}
-.section-divider{text-align:left;color:#e74c3c;font-size:14px;font-weight:600;margin:16px 0 8px 0}
+.fig-pair img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(23,32,51,.07)}
+.steps{font-size:13px;line-height:2.05;text-align:left;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.steps .arrow{color:var(--brand);font-weight:bold}
+.footer{text-align:center;color:#8a94a6;font-size:12px;margin-top:42px;padding-top:20px;border-top:1px solid var(--line)}
+.meta-note{font-size:12px;color:var(--muted);text-align:left;margin:10px 0 20px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;line-height:1.8}
+.section-divider{text-align:left;color:var(--brand);font-size:14px;font-weight:700;margin:16px 0 8px 0}
+@media (max-width:900px){.container{padding:20px 16px 40px}.hero{padding:28px 22px 24px}h1{font-size:26px}h2{font-size:20px}.compare,.fig-pair{grid-template-columns:1fr}}
+@media (max-width:640px){body{background:#f7f8fa}.container{padding:14px 12px 32px}.hero{margin-bottom:22px;padding:24px 18px 20px}.eyebrow{font-size:11px}h1{font-size:24px}.hero-subtitle{font-size:14px}.hero-meta span{font-size:11px}h2{margin-top:30px;font-size:18px}h3{font-size:16px}.card{padding:18px 14px}th,td{padding:9px 8px}.steps{line-height:1.9}}
 </style>
 </head>
 <body>
 <div class="container">
 
+<header class="hero">
+<div class="eyebrow">业务复盘 / 分期增长</div>
 <h1>九机业务分期复盘 &amp; 业务经验交流</h1>
+<p class="hero-subtitle">围绕分期渗透、免息定价、支付渠道和线下销售触点，梳理九机模式对转转业务的可借鉴动作。</p>
+<div class="hero-meta">
+<span>数据周期：2025.09 - 2026.03</span>
+<span>核心观察：免息驱动高客单</span>
+<span>输出日期：2026.06.14</span>
+</div>
+</header>
 
 <!-- ===== 第一章 ===== -->
 <h2>一、九机业务分期数据一览</h2>
@@ -54,12 +78,14 @@ tr:nth-child(even){background:#f9fafb}
 
 <!-- KPI 卡片网格 - 6列×2行统一展示 -->
 <style>
-.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:16px 0}
-.kpi-card{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid #eef0f5}
-.kpi-card .num{font-size:24px;font-weight:700;color:#2563eb;margin-bottom:4px}
-.kpi-card .lbl{font-size:11px;color:#888}
-.kpi-divider{grid-column:1/-1;height:1px;background:#eef0f5;margin:4px 0}
-.meta-note{font-size:11.5px;color:#999;text-align:left;margin:8px 0 16px;padding-left:4px;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:16px 0 18px}
+.kpi-card{position:relative;min-width:0;min-height:112px;background:#fff;border-radius:8px;padding:18px 12px;text-align:left;box-shadow:0 8px 22px rgba(23,32,51,.05);border:1px solid var(--line)}
+.kpi-card:after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,var(--brand),var(--blue))}
+.kpi-card .num{font-size:25px;line-height:1.1;font-weight:850;color:var(--blue);margin-bottom:10px;white-space:nowrap}
+.kpi-card .lbl{font-size:12px;line-height:1.45;color:var(--muted);font-weight:700;overflow-wrap:anywhere}
+.kpi-divider{grid-column:1/-1;height:1px;background:var(--line);margin:2px 0}
+@media (max-width:1080px){.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kpi-card{min-height:100px;padding:15px 10px}.kpi-card .num{font-size:21px}.kpi-divider{display:none}}
 </style>
 
 <div class="kpi-grid">
@@ -110,7 +136,7 @@ tr:nth-child(even){background:#f9fafb}
 </table>
 <div class="insight">💡 价格越高，分期渗透率越高（1.6%→58.8%）。核心价区（¥1,798+），分期商品动销率比非分期高出80%+。分期是库存周转加速器。</div>
 
-<h3>1.5 分期潜力测算</h3>
+<h3>1.4 分期潜力测算</h3>
 <table>
 <tr><th>场景</th><th>日销</th><th>分期渗透率</th><th>日分期单量</th><th>月分期GMV</th></tr>
 <tr><td>当前（3,000台上架）</td><td>90-130</td><td>19-23%</td><td>20-30</td><td>¥12-24万</td></tr>
@@ -118,7 +144,7 @@ tr:nth-child(even){background:#f9fafb}
 </table>
 <div class="insight">💡 同售功能上线后，分期单量预估 <b>3-5倍增长</b>（20-30单 → 75-140单/天）</div>
 
-<h3>1.4 九机商户画像</h3>
+<h3>1.5 九机商户画像</h3>
 <table>
 <tr><th>企业</th><td>九机网，云贵区域头部二手手机连锁</td></tr>
 <tr><th>门店</th><td>400-600家</td></tr>
@@ -130,16 +156,18 @@ tr:nth-child(even){background:#f9fafb}
 <!-- ===== 第二部分 ===== -->
 <h2>第二部分 九机业务经验交流</h2>
 
-<h3 style="font-size:16px;color:#2c3e50;margin:20px 0 10px;text-align:left;padding-left:0">2.1 提价做免息业务分析</h3>
-<p style="font-size:14px;text-align:left">同一商品 iPhone 17 Pro Max 1TB：12期免息款价格 <b>¥12,799</b> vs 全款参考价 <b>¥10,949</b>，价差 <b>¥1,850</b>，提价比例 <b>16.90%</b></p>
+<h3>2.1 提价做免息业务分析</h3>
+<p>同一商品 iPhone 17 Pro Max 1TB：12期免息款价格 <b>¥12,799</b> vs 全款参考价 <b>¥10,949</b>，价差 <b>¥1,850</b>，提价比例 <b>16.90%</b></p>
 
 <style>
-.compare-card{border:1px solid #e0e0e0;border-radius:12px;overflow:visible;margin:16px 0;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.compare-header{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:14px;font-weight:600;padding:10px 0}
-.compare-header .left{background:#4caf50;color:#fff;border-right:1px solid rgba(255,255,255,.3)}
-.compare-header .right{background:#ff9800;color:#fff}
-.compare-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.compare-body img{width:100%;height:auto;display:block;border:none;box-shadow:none}
+.compare-card{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:18px 0 20px;box-shadow:0 10px 26px rgba(23,32,51,.06);background:#fff}
+.compare-header{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:14px;font-weight:800}
+.compare-header .left,.compare-header .right{padding:11px 12px;color:#fff}
+.compare-header .left{background:#23875b;border-right:1px solid rgba(255,255,255,.35)}
+.compare-header .right{background:#d97706}
+.compare-body{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#f8fafc}
+.compare-body img{width:100%;height:auto;display:block;border:none;box-shadow:none;background:#fff}
+@media (max-width:760px){.compare-header,.compare-body{grid-template-columns:1fr}.compare-header .left{border-right:0;border-bottom:1px solid rgba(255,255,255,.35)}}
 </style>
 <div class="compare-card">
 <div class="compare-header"><div class="left">⬅ 标准款（¥10,949）</div><div class="right">➡ 提价免息款（¥12,799）</div></div>
@@ -151,7 +179,7 @@ tr:nth-child(even){background:#f9fafb}
 <div class="insight">16.90% 提价比例覆盖 12 期手续费（约 7.5%）后尚余约 9pp 利润空间。<b>"提价免息"比"平台补贴"更可持续</b>——商家有利润就有动力推分期。</div>
 <div class="insight">💰 <b>双价展示</b>：标准款¥10,949 vs 提价免息款¥12,799 = 溢价<b>¥1,850（16.90%）</b>。用户选分期时价格自动上浮，覆盖手续费后商家仍有利润。这就是「提价免息」模式的落地形态。</div>
 
-<h3 style="font-size:16px;color:#2c3e50;margin:20px 0 10px;text-align:left;padding-left:0">2.2 分期利益点表达 <span class="tag tag-new">核心差异</span></h3>
+<h3>2.2 分期利益点表达 <span class="tag tag-new">核心差异</span></h3>
 <div class="compare-card">
 <div class="compare-header"><div class="left" style="background:#3498db">⬅ 九机商品列表</div><div class="right" style="background:#e74c3c">➡ 转转商品列表</div></div>
 <div class="compare-body">
@@ -186,7 +214,7 @@ tr:nth-child(even){background:#f9fafb}
 <div class="insight">🔑 九机凭借工行直连渠道，在各期费率上全面领先。转转应引入更多银行直连分期渠道（工行、建行）。</div>
 </div>
 
-<h3 style="font-size:16px;color:#2c3e50;margin-top:24px;text-align:left;padding-left:0">2.4 线下部分</h3>
+<h3>2.4 线下部分</h3>
 
 <div class="card"><h4>1）服务温度 &amp; 连带销售</h4>
 <figure class="fig">
