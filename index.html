@@ -9,7 +9,6 @@
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8}
 .container{max-width:1100px;margin:0 auto;padding:24px;text-align:center}
 h1{color:#c0392b;border-bottom:3px solid #c0392b;padding:10px 0;margin-bottom:24px;font-size:26px;display:inline-block}
-.sub{display:none}
 h2{color:#2c3e50;margin:32px 0 16px;border-left:5px solid #e74c3c;padding:4px 14px;font-size:20px;text-align:left}
 h3{color:#34495e;margin:20px 0 10px;font-size:17px;text-align:left}
 table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px;border-radius:6px;overflow:hidden}
@@ -38,6 +37,7 @@ tr:nth-child(even){background:#f9fafb}
 .steps .arrow{color:#e74c3c;font-weight:bold}
 .footer{text-align:center;color:#999;font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid #e8e8e8}
 .meta-note{font-size:11.5px;color:#999;text-align:left;margin:8px 0 16px;padding-left:4px}
+.section-divider{text-align:left;color:#e74c3c;font-size:14px;font-weight:600;margin:16px 0 8px 0}
 </style>
 </head>
 <body>
@@ -45,23 +45,21 @@ tr:nth-child(even){background:#f9fafb}
 
 <h1>九机业务分期复盘 &amp; 业务经验交流</h1>
 
-<!-- ===== 第一章：改为 九机业务分期数据一览 ===== -->
+<!-- ===== 第一章 ===== -->
 <h2>一、九机业务分期数据一览</h2>
 
 <h3>1.1 核心数据</h3>
-
 <table>
 <tr><th colspan="6" style="text-align:center">大盘维度</th></tr>
 <tr><th>日均销售订单</th><th>日均销售GMV</th><th>分期订单渗透率</th><th>大盘客单价</th><th>免息订单占比</th><th>参与分期前动销天数</th></tr>
-<tr><td><b>131 单</b></td><td><b>¥32 万</b></td><td><b>19.3%</b></td><td>¥2,443</td><td><b>72%</b></td><td><b>~45 天</b></td></tr>
+<tr><td><b>131 单</b></td><td><b>¥32 万</b></td><td><b>19.3%</b></td><td>¥2,443</td><td><b>72%</b></td><td><b>~45 天</b>（25年10月）← 25年9月~35天</td></tr>
 <tr><th colspan="6" style="text-align:center">分期维度</th></tr>
 <tr><th>日均分期订单</th><th>日均分期GMV</th><th>分期GMV渗透率</th><th>分期客单价</th><th>免息客单价</th><th>参与分期后动销天数</th></tr>
-<tr><td><b>25 单</b></td><td><b>¥9.4 万</b></td><td><b>29.4%</b></td><td><b>¥3,760</b></td><td><b>¥3,850</b></td><td><b>~65 天</b></td></tr>
+<tr><td><b>25 单</b></td><td><b>¥9.4 万</b></td><td><b>29.4%</b></td><td><b>¥3,760</b></td><td><b>¥3,850</b></td><td><b>~65 天</b>（26年1-3月均值）</td></tr>
 </table>
-
 <div class="meta-note">📅 数据周期：2025年9月 — 2026年3月<br>
-📐 指标说明：分期订单渗透率 = 分期订单 ÷ 大盘订单 | 免息订单占比 = 免息订单 ÷ 分期订单<br>
-📌 动销天数：分期前取2025年10月均值（约45天），分期后取2026年1-3月均值（约65天）</div>
+📐 指标说明：分期订单渗透率 = 分期订单 ÷ 大盘订单 ｜ 免息订单占比 = 免息订单 ÷ 分期订单<br>
+📌 动销天数：分期前取25年10月均值，25年9月（分期刚上线）约35天；分期后取26年1-3月均值</div>
 
 <h3>1.2 趋势判断</h3>
 <div class="card"><h4>渗透率走势</h4>
@@ -74,7 +72,7 @@ tr:nth-child(even){background:#f9fafb}
 </table>
 </div>
 
-<h4>动销率月度走势（手机品类，真实数据）</h4>
+<h4>动销率月度走势（手机品类）</h4>
 <table>
 <tr><th>月份</th><th>日均订单</th><th>日均在售</th><th>动销率(月)</th><th>环比变化</th><th>关键事件</th></tr>
 <tr><td>1月</td><td>114</td><td>2,000</td><td>5.70%</td><td>—</td><td>业务常规期</td></tr>
@@ -84,11 +82,10 @@ tr:nth-child(even){background:#f9fafb}
 <tr><td>5月</td><td>112</td><td>2,372</td><td>4.72%</td><td class="up">+13%</td><td>止跌企稳</td></tr>
 <tr class="low"><td>6月 ⚠️</td><td><b>90</b></td><td>2,782</td><td><b>3.23%</b></td><td class="down">-32% | 库存反弹</td></tr>
 </table>
-
 <div class="warn"><b>⚠️ 三个核心趋势判断：</b><br>
 1. <b>分期免息上线（2月）是动销率峰值节点</b>：5.7%→8.56%，日均订单+130%（114→262），库存+53%（2000→3058）。免息同时拉动销售和备货。<br>
-2. <b>免息效果衰减周期约2个月</b>：3月已回落至上线前水平，6月降至3.23%半年最低。免息本身不是万能的，需配合持续运营。<br>
-3. <b>订货速度跑赢销售速度</b>：2月备货激增后去库存缓慢，6月库存反弹至2782而日销仅90单，供需失衡加剧。
+2. <b>免息效果衰减周期约2个月</b>：3月已回落至上线前水平，6月降至3.23%半年最低。<br>
+3. <b>订货速度跑赢销售速度</b>：2月备货激增后去库存缓慢，6月供需失衡加剧。
 </div>
 
 <h3>1.3 价格段分析</h3>
@@ -104,46 +101,29 @@ tr:nth-child(even){background:#f9fafb}
 </table>
 <div class="insight">💡 价格越高，分期渗透率越高（1.6%→58.8%）。核心价区（¥1,798+），分期商品动销率比非分期高出80%+。分期是库存周转加速器。</div>
 
+<h3>1.5 分期潜力测算</h3>
+<table>
+<tr><th>场景</th><th>日销</th><th>分期渗透率</th><th>日分期单量</th><th>月分期GMV</th></tr>
+<tr><td>当前（3,000台上架）</td><td>90-130</td><td>19-23%</td><td>20-30</td><td>¥12-24万</td></tr>
+<tr class="peak"><td><b>同售上线后</b>（全量1.5万台）</td><td>300-400</td><td>25-35%</td><td><b>75-140</b></td><td><b>¥45-110万</b></td></tr>
+</table>
+<div class="insight">💡 同售功能上线后，分期单量预估 <b>3-5倍增长</b>（20-30单 → 75-140单/天）</div>
+
 <h3>1.4 九机商户画像</h3>
 <table>
 <tr><th>企业</th><td>九机网，云贵区域头部二手手机连锁</td></tr>
 <tr><th>门店</th><td>400-600家</td></tr>
-<tr><th>KA商户号</th><td><b>1559081139819430912</b>（九机-入仓）</td></tr>
-<tr><th>日销</th><td>~90-130单/天</td></tr>
+<tr><th>日销</th><td>约90-130单/天</td></tr>
 <tr><th>客单价</th><td>2,000-4,000元</td></tr>
 <tr><th>库存</th><td>1-2万台（转转仅上架~3,000台，约20%）</td></tr>
 </table>
 
-<h3>1.5 分期潜力测算</h3>
-<table>
-<tr><th>场景</th><th>日销</th><th>分期渗透率</th><th>日分期单量</th><th>月分期GMV</th></tr>
-<tr><td>当前</td><td>90-130</td><td>19-23%</td><td>20-30</td><td>¥12-24万</td></tr>
-<tr class="peak"><td><b>同售上线后</b></td><td>300-400</td><td>25-35%</td><td><b>75-140</b></td><td><b>¥45-110万</b></td></tr>
-<tr><td>+银行补贴</td><td>400-500</td><td>30-40%</td><td>120-200</td><td>¥72-160万</td></tr>
-</table>
-<div class="insight">💡 同售功能上线后，分期单量预估 <b>3-5倍增长</b>（20-30单 → 75-140单/天）</div>
+<!-- ===== 第二部分 ===== -->
+<h2>第二部分 九机业务经验交流</h2>
 
-<h3>1.6 分期免息价差分析</h3>
+<h3>提价做免息业务分析</h3>
 <p style="font-size:14px;text-align:left">同一商品 iPhone 17 Pro Max 1TB：免息补贴价 <b>¥11,249</b> vs 全款参考价 ¥10,368，价差 <b>¥881（8.5%）</b></p>
-<div class="insight">8.5%溢价覆盖手续费（4-5.5%）并预留利润。<b>"提价免息"比"平台补贴"更可持续</b>——商家有利润就有动力推分期。</div>
 
-<h3>1.7 收银台合规参考</h3>
-<div class="fig-pair">
-<figure class="fig">
-<img src="img/jiuji-checkout-high.jpg" alt="九机收银台">
-<figcaption><b>🔴 九机收银台（¥7,899）</b> — 未分区，白条分期默认✓，底部按钮=分期名称</figcaption>
-</figure>
-<figure class="fig">
-<img src="img/zz-checkout-low.jpg" alt="转转收银台">
-<figcaption><b>🟢 转转收银台（¥4,568）</b> — ✅ 已分区（普通/分期上下分栏），清晰明了</figcaption>
-</figure>
-</div>
-<div class="warn">⚠️ 建议统一采用分区设计，分期区域突出优惠标签（如"3期免息""立减XX"）</div>
-
-<!-- ===== 第二章 ===== -->
-<h2>二、九机业务复盘</h2>
-
-<h3>2.1 分期免息价差分析</h3>
 <div class="fig-pair">
 <figure class="fig">
 <img src="img/jiuji-detail-standard.jpg" alt="九机详情-标准版">
@@ -154,9 +134,10 @@ tr:nth-child(even){background:#f9fafb}
 <figcaption><b>📱 九机商品详情 — 免息分期版</b> ¥12,799（已选「免息分期版」）</figcaption>
 </figure>
 </div>
-<div class="insight">💰 <b>双价展示铁证</b>：标准版¥11,249 vs 免息分期版¥12,799 = 溢价<b>¥550（4.9%）</b>。用户选分期时价格自动上浮，覆盖手续费后商家仍有利润。</div>
+<div class="insight">8.5%溢价覆盖手续费（4-5.5%）并预留利润。<b>"提价免息"比"平台补贴"更可持续</b>——商家有利润就有动力推分期。</div>
+<div class="insight">💰 <b>双价展示铁证</b>：标准版¥11,249 vs 免息分期版¥12,799 = 溢价<b>¥550（4.9%）</b>。用户选分期时价格自动上浮，覆盖手续费后商家仍有利润。这就是「提价免息」模式的落地形态。</div>
 
-<h3>2.2 分期利益点表达 <span class="tag tag-new">核心差异</span></h3>
+<h3>分期利益点表达 <span class="tag tag-new">核心差异</span></h3>
 <div class="fig-pair">
 <figure class="fig">
 <img src="img/jiuji-list.jpg" alt="九机商品列表">
@@ -169,34 +150,7 @@ tr:nth-child(even){background:#f9fafb}
 </div>
 <div class="alert">🔑 <b>决策前置 vs 决策滞后</b>：九机在浏览阶段植入分期认知，转转在支付阶段才告知——差了整个决策流程。<br>建议：转转在商品列表页增加「可分期」「月供¥XXX」轻量级标签。</div>
 
-<h3>2.3 收银台合规设计</h3>
-<p style="font-size:14px;text-align:left">九机收银台三个行为特征：① 默认选中分期 → 降低决策成本；② 底部按钮即分期名称 → 强化分期心智；③ 未分区但意图明确 → 分期成为"自然选择"。详细截图见「一、1.7」。</p>
-
-<!-- ===== 第三章 ===== -->
-<h2>三、业务经验交流</h2>
-
-<h3 style="color:#e74c3c">三-1. 线上部分</h3>
-
-<div class="card"><h4>1）分期提价做免息</h4>
-<table>
-<tr><th>维度</th><th>转转</th><th>九机</th></tr>
-<tr><td>定价方式</td><td>单一价格</td><td><b>双价展示</b>（标准版 vs 免息分期版）</td></tr>
-<tr><td>分期展示</td><td>支付环节才出现</td><td><b>商品页即展示月供</b></td></tr>
-<tr><td>免息成本</td><td>平台补贴</td><td><b>提价免息</b>（涨价覆盖成本）</td></tr>
-<tr><td>可持续性</td><td>需持续投入补贴</td><td><b>商家有自驱力推分期</b></td></tr>
-</table>
-<div class="insight">九机模式更可持续——商家有利润就有动力主动推荐分期。</div>
-</div>
-
-<div class="card"><h4>2）收银台支付方式合规设计</h4>
-<p style="font-size:14px">低客单价已做分区（上下分栏），高客单价和九机未分区。建议统一采用分区设计，分期区域突出优惠标签。<br>📌 截图实证见「一、1.7」。</p>
-</div>
-
-<div class="card"><h4>3）分期利益点表达 <span class="tag tag-new">NEW</span></h4>
-<p style="font-size:14px">📌 截图实证见「二、2.2」。建议：转转在商品列表页增加「可分期」「月供¥XXX」轻量级标签。</p>
-</div>
-
-<div class="card"><h4>4）收银台支付方式对比 + 分期费率 <span class="tag tag-new">NEW</span></h4>
+<div class="card"><h4>收银台支付方式对比 + 分期费率</h4>
 
 <h4>支付方式覆盖</h4>
 <table>
@@ -218,20 +172,12 @@ tr:nth-child(even){background:#f9fafb}
 <tr><td>白条分期</td><td>2.4%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
 </table>
 
-<h4>各期最优费率</h4>
-<table>
-<tr><th>期数</th><th>最优方式</th><th>费率</th><th>平台</th></tr>
-<tr class="peak"><td>3期</td><td>工行分期</td><td><b>1.0%</b></td><td>九机 ✅</td></tr>
-<tr class="peak"><td>6期</td><td>工行分期</td><td><b>1.8%</b></td><td>九机 ✅</td></tr>
-<tr class="peak"><td>12期</td><td>工行分期</td><td><b>3.5%</b></td><td>九机 ✅</td></tr>
-<tr class="peak"><td>24期</td><td>工行分期</td><td><b>8.0%</b></td><td>九机 ✅</td></tr>
-</table>
 <div class="insight">🔑 九机凭借工行直连渠道，在各期费率上全面领先。转转应引入更多银行直连分期渠道（工行、建行）。</div>
 </div>
 
-<h3 style="color:#e74c3c;margin-top:32px">三-2. 线下部分</h3>
+<h3 style="color:#2c3e50;margin-top:32px">线下部分</h3>
 
-<div class="card"><h4>1）服务温度 &amp; 连带销售 <span class="tag tag-new">NEW</span></h4>
+<div class="card"><h4>1）服务温度 &amp; 连带销售</h4>
 <figure class="fig">
 <img src="img/jiuji-order.jpg" alt="九机订单确认页">
 <figcaption><b>📱 九机订单确认页</b> — 赠品1年延保 + 九机盾Care+(iOS)2年¥1299 / 安心盾终身¥999</figcaption>
@@ -252,7 +198,7 @@ tr:nth-child(even){background:#f9fafb}
 <div class="alert">🔑 差距本质：九机把结账变成<b>销售机会</b>（配件+权益+分期三合一），转转把结账变成<b>纯工具操作</b>。差的不只是服务态度，是整个收入模型。</div>
 </div>
 
-<div class="card"><h4>2）支付体系 <span class="tag tag-new">NEW</span></h4>
+<div class="card"><h4>2）支付体系</h4>
 <table>
 <tr><th>维度</th><th>转转门店</th><th>九机门店</th></tr>
 <tr><td>支付工具</td><td>用户自己手机</td><td><b>店员手持Pad</b></td></tr>
@@ -265,7 +211,7 @@ tr:nth-child(even){background:#f9fafb}
 <div class="alert">🔑 核心差距：转转门店=展示场所，支付走线上；九机门店=<b>支付场景</b>。转转门店不支持分期 = <b>完全放弃最大金融转化点</b>。</div>
 </div>
 
-<div class="card"><h4>3）门店销售品类 <span class="tag tag-new">NEW</span></h4>
+<div class="card"><h4>3）门店销售品类</h4>
 <table>
 <tr><th>维度</th><th>九机（综合店）</th><th>转转（单一店）</th></tr>
 <tr><td>品类线</td><td><b>7大品类</b>（手机/配件/母婴/平板/笔记本/摄影/手表）</td><td>1-2个（二手3C为主）</td></tr>
