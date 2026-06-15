@@ -63,8 +63,15 @@ b{font-weight:800;color:#111827}
 .action-note{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:18px 0 24px;box-shadow:0 8px 24px rgba(23,32,51,.05)}
 .priority{display:inline-block;min-width:34px;padding:1px 8px;border-radius:999px;color:#fff;font-size:11px;font-weight:800}
 .priority.p0{background:#c9362a}.priority.p1{background:#d97706}.priority.p2{background:#2563eb}
+.rate-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 14px}
+.rate-card{background:#f0faf4;border:1px solid #cfeedd;border-radius:8px;padding:12px 14px;text-align:center}
+.rate-card .term{display:block;color:#657086;font-size:12px;font-weight:700}
+.rate-card .rate{display:block;color:#166534;font-size:22px;font-weight:850;line-height:1.2;margin:5px 0}
+.rate-card .source{display:block;color:#39445a;font-size:12px}
+.rate-table tr.bank-direct td{background:#eaf7ef;font-weight:800}
+.rate-table tr.group-row td{background:#f8fafc;color:#657086;font-weight:800;text-align:left}
 @media (max-width:900px){.container{padding:20px 16px 40px}.hero{padding:28px 22px 24px}h1{font-size:26px}h2{font-size:20px}.compare,.fig-pair{grid-template-columns:1fr}}
-@media (max-width:900px){.judgment-grid{grid-template-columns:1fr}}
+@media (max-width:900px){.judgment-grid{grid-template-columns:1fr}.rate-summary{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){body{background:#f7f8fa}.container{padding:14px 12px 32px}.hero{margin-bottom:22px;padding:24px 18px 20px}.eyebrow{font-size:11px}h1{font-size:24px}.report-title{font-size:24px}.hero-subtitle{font-size:14px}.hero-meta span{font-size:11px}h2{margin-top:30px;font-size:18px}h3{font-size:16px}.card{padding:18px 14px}th,td{padding:9px 8px}.steps{line-height:1.9}}
 </style>
 </head>
@@ -209,19 +216,27 @@ b{font-weight:800;color:#111827}
 </table>
 
 <h4>分期费率横向对比（商贴费率）</h4>
-<table>
+<div class="rate-summary">
+<div class="rate-card"><span class="term">3期最低</span><span class="rate">1.0%</span><span class="source">九机 · 工行分期</span></div>
+<div class="rate-card"><span class="term">6期最低</span><span class="rate">1.8%</span><span class="source">九机 · 工行分期</span></div>
+<div class="rate-card"><span class="term">12期最低</span><span class="rate">3.5%</span><span class="source">九机 · 工行分期</span></div>
+<div class="rate-card"><span class="term">24期最低</span><span class="rate">8.0%</span><span class="source">九机 · 工行分期</span></div>
+</div>
+<table class="rate-table">
 <tr><th>分期方式</th><th>3期</th><th>6期</th><th>12期</th><th>24期</th><th>平台</th></tr>
-<tr class="peak"><td><b>工行分期</b></td><td><b>1.0%</b></td><td><b>1.8%</b></td><td><b>3.5%</b></td><td><b>8.0%</b></td><td>九机</td></tr>
+<tr class="group-row"><td colspan="6">九机银行直连渠道</td></tr>
+<tr class="bank-direct"><td><b>工行分期</b></td><td><b>1.0%</b></td><td><b>1.8%</b></td><td><b>3.5%</b></td><td><b>8.0%</b></td><td>九机</td></tr>
+<tr><td>信用卡分期</td><td>1.5%</td><td>3.0%</td><td>6.0%</td><td>12.0%</td><td>九机</td></tr>
+<tr><td>花呗分期</td><td>2.3%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
+<tr><td>白条分期</td><td>2.4%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
+<tr class="group-row"><td colspan="6">转转现有商贴渠道</td></tr>
 <tr><td>京东白条商贴</td><td>1.1%</td><td>2.25%</td><td>3.75%</td><td>10.5%</td><td>转转</td></tr>
 <tr><td>花呗商贴</td><td>1.75%</td><td>4.0%</td><td>6.4%</td><td>12.5%</td><td>转转</td></tr>
 <tr><td>信用卡商贴</td><td>1.8%</td><td>2.8%</td><td>4.8%</td><td>8.8%</td><td>转转</td></tr>
 <tr><td>京东信用卡商贴</td><td>1.8%</td><td>3.15%</td><td>5.25%</td><td>9.5%</td><td>转转</td></tr>
-<tr><td>信用卡分期</td><td>1.5%</td><td>3.0%</td><td>6.0%</td><td>12.0%</td><td>九机</td></tr>
-<tr><td>花呗分期</td><td>2.3%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
-<tr><td>白条分期</td><td>2.4%</td><td>4.5%</td><td>7.5%</td><td>—</td><td>九机</td></tr>
 </table>
 
-<div class="insight">🔑 九机凭借工行直连渠道，在各期费率上全面领先。转转应引入更多银行直连分期渠道（工行、建行）。</div>
+<div class="insight">九机的优势来自银行直连渠道，尤其是工行分期在 3/6/12/24 期均为最低费率。转转应优先补工行、建行等银行直连分期，而不是只在现有商贴渠道内做补贴。</div>
 </div>
 
 <h3>2.4 线下门店交易链路</h3>
@@ -277,7 +292,6 @@ b{font-weight:800;color:#111827}
 <tr><td><span class="priority p0">P0</span></td><td><b>门店支持分期收银</b></td><td>抓住高客单成交时点</td><td>店员可现场发起分期方案，不让用户完全回到线上自助支付</td></tr>
 <tr><td><span class="priority p1">P1</span></td><td><b>引入工行/建行直连分期</b></td><td>降低商贴成本，提升免息空间</td><td>优先谈低费率银行渠道，形成可对商家开放的免息工具</td></tr>
 <tr><td><span class="priority p1">P1</span></td><td><b>设计提价免息商品形态</b></td><td>让商家有利润，也有动力推分期</td><td>支持标准价与免息价并存，分期版价格覆盖手续费</td></tr>
-<tr><td><span class="priority p2">P2</span></td><td><b>配件/保障/分期联合 SOP</b></td><td>提高单笔交易价值</td><td>门店结账前 30 秒固定推荐：月供、配件、保障</td></tr>
 </table>
 </div>
 
