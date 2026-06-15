@@ -54,13 +54,20 @@ b{font-weight:800;color:#111827}
 .meta-note{font-size:12px;color:var(--muted);text-align:left;margin:10px 0 20px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;line-height:1.8}
 .section-divider{text-align:left;color:var(--brand);font-size:14px;font-weight:700;margin:16px 0 8px 0}
 .report-title{display:block;max-width:none;text-align:center;color:var(--brand);border-bottom:3px solid var(--brand);padding:8px 0 14px;margin:0 0 26px;font-size:28px}
+.report-lead{max-width:920px;margin:-8px auto 24px;text-align:center;color:#39445a;font-size:14px;line-height:1.8;font-weight:650}
 .core-panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:0 0 28px;box-shadow:0 8px 24px rgba(23,32,51,.05)}
 .core-panel h3{margin:0 0 14px;color:#1f2937}
+.core-thesis{margin:0 0 16px;padding:15px 17px;border-radius:8px;background:#fff6f4;border:1px solid #f3c7bf;color:#641e16;font-size:14px;line-height:1.8;font-weight:700}
 .judgment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .judgment{border:1px solid #e8edf5;border-radius:8px;padding:14px 15px;background:#fbfcff}
 .judgment b{display:block;margin-bottom:6px;color:#c9362a;font-size:14px}
 .judgment span{display:block;color:#39445a;font-size:13px;line-height:1.7}
 .action-note{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:18px 0 24px;box-shadow:0 8px 24px rgba(23,32,51,.05)}
+.action-note table{display:table;table-layout:fixed;overflow:visible}
+.action-note tbody{display:table;width:100%;min-width:100%;table-layout:fixed}
+.action-note th,.action-note td{text-align:left;white-space:normal}
+.action-note th:first-child,.action-note td:first-child{width:58px;text-align:center}
+.action-note th:nth-child(2),.action-note td:nth-child(2){width:190px}
 .priority{display:inline-block;min-width:34px;padding:1px 8px;border-radius:999px;color:#fff;font-size:11px;font-weight:800}
 .priority.p0{background:#c9362a}.priority.p1{background:#d97706}.priority.p2{background:#2563eb}
 .rate-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 14px}
@@ -79,13 +86,15 @@ b{font-weight:800;color:#111827}
 <div class="container">
 
 <h1 class="report-title">九机业务分期复盘&amp;业务经验交流</h1>
+<div class="report-lead">本文不是复盘九机分期数据本身，而是拆解九机如何把分期嵌入高客单成交链路，并提炼转转可落地的最短动作。</div>
 
 <div class="core-panel">
 <h3>核心判断</h3>
+<div class="core-thesis">九机不是把分期当支付方式，而是把分期做成了高客单二手零售的成交基础设施：用月供降低价格压力，用免息提高成交确定性，用门店收银承接现场转化。</div>
 <div class="judgment-grid">
-<div class="judgment"><b>分期价值在高客单成交</b><span>九机分期 GMV 渗透率 29.4%，约为转转 15% 的 2 倍；价格越高，用户越需要月供和免息来降低决策门槛。</span></div>
-<div class="judgment"><b>九机经验是“前置 + 成交”</b><span>九机把分期放在列表、详情、门店结账全链路表达，不只是在支付页多一个分期选项。</span></div>
-<div class="judgment"><b>转转先补最短链路</b><span>线上先让用户看到月供/可分期，线下让店员能现场发起分期收银，先把“看见分期”和“完成分期”接起来。</span></div>
+<div class="judgment"><b>分期本质是价格转译工具</b><span>二手高客单商品的核心阻力是一次性支付压力。九机把“总价贵”转译成“月供可承担”，所以分期 GMV 渗透率能到 29.4%。</span></div>
+<div class="judgment"><b>九机强在完整成交链路</b><span>九机在列表、详情、门店结账多个节点持续强化分期心智，先让用户看到月供，再让用户接受免息价，最后由店员完成成交推动。</span></div>
+<div class="judgment"><b>转转要补决策链路断点</b><span>转转分期更多停留在支付工具层，浏览时感知弱、门店成交时承接弱。短期先打通“看见分期 → 理解月供 → 现场可成交”的闭环。</span></div>
 </div>
 </div>
 
@@ -287,11 +296,11 @@ b{font-weight:800;color:#111827}
 <h2>三、转转可落地动作</h2>
 <div class="action-note">
 <table>
-<tr><th>优先级</th><th>动作</th><th>目的</th><th>落地口径</th></tr>
-<tr><td><span class="priority p0">P0</span></td><td><b>商品列表增加月供/可分期标签</b></td><td>把分期心智前置到浏览阶段</td><td>列表页露出“可分期”“月供¥XXX”，详情页承接免息说明</td></tr>
-<tr><td><span class="priority p0">P0</span></td><td><b>门店支持分期收银</b></td><td>抓住高客单成交时点</td><td>店员可现场发起分期方案，不让用户完全回到线上自助支付</td></tr>
-<tr><td><span class="priority p1">P1</span></td><td><b>引入工行直连分期</b></td><td>降低商贴成本，提升免息空间</td><td>优先谈低费率银行渠道，形成可对商家开放的免息工具</td></tr>
-<tr><td><span class="priority p1">P1</span></td><td><b>设计提价免息商品形态</b></td><td>让商家有利润，也有动力推分期</td><td>支持标准价与免息价并存，分期版价格覆盖手续费</td></tr>
+<tr><th>优先级</th><th>动作</th><th>目的</th><th>落地口径</th><th>验证指标</th></tr>
+<tr><td><span class="priority p0">P0</span></td><td><b>商品列表增加月供/可分期标签</b></td><td>把分期心智前置到浏览阶段</td><td>列表页露出“可分期”“月供¥XXX”，详情页承接免息说明</td><td>列表点击率、详情页分期点击率、分期下单率</td></tr>
+<tr><td><span class="priority p0">P0</span></td><td><b>门店支持分期收银</b></td><td>抓住高客单成交时点</td><td>店员可现场发起分期方案，不让用户完全回到线上自助支付</td><td>门店分期成交占比、分期客单价、现场支付完成率</td></tr>
+<tr><td><span class="priority p1">P1</span></td><td><b>引入工行直连分期</b></td><td>降低商贴成本，提升免息空间</td><td>优先谈低费率银行渠道，形成可对商家开放的免息工具</td><td>商贴费率、免息商品覆盖率、商家使用率</td></tr>
+<tr><td><span class="priority p1">P1</span></td><td><b>设计提价免息商品形态</b></td><td>让商家有利润，也有动力推分期</td><td>支持标准价与免息价并存，分期版价格覆盖手续费</td><td>免息成交占比、价差覆盖率、商家毛利变化</td></tr>
 </table>
 </div>
 
