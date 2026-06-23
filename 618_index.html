@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,366 +5,249 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>2026年618分期数据全景复盘</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 :root{--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--paper:#f4f6f9;--card:#fff;--accent:#2563eb;--green:#059669;--red:#dc2626;--amber:#d97706;--purple:#7c3aed}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter','PingFang SC','Microsoft YaHei','Noto Sans SC',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1e293b 100%);color:#fff;padding:56px 24px 48px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-30%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 60%);pointer-events:none}
-.hero-inner{max-width:1200px;margin:auto;position:relative;z-index:1}
-.hero-eyebrow{font-size:12px;color:#94a3b8;letter-spacing:3px;margin-bottom:14px}
-.hero h1{font-size:40px;font-weight:800;margin:0 0 12px;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff 55%,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
-.hero p{font-size:16px;line-height:1.8;color:#cbd5e1;max-width:920px;margin:0}
-.hero .meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;font-size:12px;color:#64748b}
-.hero .meta span{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:rgba(255,255,255,0.06);border-radius:6px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter','PingFang SC','Microsoft YaHei',system-ui,sans-serif;line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1e293b 100%);color:#fff;padding:56px 24px 48px;text-align:center}
+.hero h1{font-size:40px;font-weight:800;margin:0 0 12px;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff 55%,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+.hero p{font-size:15px;line-height:1.8;color:#cbd5e1;max-width:800px;margin:0 auto}
+.hero .meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:18px;font-size:12px;color:#64748b}
+.hero .meta span{padding:5px 12px;background:rgba(255,255,255,0.06);border-radius:6px}
 main{max-width:1200px;margin:auto;padding:0 24px 80px}
 .section{background:var(--card);margin:20px 0;padding:36px;border:1px solid var(--line);border-radius:14px}
-.section-title{font-size:22px;font-weight:700;margin:0 0 4px}
+.section-title{font-size:22px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:10px}
 .section-sub{font-size:14px;color:var(--muted);margin:0 0 22px;line-height:1.65}
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.kpi-card{border:1px solid var(--line);border-radius:10px;padding:20px;position:relative;overflow:hidden}
-.kpi-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);border-radius:0 2px 2px 0}
-.kpi-card.neg::before{background:var(--red)}
+.kpi-card{border:1px solid var(--line);border-radius:10px;padding:20px;position:relative;overflow:hidden;background:#fff}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:0 2px 2px 0}
 .kpi-card.pos::before{background:var(--green)}
-.kpi-card .l{font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.3px}
+.kpi-card.neg::before{background:var(--red)}
+.kpi-card.neu::before{background:var(--accent)}
+.kpi-card .l{font-size:11px;color:var(--muted);margin-bottom:6px}
 .kpi-card .v{font-size:26px;font-weight:800;margin:0;line-height:1.2}
 .kpi-card .s{font-size:12px;color:var(--muted);margin-top:5px}
-.kpi .d{font-size:13px;font-weight:600;margin-top:5px}
-.kpi .up{color:var(--green)}.kpi .down{color:var(--red)}
+.kpi-card .d{font-size:13px;font-weight:600;margin-top:5px}
+.up{color:var(--green)}.down{color:var(--red)}
 .verdict{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
 .verdict-main{border-left:5px solid var(--green);padding:18px 22px;background:#ecfdf5;border-radius:0 10px 10px 0}
 .verdict-main h3{font-size:16px;margin:0 0 8px;color:#065f46}
-.verdict-main p{line-height:1.75;margin:0;font-size:14px;color:#065f46}
+.verdict-main p{line-height:1.75;margin:0;font-size:13px;color:#065f46}
 .signals{display:flex;flex-direction:column;gap:9px}
-.signal{border:1px solid var(--line);border-radius:8px;padding:13px 15px}
+.signal{border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:#fff}
 .signal b{display:block;margin-bottom:4px;font-size:13px}
 .signal span{font-size:12px;color:var(--muted);line-height:1.55}
 .chart-wrap{margin:18px 0}
 .chart-label{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--ink)}
-.svg-chart{width:100%;height:auto;display:block;max-width:100%;background:#fafbfc;border-radius:8px;border:1px solid #f1f5f9}
+.svg-chart{width:100%;height:auto;display:block;background:#fafbfc;border-radius:8px;border:1px solid #f1f5f9}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
 .callout{border:1px solid var(--line);border-radius:10px;padding:18px}
 .callout.accent{border-left:4px solid var(--accent);background:#f0f4ff}
 .callout.success{border-left:4px solid var(--green);background:#ecfdf5}
 .callout.warning{border-left:4px solid var(--amber);background:#fffbeb}
 .callout h4{font-size:14px;margin:0 0 5px}
 .callout p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
-.diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.diag-card{border:1px solid var(--line);border-radius:10px;padding:16px}
-.diag-card .num{font-size:11px;font-weight:700;color:var(--accent);margin-bottom:5px;letter-spacing:1px}
-.diag-card h4{font-size:14px;margin:0 0 5px}
-.diag-card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0}
-.action-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.action-card{border:1px solid var(--line);border-radius:10px;padding:18px}
-.action-card .prio{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:6px}
-.action-card h4{font-size:14px;margin:0 0 6px}
-.action-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 8px}
-.action-card .tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:4px;background:#eef2ff;color:var(--accent);font-weight:500}
-.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:13px 16px;color:#92400e;font-size:13px;line-height:1.65;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#f8fafc;font-weight:600;font-size:12px;color:var(--muted);letter-spacing:.3px}
+tr:hover{background:#f8fafc}
 .source{font-size:12px;color:var(--muted);line-height:1.75;border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
-code{font-family:'SF Mono','JetBrains Mono',Menlo,monospace;font-size:12px;background:#f1f5f9;padding:2px 6px;border-radius:3px}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:13px 16px;color:#92400e;font-size:13px;line-height:1.65;margin:14px 0}
 h3{font-size:16px;margin:18px 0 8px}
-@media(max-width:960px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.verdict,.grid-2{grid-template-columns:1fr}.grid-3,.action-grid,.diag-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.hero{padding:32px 16px 28px}.hero h1{font-size:26px}main{padding:0 10px 50px}.section{padding:18px;margin:12px 0}.kpi-grid,.grid-2,.grid-3,.action-grid,.diag-grid{grid-template-columns:1fr}.kpi-card{padding:14px}.kpi-card .v{font-size:20px}}
+@media(max-width:960px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.verdict,.grid-2{grid-template-columns:1fr}.grid-3,.grid-4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hero{padding:32px 16px 28px}.hero h1{font-size:26px}main{padding:0 10px 50px}.section{padding:18px;margin:12px 0}.kpi-grid,.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.kpi-card .v{font-size:20px}}
 </style>
 </head>
 <body>
 <header class="hero">
-<div class="hero-inner">
-  <div class="hero-eyebrow">2026年5月25日 &ndash; 6月21日 &middot; 转转全平台</div>
   <h1>2026年618分期数据全景复盘</h1>
-  <p>订单规模承压 &ndash; 结构升级托底 &ndash; 免息晚启动 &ndash; 高价区权益缺口明显<br>分期日均净订单 4564单，日均净GMV ¥1448万，客单价同比 +14.7%<br>但花呗+京东订单同比下降 13.9% &mdash; 增长从量的扩张切换为质的升级</p>
+  <p>分期 GMV 日均 +19.7% · 渗透率 14.8%（+1.5pp） · 京东 +26% 领跑 · 客单价全面上移<br>核心矛盾：量的增长靠客单价驱动，年轻用户和低价订单在流失</p>
   <div class="meta">
-    <span>25年618：5月30日&ndash;6月18日（20天）</span>
-    <span>26年618：5月25日&ndash;6月21日（28天）</span>
-    <span>数据表：ads_bi_finance_stage_use_credit_result_v4_inc_1d</span>
+    <span>2025年618：5/30-6/18（20天）</span>
+    <span>2026年618：5/25-6/21（28天）</span>
+    <span>数据源：ads_bi_finance_stage_use_credit_result_v4_inc_1d</span>
   </div>
-</div>
 </header>
 <main>
 
-<!-- S1 -->
+<!-- 核心结论 -->
 <section class="section">
 <h2 class="section-title">一、核心结论</h2>
-<p class="section-sub">结论先行：分期业务正处于规模承压、结构升级的拐点，增长策略需从渠道普惠转向定向经营。</p>
+<p class="section-sub">结论先行：分期跑赢大盘，但增长质量存疑——量的增长来自客单价上移，而非用户转化。18-20岁用户 GMV 降 22.4%，免息覆盖率反降。</p>
 <div class="verdict">
   <div class="verdict-main">
-    <h3>订单下滑是最核心矛盾 &mdash; ASP上涨只是托底，非增长引擎</h3>
-    <p>花呗+京东合计日均订单从4,810单降至4,139单（-13.9%），日均GMV仅从1,304万降至1,284万（-1.3%）。ASP从2,708元升至3,106元（+14.7%），高客单弥补了量的缺口。这是结构性被动升级——低价订单流失、高价订单占比提升。</p>
+    <h3>Q1：增长达标吗？达标，但增长引擎变了</h3>
+    <p>分期 GMV 日均 +19.7%，远超大盘增速 +7.8%，渗透率从 13.3% 升至 14.8%。表面达标，但驱动力是客单价全面上移（大盘 +12.7%、分期 +12.3%、免息 +14.4%），而非订单量驱动。京东 +26% GMV 是绝对主力，花呗 -6.1% 拖了后腿。</p>
   </div>
   <div class="signals">
-    <div class="signal"><b>渠道失衡</b><span>京东仍领先花呗，两者同步下降（-13.4% / -14.6%）；信用卡增长有限。分付数据待补充。</span></div>
-    <div class="signal"><b>免息晚启动</b><span>6月10日后免息抬升、订单同步提升，说明免息有效。但预热期覆盖不足，节奏前置可释放额外5-10%订单增量。</span></div>
-    <div class="signal"><b>CZC权益空白</b><span>CZC（花呗18,202单、京东22,565单）免息GMV占比仅1.3-4.0%，规模大但权益极低。</span></div>
+    <div class="signal"><b>Q2：真增长 vs 自然增长</b><span>大盘 GMV 涨 7.8% 是自然增长，分期多涨的 12pp 是"超额增长"——部分来自客单价上移，部分来自京东份额扩大。校验方式：扣除大盘涨幅后的"超额订单"除以总订单。</span></div>
+    <div class="signal"><b>Q3：免息覆盖率不升反降</b><span>B2C 商户从 12.4% 降到 10.0%，CZC 从 13.3% 降到 12.6%。这是选品问题，不是资源不够——门店免息覆盖率从 19.1% 降到 15.7%，跌幅最大。</span></div>
+    <div class="signal"><b>Q4：24期权益包</b><span>24期占比仅 0.2%，几无变化。花呗刚上线 24期，量少但支付成功率 74.5% 高于京东 72.7%，有潜力。</span></div>
   </div>
 </div>
 </section>
 
-<!-- S2: KPI -->
+<!-- KPI 总览 -->
 <section class="section">
-<h2 class="section-title">二、核心KPI</h2>
-<p class="section-sub">基于BI系统5月25日&ndash;6月18日（25天）完整数据，全渠道花呗+京东白条+信用卡分期。</p>
+<h2 class="section-title">二、核心 KPI · 分期跑赢大盘</h2>
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="l">分期日均净订单</div><div class="v">4564</div><div class="s">日均</div></div>
-  <div class="kpi-card"><div class="l">分期日均净GMV</div><div class="v">¥1448万</div><div class="s">日均</div></div>
-  <div class="kpi-card"><div class="l">分期客单价</div><div class="v">¥3,170</div><div class="s">2025同期 ¥2,708</div></div>
-  <div class="kpi-card neg"><div class="l">主渠道订单同比</div><div class="v">-13.9%</div><div class="s down">少 670单/天</div></div>
-  <div class="kpi-card"><div class="l">主渠道GMV同比</div><div class="v">-1.3%</div><div class="s">基本持平</div></div>
-  <div class="kpi-card pos"><div class="l">主渠道ASP同比</div><div class="v">+14.7%</div><div class="s up">结构托底</div></div>
-  <div class="kpi-card"><div class="l">花呗免息GMV占比</div><div class="v">14.8%</div><div class="s">较京东低7.1pp</div></div>
-  <div class="kpi-card pos"><div class="l">京东免息GMV占比</div><div class="v">21.9%</div><div class="s up">中高价区优势</div></div>
+  <div class="kpi-card neu"><div class="l">分期日均净订单</div><div class="v">6,318</div><div class="s up">+10.5% (25年: 5,720)</div></div>
+  <div class="kpi-card neu"><div class="l">分期日均净GMV</div><div class="v">¥1,888万</div><div class="s up">+19.7% (25年: ¥1,577万)</div></div>
+  <div class="kpi-card pos"><div class="l">分期GMV渗透率</div><div class="v">14.8%</div><div class="s up">+1.5pp (25年: 13.3%)</div></div>
+  <div class="kpi-card neu"><div class="l">B2C大盘日均GMV</div><div class="v">¥12,755万</div><div class="s up">+7.8% (25年: ¥11,836万)</div></div>
+  <div class="kpi-card pos"><div class="l">分期客单价</div><div class="v">¥2,307</div><div class="s up">+12.3% (25年: ¥2,055)</div></div>
+  <div class="kpi-card neu"><div class="l">大盘客单价</div><div class="v">¥2,364</div><div class="s up">+12.7% (25年: ¥2,098)</div></div>
+  <div class="kpi-card pos"><div class="l">免息分期客单价</div><div class="v">¥3,039</div><div class="s up">+14.4% (25年: ¥2,656)</div></div>
+  <div class="kpi-card neg"><div class="l">B2C大盘日均订单</div><div class="v">53,959</div><div class="s down">-4.3% (25年: 56,413)</div></div>
 </div>
 </section>
 
-<!-- S3: Trend -->
+<!-- 支付方式 -->
 <section class="section">
-<h2 class="section-title">三、每日趋势 &mdash; 分期订单走势对比</h2>
-<p class="section-sub">花呗+京东每日净订单趋势对比。2025年整体趋势更平稳，2026年走势更曲折——预热期缺乏蓄水，6月10日后免息拉动出现明显抬升。</p>
-<div class="chart-wrap">
-<div class="chart-label">▼ 花呗+京东 每日净订单趋势（25天，已归一化）</div>
-<svg class="svg-chart" viewBox="0 0 880 260" role="img">
-    <text x="44" y="29.0" text-anchor="end" font-size="10" fill="#94a3b8">2280</text>
-    <line x1="50" y1="25.0" x2="860" y2="25.0" stroke="#e2e8f0" stroke-width="1"/>
-    <text x="44" y="75.25" text-anchor="end" font-size="10" fill="#94a3b8">1710</text>
-    <line x1="50" y1="71.25" x2="860" y2="71.25" stroke="#e2e8f0" stroke-width="1"/>
-    <text x="44" y="121.5" text-anchor="end" font-size="10" fill="#94a3b8">1140</text>
-    <line x1="50" y1="117.5" x2="860" y2="117.5" stroke="#e2e8f0" stroke-width="1"/>
-    <text x="44" y="167.75" text-anchor="end" font-size="10" fill="#94a3b8">570</text>
-    <line x1="50" y1="163.75" x2="860" y2="163.75" stroke="#e2e8f0" stroke-width="1"/>
-    <text x="44" y="214.0" text-anchor="end" font-size="10" fill="#94a3b8">0</text>
-    <line x1="50" y1="210.0" x2="860" y2="210.0" stroke="#e2e8f0" stroke-width="1"/>
-  <polyline fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4,3" points="50.0,63.7 83.8,73.2 117.5,75.6 151.2,71.1 185.0,57.1 218.8,67.1 252.5,91.3 286.2,94.2 320.0,100.6 353.8,85.0 387.5,67.9 421.2,63.9 455.0,66.1 488.7,73.0 522.5,76.6 556.2,79.9 590.0,91.5 623.8,94.5 657.5,84.8 691.2,81.0 725.0,113.5 758.8,119.3 792.5,127.7 826.2,142.1 860.0,184.0" opacity="0.7"/>
-  <polyline fill="none" stroke="#2563eb" stroke-width="3" points="50.0,39.9 83.8,30.8 117.5,30.2 151.2,25.0 185.0,31.2 218.8,35.1 252.5,30.2 286.2,55.4 320.0,55.2 353.8,59.1 387.5,53.3 421.2,47.7 455.0,47.2 488.7,48.5 522.5,56.0 556.2,55.2 590.0,92.7 623.8,77.4 657.5,76.0 691.2,81.6 725.0,83.3 758.8,110.6 792.5,110.8 826.2,105.1 860.0,127.4"/>
-  <rect x="685" y="5" width="16" height="3" rx="2" fill="#94a3b8"/>
-  <text x="706" y="16" font-size="11" fill="#64748b">2025 同期</text>
-  <rect x="765" y="5" width="16" height="3" rx="2" fill="#2563eb"/>
-  <text x="786" y="16" font-size="11" fill="#2563eb">2026</text>
-  <circle cx="710" cy="92.67105263157896" r="4" fill="#dc2626"/>
-  <text x="710" y="84.67105263157896" text-anchor="middle" font-size="10" fill="#dc2626">6/10免息启动</text>
-</svg>
-</div>
-<div class="grid-2" style="margin-top:12px">
-  <div class="callout success"><h4>2026每日峰值在6/2&ndash;6/4</h4><p>开门红期间订单短暂冲高后快速回落，6/4-6/10进入低谷。免息自6/10起显著发力，订单随之抬升。说明免息对大促后半段的拉动效果显著，但启动时机偏晚。</p></div>
-  <div class="callout warning"><h4>2025曲线更平滑</h4><p>2025年预热期即积累较充足蓄水，全程波动幅度小于2026年。</p></div>
-</div>
-</section>
-
-<!-- S4: GMV Penetration -->
-<section class="section">
-<h2 class="section-title">四、分期GMV渗透率</h2>
-<p class="section-sub">分期净GMV / B2C大盘净GMV。渗透率与商品价格呈强正相关，价越高越分期。3K以上价格带贡献超过70%的分期GMV。</p>
-<div class="grid-2">
-  <div class="callout"><h4>按客单价维度</h4><p>5K-8K渗透率42%，8K+约52.5%，0-500仅1.5%。价格越高分期占比呈指数级上升。</p></div>
-  <div class="callout"><h4>按品类维度</h4><p>手机品类贡献62%的分期GMV，分期渗透率约34%。电脑21%、平板19%，数码7.3%。手机是分期渗透的锚点。</p></div>
-</div>
-<div class="chart-wrap">
-<div class="chart-label">▼ 按价格带分期GMV渗透率（618期间）</div>
-<svg class="svg-chart" viewBox="0 0 700 240" role="img">
-  <rect x="60" y="225" width="50" height="5" rx="3" fill="#6b7280" opacity="0.85"/><text x="85" y="217" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7280">1.5%</text><text x="85" y="245" text-anchor="middle" font-size="10" fill="#6b7280">0-500</text>
-  <rect x="135" y="215" width="50" height="15" rx="3" fill="#6b7280" opacity="0.85"/><text x="160" y="207" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7280">5.4%</text><text x="160" y="245" text-anchor="middle" font-size="10" fill="#6b7280">500-1K</text>
-  <rect x="210" y="190" width="50" height="40" rx="3" fill="#2563eb" opacity="0.85"/><text x="235" y="182" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb">12.5%</text><text x="235" y="245" text-anchor="middle" font-size="10" fill="#6b7280">1K-2K</text>
-  <rect x="285" y="165" width="50" height="65" rx="3" fill="#2563eb" opacity="0.85"/><text x="310" y="157" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb">19.5%</text><text x="310" y="245" text-anchor="middle" font-size="10" fill="#6b7280">2K-3K</text>
-  <rect x="360" y="135" width="50" height="95" rx="3" fill="#059669" opacity="0.85"/><text x="385" y="127" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">28.0%</text><text x="385" y="245" text-anchor="middle" font-size="10" fill="#6b7280">3K-4K</text>
-  <rect x="435" y="110" width="50" height="120" rx="3" fill="#059669" opacity="0.85"/><text x="460" y="102" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">35.0%</text><text x="460" y="245" text-anchor="middle" font-size="10" fill="#6b7280">4K-5K</text>
-  <rect x="510" y="85" width="50" height="145" rx="3" fill="#059669" opacity="0.85"/><text x="535" y="77" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">42.0%</text><text x="535" y="245" text-anchor="middle" font-size="10" fill="#6b7280">5K-8K</text>
-  <rect x="585" y="50" width="50" height="180" rx="3" fill="#059669" opacity="0.85"/><text x="610" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">52.5%</text><text x="610" y="245" text-anchor="middle" font-size="10" fill="#6b7280">8K+</text>
-</svg>
-</div>
-<div class="note"><strong>数据说明：</strong>BI链路在补查大盘时断开，完整数据需恢复后补齐。日常长期均值：订单渗透率19.3%，GMV渗透率29.4%。</div>
-</section>
-
-<!-- S5: 客单价 -->
-<section class="section">
-<h2 class="section-title">五、客单价维度分析</h2>
-<p class="section-sub">分期客单价 > 大盘客单价是二手电商固有特征——用户分期购买高价商品意愿更强。</p>
-<div class="kpi-grid">
-  <div class="kpi-card pos"><div class="l">分期客单价</div><div class="v">¥3,170</div><div class="s up">高于大盘约24%</div></div>
-  <div class="kpi-card"><div class="l">免息客单价（估算）</div><div class="v">¥3,420</div><div class="s">样本期推算</div></div>
-  <div class="kpi-card"><div class="l">大盘客单价（参考）</div><div class="v">¥2,560</div><div class="s">日常基准</div></div>
-  <div class="kpi-card pos"><div class="l">分期 vs 大盘价差</div><div class="v">+¥610</div><div class="s up">高客单特征明显</div></div>
-</div>
-<div class="chart-wrap">
-<div class="chart-label">▼ 2025 vs 2026 分期客单价对比（花呗+京东）</div>
-<svg class="svg-chart" viewBox="0 0 520 220" role="img">
-  <rect x="70" y="105" width="80" height="80" rx="4" fill="#94a3b8" opacity="0.6"/>
-  <text x="110" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">¥2,708</text>
-  <text x="110" y="202" text-anchor="middle" font-size="11" fill="#94a3b8">2025</text>
-  <rect x="230" y="72" width="80" height="113" rx="4" fill="#2563eb"/>
-  <text x="270" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">¥3,106</text>
-  <text x="270" y="202" text-anchor="middle" font-size="11" fill="#2563eb">2026</text>
-  <text x="190" y="122" text-anchor="middle" font-size="14" font-weight="800" fill="#059669">+14.7%</text>
-  <text x="190" y="140" text-anchor="middle" font-size="11" fill="#6b7280">ASP上涨</text>
-  <text x="90" y="220" font-size="11" fill="#94a3b8">花呗: ¥2,447</text>
-  <text x="250" y="220" font-size="11" fill="#2563eb">花呗: ¥2,878</text>
-  <text x="90" y="234" font-size="11" fill="#94a3b8">京东: ¥2,912</text>
-  <text x="250" y="234" font-size="11" fill="#2563eb">京东: ¥3,285</text>
-</svg>
-</div>
-</section>
-
-<!-- S6: 免息 -->
-<section class="section">
-<h2 class="section-title">六、免息商品覆盖率</h2>
-<p class="section-sub">免息库存 / B2C大盘库存。覆盖率影响转化率——B2C商户32.5%，CZC仅2.5%，CZC是最大增量基盘。</p>
-<div class="grid-3">
-  <div class="callout accent"><h4>按货源</h4><p>B2C商户32.5% > 采货侠2.8% > CZC 2.5% > 门店 0%。B2C主阵地，CZC有规模但无权益。</p></div>
-  <div class="callout accent"><h4>按客单价</h4><p>4K-5K最高22%，5K-8K 21%，3K-4K 20%。8K+反降至13%，超高价格免息供给存在落差。</p></div>
-  <div class="callout accent"><h4>按品类</h4><p>平板25.5% > 手机25.2% > 电脑22.2% > 数码7.3%。运动户外为零。</p></div>
-</div>
-</section>
-
-<!-- S7: 支付+期数 -->
-<section class="section">
-<h2 class="section-title">七、支付方式 &amp; 期数结构</h2>
-<p class="section-sub">支付方式反映用户信用偏好，期数反映还款能力与价格的匹配度。</p>
-<h3 style="font-size:15px;margin:0 0 8px">支付方式 — 订单分布</h3>
-<div class="chart-wrap">
-<svg class="svg-chart" viewBox="0 0 700 180" role="img">
-  <rect x="60" y="25" width="70" height="150" rx="4" fill="#2563eb" opacity="0.85"/><text x="95" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb">1,824/天</text><text x="95" y="195" text-anchor="middle" font-size="10" fill="#6b7280">花呗分期</text>
-  <rect x="260" y="10" width="70" height="165" rx="4" fill="#7c3aed" opacity="0.85"/><text x="295" y="3" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">2,316/天</text><text x="295" y="195" text-anchor="middle" font-size="10" fill="#6b7280">京东白条</text>
-  <rect x="460" y="108" width="70" height="67" rx="4" fill="#059669" opacity="0.85"/><text x="495" y="101" text-anchor="middle" font-size="11" font-weight="700" fill="#059669">421/天</text><text x="495" y="195" text-anchor="middle" font-size="10" fill="#6b7280">信用卡分期</text>
-  <text x="530" y="35" font-size="11" fill="#dc2626">注：分付待补充</text>
-</svg>
-</div>
-
-<h3 style="font-size:15px;margin:16px 0 8px">期数结构 — 订单占比对比</h3>
-<div class="chart-wrap">
-<svg class="svg-chart" viewBox="0 0 600 260" role="img">
-  <rect x="50" y="70" width="28" height="130" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="85" y="88" width="28" height="112" rx="3" fill="#7c3aed"/>
-  <text x="64" y="63" text-anchor="middle" font-size="9" fill="#94a3b8">28.8%</text><text x="99" y="81" text-anchor="middle" font-size="9" fill="#7c3aed">23.6%</text><text x="99" y="245" text-anchor="middle" font-size="11" fill="#6b7280">3期</text><text x="99" y="258" text-anchor="middle" font-size="10" fill="#94a3b8">ASP ¥2,752</text>
-  <rect x="180" y="95" width="28" height="105" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="215" y="123" width="28" height="77" rx="3" fill="#7c3aed"/>
-  <text x="194" y="88" text-anchor="middle" font-size="9" fill="#94a3b8">20.9%</text><text x="229" y="116" text-anchor="middle" font-size="9" fill="#7c3aed">15.3%</text><text x="229" y="245" text-anchor="middle" font-size="11" fill="#6b7280">6期</text><text x="229" y="258" text-anchor="middle" font-size="10" fill="#94a3b8">ASP ¥3,094</text>
-  <rect x="310" y="50" width="28" height="150" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="345" y="25" width="28" height="175" rx="3" fill="#7c3aed"/>
-  <text x="324" y="43" text-anchor="middle" font-size="9" fill="#94a3b8">36.3%</text><text x="359" y="18" text-anchor="middle" font-size="9" fill="#7c3aed">46.0%</text><text x="359" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb">12期</text><text x="359" y="258" text-anchor="middle" font-size="10" fill="#94a3b8">ASP ¥3,429</text>
-  <rect x="440" y="145" width="28" height="55" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="475" y="150" width="28" height="50" rx="3" fill="#7c3aed"/>
-  <text x="454" y="138" text-anchor="middle" font-size="9" fill="#94a3b8">1.8%</text><text x="489" y="143" text-anchor="middle" font-size="9" fill="#7c3aed">1.5%</text><text x="489" y="245" text-anchor="middle" font-size="11" fill="#6b7280">24期</text><text x="489" y="258" text-anchor="middle" font-size="10" fill="#94a3b8">ASP ¥4,565</text>
-  <rect x="25" y="4" width="12" height="12" rx="2" fill="#94a3b8" opacity="0.5"/><text x="41" y="15" font-size="10" fill="#94a3b8">2025</text>
-  <rect x="85" y="4" width="12" height="12" rx="2" fill="#7c3aed"/><text x="101" y="15" font-size="10" fill="#7c3aed">2026</text>
-</svg>
-</div>
-
+<h2 class="section-title">三、支付方式 · 京东暴涨、花呗萎缩、分付入场</h2>
+<table>
+<thead><tr><th>支付方式</th><th>25日均订单</th><th>25日均GMV(万)</th><th>26日均订单</th><th>26日均GMV(万)</th><th>订单YoY</th><th>GMV YoY</th></tr></thead>
+<tbody>
+<tr><td><b>京东白条</b></td><td>2,986</td><td>866</td><td>3,611</td><td>1,091</td><td><span class="up">+20.9%</span></td><td><span class="up">+26.0%</span></td></tr>
+<tr><td><b>花呗分期</b></td><td>2,314</td><td>572</td><td>1,868</td><td>537</td><td><span class="down">-19.3%</span></td><td><span class="down">-6.1%</span></td></tr>
+<tr><td><b>信用卡</b></td><td>420</td><td>139</td><td>414</td><td>157</td><td><span class="down">-1.4%</span></td><td><span class="up">+12.7%</span></td></tr>
+<tr><td><b>微信分付</b></td><td>—</td><td>—</td><td>425</td><td>103</td><td><span class="up">新增</span></td><td><span class="up">新增</span></td></tr>
+</tbody></table>
 <div class="grid-2" style="margin-top:14px">
-  <div class="callout success"><h4>12期占比跃升到46%</h4><p>ASP ¥3,429，GMV贡献接近50%。增长应围绕12期做深，而非无差别扩期数。</p></div>
-  <div class="callout warning"><h4>6期收缩明显（20.9%→15.3%）</h4><p>6期处中间地带——需重新审视定位：是独立产品还是12期的流量过渡？</p></div>
+  <div class="callout success"><h4>京东白条：绝对增长主力</h4><p>日均GMV +225万/天，增量占分期总增量的 72%。客单价 ¥3,022 → 仍为高价区首选。京东支付成功率从 72.4% 微升至 72.7%，提升空间有限。</p></div>
+  <div class="callout warning"><h4>花呗分期：失速明显</h4><p>日均GMV -35万/天。花呗支付成功率 74.5%（高于京东的 72.7%），说明不是支付体验问题——根源在用户迁移：低价段用户流失，花呗的 0-2K 核心阵地被大盘缩量拖累。</p></div>
 </div>
 </section>
 
-<!-- S8: 年龄 -->
+<!-- 客单价分布 -->
 <section class="section">
-<h2 class="section-title">八、成交人群画像</h2>
-<p class="section-sub">分期人群在变老变成熟——低龄用户占比下降，25-39岁高消费力群体占比显著提升。</p>
+<h2 class="section-title">四、客单价 · 大盘全面上移，低价用户流失</h2>
 <div class="chart-wrap">
-<div class="chart-label">▼ 年龄结构变化（样本期5月25-31日）</div>
-<svg class="svg-chart" viewBox="0 0 500 260" role="img">
-  <rect x="40" y="65" width="26" height="125" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="71" y="98" width="26" height="92" rx="3" fill="#2563eb"/>
-  <text x="53" y="58" text-anchor="middle" font-size="9" fill="#94a3b8">59.8%</text><text x="84" y="91" text-anchor="middle" font-size="9" fill="#2563eb">45.2%</text><text x="84" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">-14.6pp</text>
-  <rect x="115" y="140" width="26" height="50" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="146" y="120" width="26" height="70" rx="3" fill="#2563eb"/>
-  <text x="128" y="133" text-anchor="middle" font-size="9" fill="#94a3b8">16.1%</text><text x="159" y="113" text-anchor="middle" font-size="9" fill="#2563eb">21.9%</text><text x="159" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">+5.8pp</text>
-  <rect x="190" y="151" width="26" height="39" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="221" y="135" width="26" height="55" rx="3" fill="#2563eb"/>
-  <text x="203" y="144" text-anchor="middle" font-size="9" fill="#94a3b8">9.5%</text><text x="234" y="128" text-anchor="middle" font-size="9" fill="#2563eb">13.1%</text><text x="234" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">+3.7pp</text>
-  <rect x="265" y="158" width="26" height="32" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="296" y="145" width="26" height="45" rx="3" fill="#2563eb"/>
-  <text x="278" y="151" text-anchor="middle" font-size="9" fill="#94a3b8">7.6%</text><text x="309" y="138" text-anchor="middle" font-size="9" fill="#2563eb">9.7%</text><text x="309" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">+2.1pp</text>
-  <rect x="340" y="161" width="26" height="29" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="371" y="140" width="26" height="50" rx="3" fill="#2563eb"/>
-  <text x="353" y="154" text-anchor="middle" font-size="9" fill="#94a3b8">5.6%</text><text x="384" y="133" text-anchor="middle" font-size="9" fill="#2563eb">8.5%</text><text x="384" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">+2.9pp</text>
-  <rect x="415" y="186" width="26" height="4" rx="3" fill="#94a3b8" opacity="0.5"/>
-  <rect x="446" y="185" width="26" height="5" rx="3" fill="#2563eb"/>
-  <text x="428" y="179" text-anchor="middle" font-size="9" fill="#94a3b8">1.5%</text><text x="459" y="178" text-anchor="middle" font-size="9" fill="#2563eb">1.6%</text><text x="459" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">+0.1pp</text>
-  <rect x="15" y="4" width="12" height="12" rx="2" fill="#94a3b8" opacity="0.5"/><text x="31" y="15" font-size="10" fill="#94a3b8">2025</text>
-  <rect x="75" y="4" width="12" height="12" rx="2" fill="#2563eb"/><text x="91" y="15" font-size="10" fill="#2563eb">2026</text>
+<div class="chart-label">▼ 25年 vs 26年 B2C大盘日均GMV(万) 按客单价区间对比</div>
+<svg class="svg-chart" viewBox="0 0 700 240">
+  <rect x="40" y="190" width="40" height="50" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="80" y="195" width="40" height="45" rx="3" fill="#2563eb"/><text x="100" y="183" text-anchor="middle" font-size="8" fill="#2563eb">233</text><text x="60" y="183" text-anchor="middle" font-size="8" fill="#94a3b8">293</text><text x="100" y="252" text-anchor="middle" font-size="9">0-500</text>
+  <rect x="145" y="162" width="40" height="78" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="185" y="170" width="40" height="70" rx="3" fill="#2563eb"/><text x="205" y="155" text-anchor="middle" font-size="8" fill="#2563eb">738</text><text x="165" y="155" text-anchor="middle" font-size="8" fill="#94a3b8">829</text><text x="205" y="252" text-anchor="middle" font-size="9">500-1K</text>
+  <rect x="250" y="117" width="40" height="123" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="290" y="125" width="40" height="115" rx="3" fill="#2563eb"/><text x="310" y="110" text-anchor="middle" font-size="8" fill="#2563eb">2,016</text><text x="270" y="110" text-anchor="middle" font-size="8" fill="#94a3b8">2,200</text><text x="310" y="252" text-anchor="middle" font-size="9">1K-2K</text>
+  <rect x="355" y="100" width="40" height="140" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="395" y="100" width="40" height="140" rx="3" fill="#2563eb"/><text x="415" y="93" text-anchor="middle" font-size="8">≈±0</text><text x="415" y="252" text-anchor="middle" font-size="9">2K-3K</text>
+  <rect x="460" y="80" width="40" height="160" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="500" y="85" width="40" height="155" rx="3" fill="#2563eb"/><text x="520" y="73" text-anchor="middle" font-size="8" fill="#2563eb">1,712</text><text x="480" y="73" text-anchor="middle" font-size="8" fill="#94a3b8">1,547</text><text x="520" y="252" text-anchor="middle" font-size="9">4K-5K</text>
+  <rect x="565" y="55" width="40" height="185" rx="3" fill="#94a3b8" opacity="0.5"/><rect x="605" y="45" width="40" height="195" rx="3" fill="#2563eb"/><text x="625" y="38" text-anchor="middle" font-size="8" fill="#2563eb">1,244</text><text x="585" y="38" text-anchor="middle" font-size="8" fill="#94a3b8">546</text><text x="625" y="252" text-anchor="middle" font-size="9">8K+</text>
+  <rect x="15" y="3" width="12" height="12" rx="2" fill="#94a3b8" opacity="0.5"/><text x="32" y="14" font-size="9" fill="#94a3b8">25年</text>
+  <rect x="75" y="3" width="12" height="12" rx="2" fill="#2563eb"/><text x="92" y="14" font-size="9" fill="#2563eb">26年</text>
 </svg>
 </div>
-
-<div class="grid-2" style="margin-top:14px">
-  <div class="callout success"><h4>&le;21岁 vs &ge;22岁（估算）</h4><p>按≤21/≥22划分：≤21岁订单占比约22%→16%，≥22岁78%→84%。22岁以上ASP（¥3,100-3,500）和免息转化率（10-15%）更高，是核心增长人群。</p></div>
-  <div class="callout warning"><h4>城市维度（待补充）</h4><p>需用户profile关联分期订单后补充。预计分布：一线22%，二线35%，三线28%，四线12%，五线以下3%。</p></div>
-</div>
+<div class="note"><b>关键信号：</b>0-500 区间 GMV 从 293万 降至 233万（-20.5%），500-1K 从 829万 降至 738万（-11.0%）。低价段全面萎缩，8K+ 暴涨 127.8%（546→1244万）。客单价上移本质是被动的——便宜的不好卖了。</div>
 </section>
 
-<!-- S9: 支付维度 -->
+<!-- 期数 & 免息 -->
 <section class="section">
-<h2 class="section-title">九、支付维度 — 意愿率 &amp; 成功率</h2>
-<p class="section-sub">支付意愿率 = 用户选择分期的比例；支付成功率 = 选择分期后支付成功的比例。</p>
+<h2 class="section-title">五、期数结构 · 12期稳中有升，免息反降</h2>
 <div class="grid-2">
-  <div class="callout accent"><h4>支付意愿率（估算18-22%）</h4><p>100个支付用户中18-22人选择分期。花呗促销期可达25%，信用卡约15%。核心因素：免息覆盖、首付降低感知、月供可视化。</p></div>
-  <div class="callout accent"><h4>支付成功率（BI表可查）</h4><p>花呗82-86%，京东78-83%，信用卡70-75%。链路恢复后可从 ads_bi_pay_chenggonglv_inc_1d 精确提取。</p></div>
-</div>
-</section>
-
-<!-- S10: 根因 -->
-<section class="section">
-<h2 class="section-title">十、增长慢的根因分析</h2>
-<p class="section-sub">六个根因按影响程度排序。</p>
-<div class="diag-grid">
-  <div class="diag-card"><div class="num">01 &middot; 核心矛盾</div><h4>主渠道同步掉量</h4><p>花呗和京东订单均降约14%。不是单点故障——新增需求不足、承接下降、节奏错位三层面叠加。</p></div>
-  <div class="diag-card"><div class="num">02 &middot; 节奏问题</div><h4>免息启动偏晚</h4><p>6月10日后免息有效，但预热和开门红未覆盖。前置一周可挽回5-8%订单流失。</p></div>
-  <div class="diag-card"><div class="num">03 &middot; 供给结构</div><h4>高价区京东一枝独秀</h4><p>5K-8K京东=花呗1.80倍，8K+ 2.04倍。花呗高价权益存在系统性缺口。</p></div>
-  <div class="diag-card"><div class="num">04 &middot; 货源盲区</div><h4>CZC免息近乎空白</h4><p>CZC日均1,641单，免息GMV占比仅1.3-4.0%，有量无权益。</p></div>
-  <div class="diag-card"><div class="num">05 &middot; 人群粗放</div><h4>成熟用户未差异化经营</h4><p>25-39岁占比+12pp、ASP高15-25%，但策略仍以渠道为中心，缺少精细运营。</p></div>
-  <div class="diag-card"><div class="num">06 &middot; 产品表达</div><h4>分期价值出现在支付环节</h4><p>月供、免息节省未在决策阶段展示。分期是支付选项而非成交杠杆。</p></div>
-</div>
-</section>
-
-<!-- S11: Growth -->
-<section class="section">
-<h2 class="section-title">十一、增长结论与下一步动作</h2>
-<p class="section-sub">回答核心增长问题。</p>
-<div class="verdict" style="margin-bottom:18px">
-  <div class="verdict-main">
-    <h3>Q1: 26年分期对比25年，增长预期？分期vs大盘？</h3>
-    <p><strong>分期增速跑输大盘。大盘GMV增速约+4-6%，分期GMV增速约-1%。</strong>订单同比-13.9%，大盘订单同比约-8-10%。原因：①低价订单流失更快；②渗透率未突破；③免息启动偏晚。增长不及预期不是支付问题，是流量和商品结构问题。</p>
+  <div>
+    <table>
+    <thead><tr><th>期数</th><th>25年占比</th><th>26年占比</th><th>26客单价</th></tr></thead>
+    <tr><td>无期(默认)</td><td>87.5%</td><td>89.4%</td><td>¥2,205</td></tr>
+    <tr><td>12期</td><td>4.0%</td><td>4.5%</td><td>¥3,405</td></tr>
+    <tr><td>3期</td><td>3.9%</td><td>2.7%</td><td>¥2,687</td></tr>
+    <tr><td>6期</td><td>2.9%</td><td>1.9%</td><td>¥3,312</td></tr>
+    <tr><td>24期</td><td>0.2%</td><td>0.2%</td><td>¥4,315</td></tr>
+    </table>
   </div>
-  <div class="verdict-main" style="border-left-color:var(--accent);background:#f0f4ff">
-    <h3>Q2: 未来分期增长的方式和方法？</h3>
-    <p><strong>六大增长杠杆（按投入产出比排序）：</strong><br>
-    ① CZC免息A/B验证：同机型同价对比，最小成本验证增量<br>
-    ② 3K-8K定向免息：iPhone/电脑/平板按货源白名单投12期<br>
-    ③ 支付成功率路由：基于额度+历史成功率智能排序<br>
-    ④ 商品页前置月供：价格旁展示"最低每月¥XX"<br>
-    ⑤ 期数分层经营：3/6期做规模，12期做主GMV<br>
-    ⑥ 机构预算联动：按活动ID管理预算/核销/订单/ROI</p>
-  </div>
+  <div class="callout warning"><h4>免息覆盖率不升反降</h4><p><table style="font-size:12px;margin:6px 0"><tr><th>货源</th><th>25年</th><th>26年</th></tr><tr><td>B2C商户</td><td>12.4%</td><td><span class="down">10.0%</span></td></tr><tr><td>CZC</td><td>13.3%</td><td><span class="down">12.6%</span></td></tr><tr><td>门店</td><td>19.1%</td><td><span class="down">15.7%</span></td></tr><tr><td>采货侠B1</td><td>11.2%</td><td><span class="down">7.3%</span></td></tr></table>所有渠道免息覆盖率都在降。门店是最该加强的场景（客单价高、转化潜力大），但降幅最大。</p></div>
 </div>
-
-<div class="action-grid">
-  <div class="action-card"><div class="prio">P0 &middot; 两周</div><h4>CZC免息A/B验证</h4><p>同机型同价库存A组免息/B组无免息，比较售出率、成功率和净增GMV。</p><span class="tag">预期+15-25%订单</span></div>
-  <div class="action-card"><div class="prio">P0 &middot; 两周</div><h4>3K-8K定向免息</h4><p>iPhone/电脑/平板按货源白名单投12期，以增量订单和毛利判断扩量。</p><span class="tag">恢复高价订单</span></div>
-  <div class="action-card"><div class="prio">P0 &middot; 两周</div><h4>支付成功率路由</h4><p>基于额度+渠道成功率+期数智能排序，优先展示最可能成功的方案。</p><span class="tag">预期+3-5%订单</span></div>
-  <div class="action-card"><div class="prio">P1 &middot; 一月</div><h4>商品页前置分期</h4><p>价格旁展示最低月供+可用期数+免息标签，确单页总价/月供双视图。</p><span class="tag">预期+5-8%选择率</span></div>
-  <div class="action-card"><div class="prio">P1 &middot; 一月</div><h4>期数分层经营</h4><p>3/6期做规模，12期做主GMV，24期仅高ASP+高通过率人群。</p><span class="tag">减少内部迁移</span></div>
-  <div class="action-card"><div class="prio">P1 &middot; 季度</div><h4>机构预算联动</h4><p>满减+免息统一活动台账，按活动ID管理预算/核销/订单/ROI。</p><span class="tag">降低平台补贴</span></div>
-</div>
-<div class="note" style="margin-top:16px"><strong>核心目标建议：</strong><br>
-&cir; 短期：花呗+京东订单同比从-14%收窄到-5%以内<br>
-&cir; 中期：CZC免息覆盖率达10%并验证ROI为正<br>
-&cir; 长期：商品页分期曝光到支付成功完整漏斗，选择率30%+<br>
-&cir; 年度：分期GMV渗透率从29%提升至35%+</div>
 </section>
 
-<!-- SOURCE -->
-<section class="section" style="padding:24px 36px">
-<h2 style="font-size:15px;margin:0 0 8px;font-weight:700">数据来源与口径说明</h2>
-<table style="font-size:13px">
-<tr><td style="width:160px">主数据表</td><td><code>hdp_zhuanzhuan_ads_global.ads_bi_finance_stage_use_credit_result_v4_inc_1d</code></td></tr>
-<tr><td>支付成功率表</td><td><code>hdp_ubu_zhuanzhuan_ads_b2c.ads_bi_pay_chenggonglv_inc_1d</code></td></tr>
-<tr><td>主数据周期</td><td>2025/2026年5月25日-6月18日（25天），is_pure_pay_the_day=1</td></tr>
-<tr><td>年龄/期数/成本</td><td>订单明细同口径预热期样本（5月25-31日）</td></tr>
-<tr><td>渗透率基准</td><td>263天长期均值（分期北极星指标看板）</td></tr>
-<tr><td>数据缺口</td><td>城市维度/端维度（小程序+找靓机）/ 分付 / 动销率SKU级 / 6月19-21日数据</td></tr>
+<!-- 端维度 -->
+<section class="section">
+<h2 class="section-title">六、端维度 · 找靓机萎缩，小程序持平</h2>
+<table>
+<thead><tr><th>端</th><th>25日均订单</th><th>26日均订单</th><th>25日均GMV(万)</th><th>26日均GMV(万)</th><th>客单价YoY</th></tr></thead>
+<tr><td>转转APP</td><td>38,151</td><td>36,943(-3.2%)</td><td>7,914</td><td>8,612(+8.8%)</td><td><span class="up">+12.4%</span></td></tr>
+<tr><td>转转小程序</td><td>6,769</td><td>6,774(持平)</td><td>1,274</td><td>1,461(+14.7%)</td><td><span class="up">+14.6%</span></td></tr>
+<tr><td>找靓机APP</td><td>1,398</td><td>771(-44.9%)</td><td>329</td><td>191(-42.0%)</td><td><span class="up">+5.3%</span></td></tr>
 </table>
-<p style="font-size:12px;color:var(--muted);margin-top:12px">配套SQL：618_installment_queries.sql。生成日期：2026年6月22日。</p>
+<div class="note"><b>找靓机APP严重萎缩：</b>订单降 44.9%。关注是否是流量迁移到了转转主APP、还是找靓机整体在衰退。小程序持平但 GMV 涨 14.7%，说明小程序用户客单价在提升。</div>
 </section>
 
-</main>
-</body>
-</html>
+<!-- 人群画像 -->
+<section class="section">
+<h2 class="section-title">七、人群画像 · 年轻用户在流失</h2>
+<table>
+<thead><tr><th>年龄段</th><th>25日均GMV(万)</th><th>26日均GMV(万)</th><th>YoY</th><th>渗透率变化</th></tr></thead>
+<tr><td>18以下</td><td>308</td><td>166</td><td><span class="down">-46.1%</span></td><td>—</td></tr>
+<tr><td>18-20</td><td>1,306</td><td>1,013</td><td><span class="down">-22.4%</span></td><td><span class="up">+0.4pp</span></td></tr>
+<tr><td>21-25</td><td>1,642</td><td>1,520</td><td><span class="down">-7.4%</span></td><td><span class="down">-1.9pp</span></td></tr>
+<tr><td>26-30</td><td>1,226</td><td>1,176</td><td><span class="down">-4.0%</span></td><td><span class="down">-1.7pp</span></td></tr>
+<tr><td>31-35</td><td>920</td><td>882</td><td><span class="down">-4.1%</span></td><td>—</td></tr>
+<tr><td>未知</td><td>2,397</td><td>3,859</td><td><span class="up">+61.0%</span></td><td>—</td></tr>
+</table>
+<div class="grid-2" style="margin-top:14px">
+  <div class="callout warning"><h4>Q5：用户在变"老"</h4><p>18-20岁 GMV 降 22.4%，18以下降 46.1%。21-35岁各段也都是小幅下降。但"未知"用户暴涨 61%，说明用户画像数据变差——大量用户没能匹配到年龄，数据质量在退化。</p></div>
+  <div class="callout accent"><h4>Q5b：结构在往什么方向走？</h4><p>客单价全年龄普涨，但低龄用户绝对量萎缩。这不是用户在"升级"，是低价年轻用户离开平台。高线城市用户更稳定，低线城市客单价被动提升但量没有扩大。</p></div>
+</div>
+</section>
+
+<!-- 城市维度 -->
+<section class="section">
+<h2 class="section-title">八、城市维度 · 格局稳定，三线微升</h2>
+<table>
+<thead><tr><th>城市等级</th><th>25日均GMV(万)</th><th>26日均GMV(万)</th><th>客单价YoY</th><th>渗透率变化</th></tr></thead>
+<tr><td>一线</td><td>1,214</td><td>1,394(+14.8%)</td><td><span class="up">+12.9%</span></td><td>+0.1pp</td></tr>
+<tr><td>新一线</td><td>2,185</td><td>2,375(+8.7%)</td><td><span class="up">+10.2%</span></td><td>—</td></tr>
+<tr><td>二线</td><td>1,911</td><td>2,072(+8.4%)</td><td><span class="up">+10.3%</span></td><td>-0.1pp</td></tr>
+<tr><td>三线</td><td>1,859</td><td>1,969(+5.9%)</td><td><span class="up">+13.1%</span></td><td><span class="up">+0.3pp</span></td></tr>
+<tr><td>四线</td><td>1,251</td><td>1,302(+4.1%)</td><td><span class="up">+14.0%</span></td><td>持平</td></tr>
+<tr><td>五线</td><td>722</td><td>751(+4.0%)</td><td><span class="up">+13.4%</span></td><td>-0.1pp</td></tr>
+</table>
+<div class="note">城市渗透率整体非常稳定（79-82%），各区差异极小。说明城市不是分期渗透的关键变量——客单价和品类才是。</div>
+</section>
+
+<!-- 支付意愿 & 成功率 -->
+<section class="section">
+<h2 class="section-title">九、支付体验 · 成功率差异不大，分付垫底</h2>
+<table>
+<thead><tr><th>支付方式</th><th>25年转化率</th><th>26年转化率</th><th>变化</th></tr></thead>
+<tr><td>微信支付</td><td>84.1%</td><td>84.6%</td><td><span class="up">+0.5pp</span></td></tr>
+<tr><td>信用卡</td><td>81.2%</td><td>83.5%</td><td><span class="up">+2.3pp</span></td></tr>
+<tr><td>支付宝</td><td>82.3%</td><td>82.9%</td><td><span class="up">+0.6pp</span></td></tr>
+<tr><td>花呗分期</td><td>73.7%</td><td>74.5%</td><td><span class="up">+0.8pp</span></td></tr>
+<tr><td>京东白条</td><td>72.4%</td><td>72.7%</td><td><span class="up">+0.3pp</span></td></tr>
+<tr><td>分付</td><td>—</td><td>75.8%</td><td>新增</td></tr>
+</table>
+<div class="callout accent" style="margin-top:14px"><h4>Q6：支付成功率不是核心问题</h4><p>各渠道成功率均在 72-85% 之间，差异不大且都在小幅提升。没有出现"支付意愿涨但成功率跌"的警报。花呗成功率 74.5% 比京东 72.7% 还略高——花呗掉的不是体验，是用户基数。</p></div>
+</section>
+
+<!-- 动销率 & 渗透率 -->
+<section class="section">
+<h2 class="section-title">十、动销率 · 非分期库存卖得更好</h2>
+<div class="grid-2">
+  <div>
+    <h3>动销率对比</h3>
+    <table>
+    <tr><th>类型</th><th>25年</th><th>26年</th><th>变化</th></tr>
+    <tr><td>分期动销率</td><td>1.052</td><td>1.061</td><td><span class="up">+0.009</span></td></tr>
+    <tr><td>非分期动销率</td><td>1.192</td><td>1.191</td><td>持平</td></tr>
+    </table>
+  </div>
+  <div class="callout warning"><h4>Q8：非分期库存卖得更好</h4><p>非分期动销率 1.19 > 分期动销率 1.06。差距约 13%，两年未缩小。这说明加了分期的商品反而卖得不如不加的——不是分期没效果，而是分期覆盖的商品（高价区）本身动销就难。核心是选品问题而非分期能力问题。</p></div>
+</div>
+</section>
+
+<!-- 增长思考 -->
+<section class="section">
+<h2 class="section-title">十一、未来增长 · 三条路径</h2>
+<p class="section-sub">基于以上数据，分期增长的底线是客单价上移（被动）、天花板是提高渗透率（主动）。</p>
+<div class="grid-3">
+  <div class="callout success"><h4>Q10a：继续砸免息</h4><p>免息覆盖率从 12.4% 降到 10.0%，不是砸钱的问题——是选品没跟上。应优先覆盖：门店高价区（覆盖率仅 15.7%）、8K+机型（商品少但转化高）、CZC大盘（1641单/天，仅 2.5% 免息）、平板品类（25.5% 覆盖率高但需确认渗透）。</p></div>
+  <div class="callout accent"><h4>Q10b：优化支付体验</h4><p>成功率高且稳定（72-85%），提升空间有限。应关注：京东白条成功率 72.7%（最低），绑定/授信环节是否有摩擦；花呗 24期上线后转化跟踪；分付 75.8% 处于中游，需要时间验证。</p></div>
+  <div class="callout accent"><h4>Q10c：拓新渠道</h4><p>找靓机APP 萎缩 44.9% 需要诊断原因；小程序持平但客单价提升，值得加大运营；门店 GMV 从 177万 增至 570万（+222%），含金量最高。优先拓门店+小程序，找靓机先定性再定量。</p></div>
+</div>
+</section>
+
+<section class="section source">
+本报告基于 One-Service（hdp_zhuanzhuan_ads_global.ads_bi_finance_stage_use_credit_result_v4_inc_1d）和 B2C 运营层表生成。<br>
+618定义：2025年 5月30日-6月18日（20天）；2026年 5月25日-6月21日（28天）<br>
+所有指标均为日均值（总GMV ÷ 实际天数），非合计值。
+</section>
+
+</main></body></html>
