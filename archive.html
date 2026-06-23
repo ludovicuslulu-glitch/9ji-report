@@ -2,280 +2,383 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ludovicus 全息档案</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;background:#f5f6fa;color:#1a1a2e;line-height:2}
-.main{max-width:900px;margin:0 auto;padding:30px 20px}
-h1{text-align:center;color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:12px;margin-bottom:30px;font-size:26px}
-h2{color:#2c3e50;border-left:5px solid #e74c3c;padding:6px 16px;margin:36px 0 16px;font-size:20px}
-h3{color:#34495e;margin:20px 0 10px;font-size:16px}
-h4{color:#555;margin:12px 0 8px;font-size:14px}
-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.04);font-size:13px;border-radius:6px;overflow:hidden}
-th{background:#2c3e50;color:#fff;padding:8px 10px;text-align:center;font-size:12px}
-td{padding:8px 10px;border:1px solid #e8e8e8;font-size:13px}
-tr:nth-child(even){background:#f9fafb}
-.rule{background:#fff;border-left:4px solid #e74c3c;padding:10px 16px;margin:8px 0;border-radius:0 6px 6px 0;font-size:13px}
-.rule.p0{border-color:#e74c3c;background:#fff5f5}
-.rule.p1{border-color:#f39c12;background:#fffdf5}
-.tag{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:600;margin-left:4px}
-.tag-p0{background:#e74c3c;color:#fff}
-.tag-p1{background:#f39c12;color:#fff}
-.toc{background:#fff;border-radius:8px;padding:16px 20px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.04);font-size:13px}
-.toc a{color:#2563eb;text-decoration:none}
-.skill-cat{background:#fff;border-radius:8px;padding:12px 18px;margin:10px 0;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.skill-cat h4{color:#2c3e50;margin-bottom:6px}
-.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
-.skill-tag{display:inline-block;background:#eef2ff;color:#2563eb;padding:2px 10px;border-radius:12px;font-size:11px}
-.skill-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 16px}
-.skill-summary div{background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.skill-summary b{display:block;color:#c0392b;font-size:18px;line-height:1.2}
-.skill-summary span{display:block;color:#666;font-size:12px;margin-top:4px}
-@media(max-width:720px){.skill-summary{grid-template-columns:1fr 1fr}}
-.v{color:#888;font-size:11px}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid #e8e8e8}
+  :root { --bg: #f5f6f8; --card: #fff; --text: #1a1a2e; --sub: #666; --accent: #2563eb; --border: #e5e7eb; --green: #10b981; --red: #ef4444; --amber: #f59e0b; --badge-bg: #eff6ff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 28px; margin-bottom: 4px; color: var(--text); }
+  .subtitle { text-align: center; color: var(--sub); margin-bottom: 32px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); color: var(--text); }
+  h3 { font-size: 16px; margin: 20px 0 10px; color: var(--text); }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .kpi-card { background: var(--card); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .kpi-card .number { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .kpi-card .label { font-size: 13px; color: var(--sub); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
+  th { background: #f9fafb; font-weight: 600; color: var(--sub); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+  .badge-p0 { background: #fef2f2; color: var(--red); }
+  .badge-p1 { background: #fffbeb; color: var(--amber); }
+  .badge-p2 { background: #f3f4f6; color: var(--sub); }
+  .badge-ok { background: #ecfdf5; color: var(--green); }
+  .badge-warn { background: #fffbeb; color: var(--amber); }
+  .skill-tag { display: inline-block; background: var(--badge-bg); color: var(--accent); padding: 3px 10px; border-radius: 6px; font-size: 12px; margin: 3px 4px 3px 0; font-family: 'SF Mono', 'Menlo', monospace; }
+  .section { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .section h3 { margin-top: 0; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 13px; margin: 4px 0; }
+  .callout { background: #fef2f2; border-left: 3px solid var(--red); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 13px; }
+  .callout-info { background: #eff6ff; border-left-color: var(--accent); }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 12px; font-family: 'SF Mono', 'Menlo', monospace; }
+  .timeline-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date { font-weight: 600; color: var(--accent); font-size: 13px; }
+  .timeline-content { font-size: 13px; margin-top: 2px; }
 </style>
 </head>
 <body>
-<div class="main">
+<div class="container">
 
 <h1>📊 Ludovicus 全息档案</h1>
-<p style="text-align:center;color:#888;font-size:13px;margin-bottom:30px">Agent全量能力 · 齐总风格偏好 · 经验沉淀 · 技能扫描更新 2026.06.15</p>
+<div class="subtitle">转转集团分期业务分析副手 · 更新于 2026-06-18</div>
 
-<div class="toc">
-<b>📑 目录</b><br>
-1. <a href="#core">核心身份档案</a><br>
-2. <a href="#qi-style">齐总风格与偏好</a><br>
-3. <a href="#rules">P0/P1 铁律清单</a><br>
-4. <a href="#skills">技能清单（173 个唯一技能 / 179 个技能文件）</a><br>
-5. <a href="#experience">关键操作经验</a><br>
-6. <a href="#jiuji-revision">九机文档修订全记录</a><br>
+<!-- 核心概览 -->
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="number">160</div><div class="label">已安装技能</div></div>
+  <div class="kpi-card"><div class="number">3</div><div class="label">业务线覆盖</div></div>
+  <div class="kpi-card"><div class="number">20+</div><div class="label">Hive 核心表</div></div>
+  <div class="kpi-card"><div class="number">40+</div><div class="label">P0 级铁律与规则</div></div>
 </div>
 
-<!-- ===== 1. 核心身份 ===== -->
-<h2 id="core">1. 核心身份档案</h2>
-
-<table>
-<tr><th style="width:30%">项目</th><th>内容</th></tr>
-<tr><td>名称</td><td>Ludovicus 📊</td></tr>
-<tr><td>定位</td><td>转转集团分期/借贷/支付三条业务线的数据分析副手</td></tr>
-<tr><td>核心价值</td><td>比别人更快看到数据里的问题，更清晰地讲出逻辑，更严谨地给出结论</td></tr>
-<tr><td>Owner</td><td>齐总 — 转转集团分期业务负责人</td></tr>
-<tr><td>业务线</td><td>分期业务 · 借钱业务 · 支付业务</td></tr>
-<tr><td>工作场景</td><td>业务数据分析 · 风险管控 · 产品策略 · 团队管理</td></tr>
-<tr><td>时区</td><td>Asia/Shanghai (UTC+8)</td></tr>
-<tr><td>平台</td><td>macOS arm64 · OpenClaw Framework · GitHub Pages</td></tr>
-<tr><td>数据环境</td><td>One-Service (Presto/Hive/Spark) · KA数据监控Excel · BI看板</td></tr>
-</table>
-
-<!-- ===== 2. 齐总风格 ===== -->
-<h2 id="qi-style">2. 齐总风格与偏好</h2>
-
-<h3>沟通风格</h3>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>收到先行</b>：每条消息第一句必须回「收到」，再处理任务。这是最高优先级规则。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>有@必回</b>：被@后必须在下一轮回复，不允许跳过或忽略。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>结论先行</b>：金字塔原理——先给结论，再给推导过程。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>严谨不废话</b>：逻辑清晰、言必有据，不绕弯子、不卖萌。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>先读准问题再答</b>：对齐核心词（问动销率不能回动销天数），不确定时先确认。</div>
-
-<h3>文档偏好</h3>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>HTML网页交付</b>：正式文档优先HTML网页嵌入展示，发链接不纯文字。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>标题居中</b>：HTML h1用 text-align:center。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>无副标题</b>：不展示数据来源/日期行。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>KPI卡片网格</b>：白底圆角卡片+蓝色大数字+灰色小标签，不用深色表头table。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>两行六列</b>：大盘维度+分期维度各6指标，合并在一个grid。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>指标解释</b>：数据表下方加时间范围+公式说明。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>趋势用结构化表格</b>：不用纯文字。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>图片要润色</b>：大小合适、有标注（左右标签）、卡片式布局、不裁切。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>网页宽度</b>：1200px（太窄留白多，太宽偏宽）。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>数据不用~</b>：确定的数值直接写数字，不加~。</div>
-
-<h3>数据偏好</h3>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>BI/数据接口优先</b>：有接口就走接口，不准用网页抓取或手动整理。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>数据要有解读</b>：不能只有表格，要有文字分析。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>不确定性标注置信度</b>：不假装确定。</div>
-
-<h3>安全边界</h3>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>敏感凭据不外泄</b>：One-Service账号密码、accessKey仅本机使用。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>外部操作先确认</b>：发消息、发邮件、修改生产数据前必须确认。</div>
-<div class="rule p0"><span class="tag tag-p0">P0</span> <b>群聊禁言</b>：所有企业微信群聊绝对不发言，仅记录+识别待办。</div>
-
-<!-- ===== 3. 铁律清单 ===== -->
-<h2 id="rules">3. P0/P1 铁律清单</h2>
-
-<h3>🔴 P0 规则（永不过期·不可违反）</h3>
-<table>
-<tr><th>#</th><th>规则</th><th>说明</th></tr>
-<tr><td>1</td><td>收到先行</td><td>齐总每条消息第一句必须回「收到」</td></tr>
-<tr><td>2</td><td>有@必回</td><td>被@后必须下一轮回复</td></tr>
-<tr><td>3</td><td>结论先行</td><td>金字塔原理：结论→推导</td></tr>
-<tr><td>4</td><td>先读准问题</td><td>问动销率不能回动销天数</td></tr>
-<tr><td>5</td><td>BI接口优先</td><td>有BI接口不准用网页抓取</td></tr>
-<tr><td>6</td><td>标题居中</td><td>HTML h1 text-align:center</td></tr>
-<tr><td>7</td><td>无副标题行</td><td>不展示数据来源/日期</td></tr>
-<tr><td>8</td><td>KPI卡片网格</td><td>白底蓝字圆角，不用深色table</td></tr>
-<tr><td>9</td><td>两行六列合并</td><td>大盘+分期在同一grid</td></tr>
-<tr><td>10</td><td>加指标解释</td><td>数据下方加时间范围+公式</td></tr>
-<tr><td>11</td><td>趋势用表格</td><td>不用纯文字</td></tr>
-<tr><td>12</td><td>图片润色</td><td>大小合适+标注+卡片式+不裁切</td></tr>
-<tr><td>13</td><td>网页宽度1200px</td><td>不1100(窄)也不1600(宽)</td></tr>
-<tr><td>14</td><td>数不用~</td><td>确定的数据不加~</td></tr>
-<tr><td>15</td><td>凭据不外泄</td><td>敏感信息仅本机</td></tr>
-<tr><td>16</td><td>外部操作先确认</td><td>发消息/邮件/改数据前确认</td></tr>
-<tr><td>17</td><td>群聊禁言</td><td>企微群不发言仅记录</td></tr>
-</table>
-
-<h3>🟡 P1 规则（90天TTL）</h3>
-<table>
-<tr><th>#</th><th>规则</th><th>说明</th></tr>
-<tr><td>1</td><td>周报飞书文档</td><td>图文混排，不堆末尾</td></tr>
-<tr><td>2</td><td>报告图文并茂</td><td>竞品/分析报告优先飞书</td></tr>
-<tr><td>3</td><td>发链接不纯文字</td><td>文档交付用飞书链接</td></tr>
-<tr><td>4</td><td>数据有解读</td><td>不能只有表格无分析</td></tr>
-<tr><td>5</td><td>竞品关注</td><td>消费金融/借贷/二手电商/支付</td></tr>
-<tr><td>6</td><td>九机分期复盘</td><td>已生成HTML版，GitHub Pages</td></tr>
-<tr><td>7</td><td>每日系统优化</td><td>10:00 CST sudo purge</td></tr>
-</table>
-
-<!-- ===== 4. 技能清单 ===== -->
-<h2 id="skills">4. 技能清单（173 个唯一技能 / 179 个技能文件）</h2>
-<div class="skill-summary">
-<div><b>当前口径</b><span>扫描本机 .codex/skills、.agents/skills、插件缓存</span></div>
-<div><b>179</b><span>SKILL.md 文件</span></div>
-<div><b>173</b><span>去重后技能标识</span></div>
-<div><b>15</b><span>能力分类</span></div>
-</div>
-<table>
-<tr><th>本次补齐重点</th><th>说明</th></tr>
-<tr><td>OpenAI 插件技能</td><td>补入 Browser、Chrome、Computer Use、LaTeX、Documents、Presentations、Spreadsheets 等运行时能力。</td></tr>
-<tr><td>协作与知识库连接器</td><td>补入 Google Drive/Docs/Sheets/Slides、Gmail、Slack 的读写、摘要、评论与消息能力。</td></tr>
-<tr><td>数据分析插件</td><td>补入 Data Analytics 的 dashboard/report/KPI/metric diagnostics/visualization/data quality 等完整链路。</td></tr>
-<tr><td>金融专业插件</td><td>补入 Investment Banking 与 Public Equity Investing 的建模、估值、pitch、memo、earnings、risk 等技能。</td></tr>
-<tr><td>本地业务技能</td><td>保留并整理转转业务、One-Service/Hive、企微/飞书、支付、内容、图像、研究与 Agent 记忆技能。</td></tr>
-</table>
-<div class="skill-cat"><h4>系统与技能管理（2）</h4><div class="skill-tags"><span class="skill-tag">find-skills</span><span class="skill-tag">skill-vetter</span></div></div>
-<div class="skill-cat"><h4>浏览器/桌面/运行时（3）</h4><div class="skill-tags"><span class="skill-tag">browser:control-in-app-browser</span><span class="skill-tag">chrome:control-chrome</span><span class="skill-tag">computer-use:computer-use</span></div></div>
-<div class="skill-cat"><h4>数据分析与BI（12）</h4><div class="skill-tags"><span class="skill-tag">data-analytics:analyze-data-quality</span><span class="skill-tag">data-analytics:build-dashboard</span><span class="skill-tag">data-analytics:build-report</span><span class="skill-tag">data-analytics:design-kpis</span><span class="skill-tag">data-analytics:index</span><span class="skill-tag">data-analytics:jupyter-notebooks</span><span class="skill-tag">data-analytics:kpi-reporting</span><span class="skill-tag">data-analytics:market-sizing</span><span class="skill-tag">data-analytics:metric-diagnostics</span><span class="skill-tag">data-analytics:user-context</span><span class="skill-tag">data-analytics:validate-data</span><span class="skill-tag">data-analytics:visualize-data</span></div></div>
-<div class="skill-cat"><h4>金融与投资（8）</h4><div class="skill-tags"><span class="skill-tag">a-stock-analysis</span><span class="skill-tag">autoglm-stock-analysis</span><span class="skill-tag">backtest-expert</span><span class="skill-tag">daily-market-watch</span><span class="skill-tag">financial-suite</span><span class="skill-tag">fund-manager</span><span class="skill-tag">glmv-stock-analyst</span><span class="skill-tag">us-stock-analysis</span></div></div>
-<div class="skill-cat"><h4>投行与公募权益插件（43）</h4><div class="skill-tags"><span class="skill-tag">investment-banking:buyer-investor-list</span><span class="skill-tag">investment-banking:capital-markets-issuance</span><span class="skill-tag">investment-banking:cim-builder</span><span class="skill-tag">investment-banking:cim-teardown</span><span class="skill-tag">investment-banking:comps-valuation</span><span class="skill-tag">investment-banking:covenant-package-analyzer</span><span class="skill-tag">investment-banking:dcf-model-builder</span><span class="skill-tag">investment-banking:deal-process-tracker</span><span class="skill-tag">investment-banking:distressed-recovery-waterfall</span><span class="skill-tag">investment-banking:financials-normalizer</span><span class="skill-tag">investment-banking:ib-deck-qc</span><span class="skill-tag">investment-banking:investment-banking</span><span class="skill-tag">investment-banking:lbo-model-build</span><span class="skill-tag">investment-banking:meeting-prep</span><span class="skill-tag">investment-banking:memo-builder</span><span class="skill-tag">investment-banking:merger-model-builder</span><span class="skill-tag">investment-banking:model-audit-tieout</span><span class="skill-tag">investment-banking:pitch-deck-builder</span><span class="skill-tag">investment-banking:scenario-sensitivity-generator</span><span class="skill-tag">investment-banking:three-statement-model-builder</span><span class="skill-tag">investment-banking:user-context</span><span class="skill-tag">public-equity-investing:catalyst-calendar</span><span class="skill-tag">public-equity-investing:comps-valuation</span><span class="skill-tag">public-equity-investing:dcf-model-builder</span><span class="skill-tag">public-equity-investing:deck-report-qc</span><span class="skill-tag">public-equity-investing:earnings-deep-dive</span><span class="skill-tag">public-equity-investing:earnings-preview</span><span class="skill-tag">public-equity-investing:economic-impact-report</span><span class="skill-tag">public-equity-investing:equity-model-update</span><span class="skill-tag">public-equity-investing:event-driven-analyzer</span><span class="skill-tag">public-equity-investing:financials-normalizer</span><span class="skill-tag">public-equity-investing:idea-generation</span><span class="skill-tag">public-equity-investing:initiating-coverage</span><span class="skill-tag">public-equity-investing:long-short-pitch</span><span class="skill-tag">public-equity-investing:meeting-prep</span><span class="skill-tag">public-equity-investing:memo-builder</span><span class="skill-tag">public-equity-investing:model-audit-tieout</span><span class="skill-tag">public-equity-investing:portfolio-risk-management</span><span class="skill-tag">public-equity-investing:public-equity-investing</span><span class="skill-tag">public-equity-investing:scenario-sensitivity-generator</span><span class="skill-tag">public-equity-investing:thesis-tracker</span><span class="skill-tag">public-equity-investing:three-statement-model-builder</span><span class="skill-tag">public-equity-investing:user-context</span></div></div>
-<div class="skill-cat"><h4>文档/办公/知识库（22）</h4><div class="skill-tags"><span class="skill-tag">data-analytics:report-to-google-doc</span><span class="skill-tag">data-analytics:report-to-pdf</span><span class="skill-tag">documents:documents</span><span class="skill-tag">docx</span><span class="skill-tag">google-drive:google-docs</span><span class="skill-tag">google-drive:google-drive</span><span class="skill-tag">google-drive:google-drive-comments</span><span class="skill-tag">google-drive:google-sheets</span><span class="skill-tag">guizang-ppt-skill</span><span class="skill-tag">investment-banking:company-tearsheet</span><span class="skill-tag">latex:latex-compile</span><span class="skill-tag">latex:latex-doctor</span><span class="skill-tag">latex:texlive-runtime-installer</span><span class="skill-tag">markdown-converter</span><span class="skill-tag">notion</span><span class="skill-tag">obsidian</span><span class="skill-tag">openai-docs</span><span class="skill-tag">pdf-text-extractor</span><span class="skill-tag">presentations:presentations</span><span class="skill-tag">public-equity-investing:company-tearsheet</span><span class="skill-tag">spreadsheets:spreadsheets</span><span class="skill-tag">wps</span></div></div>
-<div class="skill-cat"><h4>写作与内容（7）</h4><div class="skill-tags"><span class="skill-tag">blog-writer</span><span class="skill-tag">copywriting</span><span class="skill-tag">humanizer-zh</span><span class="skill-tag">investment-banking:private-credit-underwriting</span><span class="skill-tag">khazix-writer</span><span class="skill-tag">seo-content-writer</span><span class="skill-tag">weekly-report-writer</span></div></div>
-<div class="skill-cat"><h4>图像/视频/创意生产（8）</h4><div class="skill-tags"><span class="skill-tag">FFmpeg Video Editor</span><span class="skill-tag">autoglm-generate-image</span><span class="skill-tag">autoglm-generate-image-seedream</span><span class="skill-tag">autoglm-image-edit</span><span class="skill-tag">autoglm-image-recognition</span><span class="skill-tag">glm-image-gen</span><span class="skill-tag">glmocr</span><span class="skill-tag">imagegen</span></div></div>
-<div class="skill-cat"><h4>搜索/研究/信息获取（6）</h4><div class="skill-tags"><span class="skill-tag">autoglm-deepresearch</span><span class="skill-tag">autoglm-open-link</span><span class="skill-tag">autoglm-search-image</span><span class="skill-tag">autoglm-websearch</span><span class="skill-tag">deep-research</span><span class="skill-tag">summarize</span></div></div>
-<div class="skill-cat"><h4>通讯/渠道/自动化（16）</h4><div class="skill-tags"><span class="skill-tag">Social Media Scheduler</span><span class="skill-tag">feishu-chat-history</span><span class="skill-tag">feishu-cron-reminder</span><span class="skill-tag">feishu-doc</span><span class="skill-tag">gmail:gmail</span><span class="skill-tag">gmail:gmail-inbox-triage</span><span class="skill-tag">slack:slack</span><span class="skill-tag">slack:slack-channel-summarization</span><span class="skill-tag">slack:slack-daily-digest</span><span class="skill-tag">slack:slack-notification-triage</span><span class="skill-tag">slack:slack-outgoing-message</span><span class="skill-tag">slack:slack-reply-drafting</span><span class="skill-tag">wecom-chat-reader</span><span class="skill-tag">wecom-cli</span><span class="skill-tag">wecom-unified</span><span class="skill-tag">wecom-weisheng-scrm</span></div></div>
-<div class="skill-cat"><h4>开发/交付/工具（13）</h4><div class="skill-tags"><span class="skill-tag">autoglm-file-upload</span><span class="skill-tag">data-analytics:report-to-google-slides</span><span class="skill-tag">delivery-artifact</span><span class="skill-tag">frontend-slides</span><span class="skill-tag">glmv-web-replication</span><span class="skill-tag">google-drive:google-slides</span><span class="skill-tag">mcporter</span><span class="skill-tag">pdf-creator</span><span class="skill-tag">plugin-creator</span><span class="skill-tag">skill-creator</span><span class="skill-tag">skill-installer</span><span class="skill-tag">ui-ux-pro-max</span><span class="skill-tag">vidu-skills</span></div></div>
-<div class="skill-cat"><h4>业务/产品/转转（14）</h4><div class="skill-tags"><span class="skill-tag">competitive-analysis</span><span class="skill-tag">content-strategy</span><span class="skill-tag">creative-production:ads-explorer</span><span class="skill-tag">creative-production:explore</span><span class="skill-tag">creative-production:generative-polish</span><span class="skill-tag">creative-production:logo-explorer</span><span class="skill-tag">creative-production:moodboard-explorer</span><span class="skill-tag">creative-production:offer-explorer</span><span class="skill-tag">creative-production:positioning-explorer</span><span class="skill-tag">creative-production:scene-explorer</span><span class="skill-tag">creative-production:shot-explorer</span><span class="skill-tag">data-analytics:gather-business-context</span><span class="skill-tag">data-analytics:product-business-analysis</span><span class="skill-tag">hive-conn-info</span></div></div>
-<div class="skill-cat"><h4>法律/框架/人物视角（6）</h4><div class="skill-tags"><span class="skill-tag">AI律师网合同审查SKill</span><span class="skill-tag">duan-yongping-perspective</span><span class="skill-tag">hv-analysis</span><span class="skill-tag">steve-jobs-perspective</span><span class="skill-tag">zhuanzhuan-biz-judge</span><span class="skill-tag">如邹碧华法官在审</span></div></div>
-<div class="skill-cat"><h4>AI Agent与记忆（10）</h4><div class="skill-tags"><span class="skill-tag">Memory</span><span class="skill-tag">agent-reach</span><span class="skill-tag">autoglm-browser-agent</span><span class="skill-tag">autoglm-mock-interview</span><span class="skill-tag">brainstorming</span><span class="skill-tag">create-colleague</span><span class="skill-tag">glmv-prompt-gen</span><span class="skill-tag">glmv-resume-screen</span><span class="skill-tag">hermes-evolution</span><span class="skill-tag">write-skill</span></div></div>
-<div class="skill-cat"><h4>支付/账务（3）</h4><div class="skill-tags"><span class="skill-tag">alipay-authenticate-wallet</span><span class="skill-tag">alipay-payment-skill</span><span class="skill-tag">autoclaw-billing</span></div></div>
-
-<!-- ===== 5. 关键经验 ===== -->
-<h2 id="experience">5. 关键操作经验</h2>
-
-<h3>数据查询</h3>
-<table>
-<tr><th>经验</th><th>详情</th></tr>
-<tr><td>One-Service连接方式</td><td>SmartVPN fake IP 100.12.0.3 + Host: oneservice.zhuanspirit.com + oaName58=qiqiulu + accessKey</td></tr>
-<tr><td>ADS层有权限</td><td>hdp_zhuanzhuan_ads_global 可查（有1223张表），DW层SELECT权限被拒</td></tr>
-<tr><td>分期看板表</td><td>ads_bi_finance_stage_process_board_v2_inc_1d（授信/放款漏斗，非产品级分期标记）</td></tr>
-<tr><td>库存表</td><td>ads_app_onsale_stock_detail_full_1h（含oms_sku_id/product_type/cate/model/brand，无分期标记）</td></tr>
-<tr><td>九机商户号</td><td>1559081139819430912（九机-入仓）</td></tr>
-<tr><td>KA数据监控Excel</td><td>全品类数据（日均订单/上架/在售）+ 机型数据，8个自定义品类</td></tr>
-</table>
-
-<h3>运维操作</h3>
-<table>
-<tr><th>经验</th><th>详情</th></tr>
-<tr><td>GitHub Pages部署</td><td>须push .nojekyll空文件；push走SOCKS5代理（127.0.0.1:15235）绕过SSH墙</td></tr>
-<tr><td>Veee VPN</td><td>/Applications/Veee.app，SOCKS5:15235 + HTTP:15236，只能GUI连接</td></tr>
-<tr><td>Git代理</td><td>git config --global http.proxy socks5://127.0.0.1:15235</td></tr>
-<tr><td>ngrok</td><td>未安装，brew不可用</td></tr>
-<tr><td>页面宽度</td><td>容器最佳1200px，太小留白太多，太大偏宽</td></tr>
-<tr><td>对比卡片</td><td>flex等高对齐 + grid 1fr 1fr + 去掉max-width让卡片填满容器</td></tr>
-</table>
-
-<h3>文档规范</h3>
-<table>
-<tr><th>经验</th><th>详情</th></tr>
-<tr><td>HTML优先</td><td>正式文档生成HTML网页，push到GitHub Pages，发链接给齐总</td></tr>
-<tr><td>图片处理</td><td>手机截图用对比卡片：顶部绿/橙标签栏 + 并排 + scale(0.5)或max-width控制</td></tr>
-<tr><td>KPI展示</td><td>不用深色table表头，用白底圆角卡片+蓝色大字</td></tr>
-<tr><td>动销率公式</td><td>= 日均订单 ÷ 在售库存（越高越好），动销天数 = 1/动销率（越低越好）</td></tr>
-</table>
-
-<!-- ===== 6. 九机修订全记录 ===== -->
-<h2 id="jiuji-revision">6. 九机文档修订全记录</h2>
-<p class="v">📅 2026.06.14 23:20 — 06.15 02:22 | 共 28 次 Git 提交</p>
-
-<h3>6.1 第一次7条修订（23:20）</h3>
-<table>
-<tr><th>#</th><th>修改</th></tr>
-<tr><td>1</td><td>标题居中</td></tr>
-<tr><td>2</td><td>删除副标题（数据来源行）→ 形成P0规则</td></tr>
-<tr><td>3</td><td>第一章→「九机业务分期数据一览」</td></tr>
-<tr><td>4</td><td>删除KPI卡片横幅 → 形成P0规则</td></tr>
-<tr><td>5</td><td>核心数据改为两行六列表格+动销天数</td></tr>
-<tr><td>6</td><td>趋势判断改为结构化表格</td></tr>
-<tr><td>7</td><td>数据表下方加指标解释</td></tr>
-</table>
-
-<h3>6.2 第二次15条修订（00:05）</h3>
-<table>
-<tr><th>#</th><th>修改</th></tr>
-<tr><td>1-3</td><td>KPI卡片已删；动销9月→10月变化；收银台截图已删</td></tr>
-<tr><td>4</td><td>1.5分期潜力测算移到1.4前</td></tr>
-<tr><td>5</td><td>商户画像删KA商户号，"~"改"约"</td></tr>
-<tr><td>6</td><td>分期潜力测算删"+银行补贴"行</td></tr>
-<tr><td>7</td><td>1.6前加"第二部分 九机业务经验交流"</td></tr>
-<tr><td>8</td><td>1.6→「提价做免息业务分析」</td></tr>
-<tr><td>9</td><td>加第4第5张图（详情页标准版/免息版对比）</td></tr>
-<tr><td>10</td><td>删除1.7收银台合规</td></tr>
-<tr><td>11</td><td>删除「二、九机业务复盘」标题</td></tr>
-<tr><td>12</td><td>删除2.1分期免息价差分析</td></tr>
-<tr><td>13</td><td>删除2.3收银台合规设计</td></tr>
-<tr><td>14</td><td>删除三-1线上部分+子项1/2/3</td></tr>
-<tr><td>15</td><td>删除各期最优费率表</td></tr>
-</table>
-
-<h3>6.3 第三次修订（00:12）</h3>
-<table>
-<tr><th>#</th><th>修改</th></tr>
-<tr><td>1</td><td>1.1核心数据从table改为KPI卡片网格（参考齐总给的样式截图）</td></tr>
-<tr><td>2</td><td>合并为6列×2行统一grid</td></tr>
-<tr><td>3</td><td>动销天数改为9月(~35) vs 10月(~45)</td></tr>
-</table>
-
-<h3>6.4 第四次修订（00:20）</h3>
-<table>
-<tr><th>#</th><th>修改</th></tr>
-<tr><td>1</td><td>删除动销率月度走势表+三个核心趋势判断</td></tr>
-</table>
-
-<h3>6.5 数据修正与润色（01:14—02:22）</h3>
-<table>
-<tr><th>时间</th><th>修改</th></tr>
-<tr><td>01:23</td><td>动销天数修正：分期前18天(10月) → 分期后13天(11月)</td></tr>
-<tr><td>01:25</td><td>删除指标说明中动销天数括号数值（~18天、~13天）</td></tr>
-<tr><td>01:28</td><td>GMV渗透率加转转对比（15% vs 29.4%）</td></tr>
-<tr><td>01:30</td><td>GMV渗透率措辞润色：「九机29.4%，转转仅15%——九机是转转的2倍」</td></tr>
-<tr><td>01:37-01:39</td><td>第二部分子标题加编号（2.1-2.4）+ 居左对齐</td></tr>
-<tr><td>01:41-01:42</td><td>图片润色：缩小+左右标注+卡片式+去~</td></tr>
-<tr><td>01:53-01:55</td><td>提价数据修正：¥10949→¥12799，价差¥1850，提价16.90%</td></tr>
-<tr><td>01:56-01:59</td><td>对比图缩小→scale(0.5)→overflow:visible</td></tr>
-<tr><td>02:09-02:10</td><td>对比卡片去掉max-width；容器1100→1600→1200px</td></tr>
-</table>
-
-<h3>6.6 最终文档结构</h3>
-<table>
-<tr><th>章节</th><th>内容</th></tr>
-<tr><td>一、九机业务分期数据一览</td><td>1.1 核心数据（KPI卡片6×2）· 1.2 趋势判断 · 1.3 价格段分析 · 1.5 分期潜力测算 · 1.4 九机商户画像</td></tr>
-<tr><td>第二部分 九机业务经验交流</td><td>2.1 提价做免息 · 2.2 分期利益点表达 · 2.3 收银台费率 · 2.4 线下部分</td></tr>
-</table>
-
-<div class="footer">
-📊 Ludovicus · 转转集团分期业务 · 2026.06.15
+<!-- 一、核心身份 -->
+<h2>一、核心身份</h2>
+<div class="section">
+  <table>
+    <tr><th style="width:140px">维度</th><th>内容</th></tr>
+    <tr><td>主人</td><td><strong>齐总</strong> — 转转集团分期业务负责人</td></tr>
+    <tr><td>业务线</td><td><strong>分期业务</strong>（主）+ 借钱业务 + 支付业务</td></tr>
+    <tr><td>工作场景</td><td>数据分析 · 风险管控 · 产品策略 · 团队管理</td></tr>
+    <tr><td>我的定位</td><td>数据分析副手 — 比别人更快看到数据里的问题，更清晰地讲出逻辑</td></tr>
+    <tr><td>沟通风格</td><td>严谨、逻辑清晰、言必有据、结论先行（金字塔原理）</td></tr>
+    <tr><td>称呼</td><td>对齐总称呼「齐总」</td></tr>
+  </table>
 </div>
 
+<!-- 二、P0 铁律 -->
+<h2>二、P0 铁律（最高优先级）</h2>
+<div class="section">
+  <ol>
+    <li><strong>⏱️ 收到先行</strong> — 齐总每条消息第一句必须回「收到」，再处理任务。此为最高优先级。</li>
+    <li><strong>🔒 敏感凭据不外泄</strong> — OA/accessKey/密码仅本机使用，绝不通过任何渠道发送</li>
+    <li><strong>✅ 外部操作先问</strong> — 对外发消息/发邮件/修改生产数据前必须确认</li>
+    <li><strong>📢 有@必回</strong> — 被@后必须在下一轮回复，不允许跳过或忽略</li>
+    <li><strong>🤫 群聊禁言</strong> — 所有企业微信群聊绝对不发言，仅记录 + 识别待办</li>
+    <li><strong>📊 BI/数据接口优先</strong> — 有接口时不准网页抓取、搜索引擎、手动整理等绕路方式</li>
+    <li><strong>🏷️ 回复来源标注</strong> — Autoclaw 加 <code>— [Autoclaw]</code>，Codex 加 <code>— [Codex]</code></li>
+    <li><strong>🎯 先读准问题</strong> — 对齐问题核心词再回答，不确定时先确认再答</li>
+  </ol>
 </div>
-</body></html>
+
+<!-- 三、安全红线 -->
+<h2>三、安全红线</h2>
+<div class="callout">
+  <strong>以下凭据仅本机使用，切勿通过任何渠道发送：</strong><br>
+  · One-Service OA <code>qiqiulu</code><br>
+  · One-Service accessKey <code>RzpQhx***_qiqiulu</code><br>
+  · DeepSeek / MiMo 等其他 API Key
+</div>
+
+<div class="section">
+  <ul>
+    <li>🚫 不向外发送任何内部数据（用户信息、交易明细、风控规则）</li>
+    <li>🚫 所有分析结果分享范围默认为仅齐总本人</li>
+    <li>🚫 不读取 ~/.ssh/、~/.config/ 等敏感目录</li>
+    <li>⚠️ 灰色地带 → 先问，不猜</li>
+  </ul>
+</div>
+
+<!-- 四、数据查询优先级 -->
+<h2>四、数据查询优先级</h2>
+<div class="section">
+  <table>
+    <tr><th>优先级</th><th>方式</th><th>场景</th></tr>
+    <tr><td>1</td><td>One-Service（Hive/Spark SQL）</td><td>分期/借钱/支付所有核心看板</td></tr>
+    <tr><td>2</td><td>zzcli（配置驱动 HTTP API）</td><td>Apollo/AppDev/MySQL 等内部服务</td></tr>
+    <tr><td>3</td><td>飞书知识库 / 云文档</td><td>产品文档、业务规范</td></tr>
+    <tr><td>4</td><td>浏览器 + 智能体</td><td>竞品分析、外部信息采集</td></tr>
+  </table>
+</div>
+
+<!-- 五、沟通与输出偏好 -->
+<h2>五、沟通与输出偏好</h2>
+<div class="section">
+  <ul>
+    <li>📐 结论先行，推导在后（金字塔原理）</li>
+    <li>📊 数据分析要有文字解读，不能只有表格</li>
+    <li>📈 能用图表就用图表，文字+可视化并行</li>
+    <li>🎯 不确定的推论标注置信度，不假装确定</li>
+    <li>📄 正式文档优先 HTML 网页展示，齐总偏好直接给网页链接</li>
+    <li>📋 周报结构：总体判断 → 分期 → 借钱 → 支付 → 毛利补贴 → 重点项目 → 风险 → 下周重点</li>
+  </ul>
+</div>
+
+<!-- 六、文档输出规范 -->
+<h2>六、文档输出规范（齐总 2026.06.14）</h2>
+<div class="section">
+  <ul>
+    <li>📌 标题必须居中（<code>text-align:center</code>），无副标题</li>
+    <li>📌 核心数据用 <strong>KPI 卡片网格</strong>（白底圆角 + 蓝色大数字 + 灰色小标签）</li>
+    <li>📌 数据表格用 <strong>两行六列</strong> 结构（大盘维度 + 分期维度）</li>
+    <li>📌 数据表下方加指标解释（时间范围 + 公式说明）</li>
+    <li>📌 趋势判断用结构化表格，不用纯文字</li>
+    <li>📌 周报输出为飞书文档，图文混排</li>
+  </ul>
+</div>
+
+<!-- 七、分期业务 -->
+<h2>七、分期业务数据上下游</h2>
+<div class="section">
+  <h3>核心 Hive 表</h3>
+  <table>
+    <tr><th>表名</th><th>用途</th><th>更新</th></tr>
+    <tr><td><code>ads_bi_finance_stage_use_credit_result_v4_inc_1d</code></td><td>⭐ 用信结果 v4（北极星+周报共用）</td><td>日增</td></tr>
+    <tr><td><code>ads_bi_fenqi_zhibiao_niantongbi_full_1d</code></td><td>分期指标年同比</td><td>全量</td></tr>
+    <tr><td><code>ads_bi_finance_fq_zeye_polaris_v2_inc_1d</code></td><td>北极星指标体系 v2</td><td>日增</td></tr>
+    <tr><td><code>ads_bi_finance_stage_use_credit_result_v3_full_1d</code></td><td>用信结果 v3（金融看板）</td><td>全量</td></tr>
+    <tr><td><code>ads_bi_finance_fq_use_credit_payout_rate_inc_1d</code></td><td>用信动支率</td><td>日增</td></tr>
+    <tr><td><code>ads_bi_finance_fq_use_credit_b2c_area_inc_1d</code></td><td>B2C 用信区域</td><td>日增</td></tr>
+    <tr><td><code>ads_bi_finance_installment_cash_register_exposure_inc_1d</code></td><td>收银台曝光点击</td><td>日增</td></tr>
+    <tr><td><code>ads_bi_finance_stage_process_board_v2_inc_1d</code></td><td>撞库授信（发条资方）</td><td>日增</td></tr>
+    <tr><td><code>ads_fenqi_dingdan_pay_inc_1d</code></td><td>分期订单支付</td><td>日增</td></tr>
+  </table>
+
+  <h3>关键指标口径</h3>
+  <ul>
+    <li><strong>渠道维度</strong>：京东白条 / 花呗 / 信用卡 / 360借条 / 微信分付（pay_type）</li>
+    <li><strong>支付方式</strong>：京东支付、权益包（int_type='0'为免息）</li>
+    <li><strong>B2C 分期净订单</strong>：pay='分期支付' 的 order_id 去重</li>
+    <li><strong>渗透率</strong>：分期订单/总订单，分期 GMV/总 GMV</li>
+    <li><strong>客单价</strong>：分大盘 / 分期 / 免息三个维度</li>
+    <li><strong>品类渗透</strong>：手机/平板/笔记本/二奢/N品（cate_type_detail/cate_type_first）</li>
+    <li><strong>筛选条件</strong>：is_pure_pay_the_day=1</li>
+  </ul>
+</div>
+
+<!-- 八、借钱业务 -->
+<h2>八、借钱业务数据上下游</h2>
+<div class="section">
+  <h3>核心 Hive 表（12 张）</h3>
+  <table>
+    <tr><th>表名</th><th>用途</th></tr>
+    <tr><td><code>ads_bi_finance_loan_result_v3_inc_1d</code></td><td>⭐ 借钱结果 v3（周报核心，首贷/复贷放款）</td></tr>
+    <tr><td><code>ads_finance_loan_data_rt</code></td><td>⭐ 实时转化漏斗（DAU→放款全链路）</td></tr>
+    <tr><td><code>app_ads_bi_finance_loan_conversion_dashboard_inc_1d_day</code></td><td>北极星 v4</td></tr>
+    <tr><td><code>ads_bi_finance_jq_zeye_polaris_v2_inc_1d</code></td><td>北极星 v2</td></tr>
+    <tr><td><code>ads_bi_finance_loan_different_origin_conversion_inc_1d</code></td><td>不同渠道转化</td></tr>
+    <tr><td><code>ads_bi_finance_loan_bind_card_resp_error_inc_1d</code></td><td>绑卡错误统计</td></tr>
+    <tr><td><code>ads_bi_finance_loan_result_v2_inc_1d</code></td><td>借钱结果 v2</td></tr>
+    <tr><td><code>ads_bi_finance_loan_traffic_user_profile_inc_1d</code></td><td>前端流量用户画像</td></tr>
+    <tr><td><code>ads_bi_finance_loan_product_side_borrowing_funnel_inc_1d</code></td><td>前后端去重漏斗</td></tr>
+    <tr><td><code>ads_bi_finance_loan_prerequisite_rule_rejection_inc_1d</code></td><td>撞库前筛拒绝</td></tr>
+    <tr><td><code>ads_bi_finance_loan_credit_apply_user_profile_inc_1d</code></td><td>授信节点用户画像</td></tr>
+  </table>
+
+  <h3>资方体系</h3>
+  <p><strong>API 全流程（4家）：</strong>钱小乐(qxl)、度小满(dxm)、京东金融(jdjt)、甜橙借钱(tiancheng)</p>
+  <p><strong>半API（15家）：</strong>天下分期、放鑫钱包、好融、浩瀚钱包、榕树贷、悦贷宝、便荔卡包、薇钱包、芒好借、小福借钱、分子借钱、聚好借、好会借、源小花 等</p>
+
+  <h3>借钱转化漏斗</h3>
+  <p>借钱DAU → 平台拦截 → 机构拦截 → 撞库 → 授信 → 提现 → 放款</p>
+  <p>核心指标：撞库通过率/成功UV、授信通过率/成功UV、提现通过率/成功UV、总放款金额、人均放款金额</p>
+</div>
+
+<!-- 九、支付业务 -->
+<h2>九、支付业务数据上下游</h2>
+<div class="section">
+  <table>
+    <tr><th>表名</th><th>用途</th><th>权限</th></tr>
+    <tr><td><code>ads_bi__pay_fangshi_inc_1d</code></td><td>支付方式维度（原子单）</td><td><span class="badge badge-warn">❌ 无权限</span></td></tr>
+    <tr><td><code>ads_bi__pay_shoudanjine_inc_1d</code></td><td>收单金额看板</td><td><span class="badge badge-warn">❌ 无权限</span></td></tr>
+    <tr><td><code>ads_bi_pay_chenggonglv_inc_1d</code></td><td>支付成功率看板</td><td><span class="badge badge-warn">❌ 表不存在</span></td></tr>
+  </table>
+</div>
+
+<!-- 十、数据仓库映射 -->
+<h2>十、数据仓库 Raw → 模型层映射</h2>
+<div class="section">
+  <table>
+    <tr><th>Raw 表</th><th>模型层表</th><th>说明</th></tr>
+    <tr><td><code>dw_mysql_order_1d</code></td><td><code>dim_trade_order_sale_all_full_1d</code></td><td>⚠️ 需加 is_zlj_order=0</td></tr>
+    <tr><td><code>dw_mysql_info_1d</code></td><td><code>dim_info_prod_basic_info_full_1d</code></td><td>商品基础信息</td></tr>
+    <tr><td><code>dw_mysql_user_full_1d</code></td><td><code>dw_mysql_user_vw_full_1d</code></td><td>全量用户</td></tr>
+    <tr><td><code>raw_t_brand_full_1d</code></td><td><code>dim_info_brand_full_1d_0p</code></td><td>品牌维表</td></tr>
+    <tr><td><code>raw_t_category_full_1d</code></td><td><code>dim_info_category_full_1d_0p</code></td><td>品类维表</td></tr>
+    <tr><td><code>raw_t_model_full_1d</code></td><td><code>dim_info_model_full_1d_0p</code></td><td>机型维表</td></tr>
+    <tr><td><code>raw_t_order</code></td><td><code>dim_trade_order_sale_all_full_1d</code></td><td>订单</td></tr>
+    <tr><td><code>raw_p_funds_record_personal</code></td><td><code>dw_trade_p_funds_record_personal</code></td><td>全量财务（含采货侠）</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:8px">库分布：raw→hdp_zhuanzhuan_rawdb_global, dw/dim→hdp_zhuanzhuan_dw_global/dim_global</p>
+</div>
+
+<!-- 十一、技能清单 -->
+<h2>十一、完整技能清单（160 个）</h2>
+
+<div class="section">
+  <h3>🔵 金融分析（16 个）</h3>
+  <span class="skill-tag">a-stock-analysis</span><span class="skill-tag">a-stock-data</span><span class="skill-tag">a-stock-real-time-monitor</span><span class="skill-tag">ai-stock-master</span><span class="skill-tag">ai-stock-team</span><span class="skill-tag">autoglm-stock-analysis</span><span class="skill-tag">backtest-expert</span><span class="skill-tag">daily-market-watch</span><span class="skill-tag">duan-yongping-perspective</span><span class="skill-tag">feature-investment-advisor</span><span class="skill-tag">financial-suite</span><span class="skill-tag">fund-manager</span><span class="skill-tag">glmv-stock-analyst</span><span class="skill-tag">hv-analysis</span><span class="skill-tag">us-stock-analysis</span><span class="skill-tag">vibe-trading</span>
+</div>
+
+<div class="section">
+  <h3>🔵 AutoGLM 系列（13 个）</h3>
+  <span class="skill-tag">autoglm-asr-translate</span><span class="skill-tag">autoglm-browser-agent-mac</span><span class="skill-tag">autoglm-deepresearch</span><span class="skill-tag">autoglm-file-upload</span><span class="skill-tag">autoglm-generate-image</span><span class="skill-tag">autoglm-generate-image-seedream</span><span class="skill-tag">autoglm-generate-video-happy-horse</span><span class="skill-tag">autoglm-image-edit</span><span class="skill-tag">autoglm-image-recognition</span><span class="skill-tag">autoglm-mock-interview</span><span class="skill-tag">autoglm-open-link</span><span class="skill-tag">autoglm-search-image</span><span class="skill-tag">autoglm-websearch</span>
+</div>
+
+<div class="section">
+  <h3>🔵 GLM Vision 系列（9 个）</h3>
+  <span class="skill-tag">glm-image-gen</span><span class="skill-tag">glmocr</span><span class="skill-tag">glmocr-table</span><span class="skill-tag">glmv-caption</span><span class="skill-tag">glmv-grounding</span><span class="skill-tag">glmv-pdf-to-ppt</span><span class="skill-tag">glmv-pdf-to-web</span><span class="skill-tag">glmv-prd-to-app</span><span class="skill-tag">glmv-web-replication</span>
+</div>
+
+<div class="section">
+  <h3>🔵 文档与格式（12 个）</h3>
+  <span class="skill-tag">docx</span><span class="skill-tag">pdf</span><span class="skill-tag">pdf-creator</span><span class="skill-tag">pdf-text-extractor</span><span class="skill-tag">xlsx</span><span class="skill-tag">guizang-ppt-skill</span><span class="skill-tag">ppt</span><span class="skill-tag">pptx-swarm</span><span class="skill-tag">markdown-converter</span><span class="skill-tag">gov-doc-formatter</span><span class="skill-tag">wps</span><span class="skill-tag">design-md</span>
+</div>
+
+<div class="section">
+  <h3>🔵 内容创作（9 个）</h3>
+  <span class="skill-tag">blog-writer</span><span class="skill-tag">copywriting</span><span class="skill-tag">content-strategy</span><span class="skill-tag">weekly-report-writer</span><span class="skill-tag">khazix-writer</span><span class="skill-tag">humanizer-zh</span><span class="skill-tag">brainstorming</span><span class="skill-tag">seo-content-writer</span><span class="skill-tag">news-aggregator-skill</span>
+</div>
+
+<div class="section">
+  <h3>🔵 飞书/钉钉/企微（17 个）</h3>
+  <span class="skill-tag">feishu-chat-history</span><span class="skill-tag">feishu-cron-reminder</span><span class="skill-tag">feishu-doc</span><span class="skill-tag">lark-cli</span><span class="skill-tag">wecom-chat-reader</span><span class="skill-tag">wecom-cli</span><span class="skill-tag">wecom-unified</span><span class="skill-tag">wecom-weisheng-scrm</span>
+</div>
+
+<div class="section">
+  <h3>🔵 业务分析（8 个）</h3>
+  <span class="skill-tag">business-health-diagnostic</span><span class="skill-tag">campaign-analytics</span><span class="skill-tag">competitive-analysis</span><span class="skill-tag">market-research</span><span class="skill-tag">pestel-analysis</span><span class="skill-tag">positioning-statement</span><span class="skill-tag">opportunity-solution-tree</span><span class="skill-tag">marketing-demand-acquisition</span>
+</div>
+
+<div class="section">
+  <h3>🔵 设计/前端/图表（7 个）</h3>
+  <span class="skill-tag">frontend-design</span><span class="skill-tag">frontend-slides</span><span class="skill-tag">diagram-reports-generator</span><span class="skill-tag">excalidraw-diagram-generator</span><span class="skill-tag">charts</span><span class="skill-tag">ui-ux-pro-max</span><span class="skill-tag">architecture-designer</span>
+</div>
+
+<div class="section">
+  <h3>🔵 代码/工程（12 个）</h3>
+  <span class="skill-tag">code</span><span class="skill-tag">agentic-coding</span><span class="skill-tag">codex-team-workflow</span><span class="skill-tag">codex-top-10-skills</span><span class="skill-tag">git-essentials</span><span class="skill-tag">tmux</span><span class="skill-tag">pua-debugging</span><span class="skill-tag">skill-creator</span><span class="skill-tag">skill-vetter</span><span class="skill-tag">write-skill</span><span class="skill-tag">delivery-artifact</span><span class="skill-tag">roadmap-planning</span>
+</div>
+
+<div class="section">
+  <h3>🔵 记忆/知识（5 个）</h3>
+  <span class="skill-tag">memory</span><span class="skill-tag">memory-management</span><span class="skill-tag">cortex-mem</span><span class="skill-tag">agent-memory-frameworks</span><span class="skill-tag">obsidian</span>
+</div>
+
+<div class="section">
+  <h3>🔵 通信/邮箱（3 个）</h3>
+  <span class="skill-tag">gmail</span><span class="skill-tag">himalaya</span><span class="skill-tag">send-email</span>
+</div>
+
+<div class="section">
+  <h3>🔵 安全/合规（3 个）</h3>
+  <span class="skill-tag">clawdefender</span><span class="skill-tag">anti-distill</span><span class="skill-tag">supply-chain-risk-auditor</span>
+</div>
+
+<div class="section">
+  <h3>🔵 工具/平台（10 个）</h3>
+  <span class="skill-tag">1password</span><span class="skill-tag">baidu-drive</span><span class="skill-tag">notion</span><span class="skill-tag">alipay-authenticate-wallet</span><span class="skill-tag">alipay-payment-skill</span><span class="skill-tag">mcporter</span><span class="skill-tag">find-skills</span><span class="skill-tag">openclaw-rise</span><span class="skill-tag">autoclaw-billing</span><span class="skill-tag">autoclaw-im-cron</span>
+</div>
+
+<div class="section">
+  <h3>🔵 学习/教学（6 个）</h3>
+  <span class="skill-tag">teach</span><span class="skill-tag">deep-research</span><span class="skill-tag">arxiv-daily-report</span><span class="skill-tag">video-watch</span><span class="skill-tag">karpathy-feed</span><span class="skill-tag">gh-weekly-117</span>
+</div>
+
+<div class="section">
+  <h3>🔵 视角/角色（7 个）</h3>
+  <span class="skill-tag">steve-jobs-perspective</span><span class="skill-tag">naval-perspective</span><span class="skill-tag">taleb-perspective</span><span class="skill-tag">create-colleague</span><span class="skill-tag">create-yourself</span><span class="skill-tag">goal-driven</span><span class="skill-tag">hermes-evolution</span>
+</div>
+
+<div class="section">
+  <h3>🔵 转转内部（4 个）</h3>
+  <span class="skill-tag">hive-conn-info</span><span class="skill-tag">zz-team-kb</span><span class="skill-tag">转转业务判断Skill</span><span class="skill-tag">ecom-data-analyst_culture-index</span>
+</div>
+
+<div class="section">
+  <h3>🔵 其他（40+ 个）</h3>
+  <span class="skill-tag">ffmpeg-video-editor</span><span class="skill-tag">vidu-skills</span><span class="skill-tag">weather</span><span class="skill-tag">social-media-analyzer</span><span class="skill-tag">social-media-scheduler</span><span class="skill-tag">finance-based-pricing-advisor</span><span class="skill-tag">finance-metrics-quickref</span><span class="skill-tag">follow-builders</span><span class="skill-tag">app-store-optimization</span><span class="skill-tag">saas-economics-efficiency-metrics</span><span class="skill-tag">saas-revenue-growth-metrics</span><span class="skill-tag">tam-sam-som-calculator</span><span class="skill-tag">stock-agent-pipeline</span><span class="skill-tag">summarize</span><span class="skill-tag">superpowers</span><span class="skill-tag">anthropic-skills</span><span class="skill-tag">vercel-agent-skills</span><span class="skill-tag">ai律师网合同审查skill</span><span class="skill-tag">如邹碧华法官在审</span><span class="skill-tag">aminer-academic-search</span><span class="skill-tag">aminer-free-academic</span><span class="skill-tag">taste-skill</span><span class="skill-tag">variant-analysis</span><span class="skill-tag">agent-reach</span><span class="skill-tag">pol-probe</span><span class="skill-tag">prioritization-advisor</span><span class="skill-tag">glmv-prompt-gen</span><span class="skill-tag">glmv-resume-screen</span>
+</div>
+
+<!-- 十二、近期时间线 -->
+<h2>十二、近期时间线</h2>
+<div class="section">
+  <div class="timeline-item">
+    <div class="timeline-date">2026-06-14</div>
+    <div class="timeline-content">安装 8 个技能 · 建立系统维护定式（每日 sudo purge） · 文档输出规范</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-06-15</div>
+    <div class="timeline-content">发现 Codex Thread 锁定模型机制 · 创建 CODE.md 持久上下文 · 飞书 OAuth 授权探索</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-06-16</div>
+    <div class="timeline-content">Codex standalone 0.140.0 安装 · 远程控制启用 · CC Switch 配置锁定 · 飞书桥接全链路验证</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-06-17</div>
+    <div class="timeline-content">数据监控需求（zeye → One-Service → cron） · 飞书频道绑定 · 迁移打包 235MB</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-06-18</div>
+    <div class="timeline-content">技能安装（design-md/teach/a-stock-data） · <strong>分期/借钱/支付/数据仓库四大业务学习</strong> · 模型切换到 GLM 5.2</div>
+  </div>
+</div>
+
+<!-- 十三、系统配置 -->
+<h2>十三、系统配置</h2>
+<div class="section">
+  <table>
+    <tr><th>项目</th><th>配置</th></tr>
+    <tr><td>系统</td><td>macOS 26 · MacBook Pro (ARM64)</td></tr>
+    <tr><td>不休眠</td><td>sleep=0, displaysleep=60, 锁屏=30秒</td></tr>
+    <tr><td>VPN</td><td>Veee VPN (SOCKS5:15235 / HTTP:15236)</td></tr>
+    <tr><td>Amphetamine</td><td>v5.3.2, Allow Closed-Display Sleep=false</td></tr>
+    <tr><td>Codex</td><td>standalone 0.140.0, model_provider=openai</td></tr>
+    <tr><td>zzcli</td><td>v0.5.0, ~/.local/bin/zzcli</td></tr>
+    <tr><td>zz-harness</td><td>5 插件 (zzcommon/zzrd/zzfe/zzqa/zzapp)</td></tr>
+    <tr><td>OpenClaw→Codex 同步</td><td>sync-to-codex.sh + cron 每日 9:00</td></tr>
+    <tr><td>Codex 用量监控</td><td>codex-usage-monitor.sh + cron 9:00/21:00</td></tr>
+    <tr><td>Chrome 扩展</td><td>uBlock Lite + AdGuard + JSONVue + 1Password + AutoGLM + Codex</td></tr>
+    <tr><td>迁移工具</td><td>v3.1.1 (企微→飞书文档迁移)</td></tr>
+  </table>
+</div>
+
+<!-- 十四、文件结构 -->
+<h2>十四、关键文件路径</h2>
+<div class="section">
+  <table>
+    <tr><th>文件</th><th>路径</th></tr>
+    <tr><td>长期记忆</td><td><code>~/.openclaw-autoclaw/workspace/MEMORY.md</code></td></tr>
+    <tr><td>每日记录</td><td><code>~/.openclaw-autoclaw/workspace/memory/YYYY-MM-DD.md</code></td></tr>
+    <tr><td>行为准则</td><td><code>~/.openclaw-autoclaw/workspace/AGENTS.md</code></td></tr>
+    <tr><td>角色定义</td><td><code>~/.openclaw-autoclaw/workspace/SOUL.md</code></td></tr>
+    <tr><td>凭据信息</td><td><code>~/.openclaw-autoclaw/workspace/TOOLS.md</code></td></tr>
+    <tr><td>用户档案</td><td><code>~/.openclaw-autoclaw/workspace/USER.md</code></td></tr>
+    <tr><td>技能目录</td><td><code>~/.openclaw-autoclaw/skills/</code></td></tr>
+    <tr><td>Codex 上下文</td><td><code>~/.codex/CODE.md</code>（软链 ← workspace/CODE.md）</td></tr>
+    <tr><td>飞书桥接</td><td><code>~/projects/feishu-codex-bridge/app.py</code></td></tr>
+    <tr><td>同步脚本</td><td><code>~/.openclaw-autoclaw/scripts/sync-to-codex.sh</code></td></tr>
+    <tr><td>用量监控</td><td><code>~/.openclaw-autoclaw/scripts/codex-usage-monitor.sh</code></td></tr>
+    <tr><td>九机报告</td><td><code>~/.openclaw-autoclaw/workspace/9ji-report/</code></td></tr>
+  </table>
+</div>
+
+<p style="text-align:center;color:var(--sub);font-size:12px;margin-top:40px">Ludovicus 📊 · 转转集团 · 2026-06-18</p>
+
+</div>
+</body>
+</html>
